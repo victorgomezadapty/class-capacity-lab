@@ -1,0 +1,21 @@
+# Proposed next-stage contract; not implemented in this milestone.
+grain: one_booking_event_linked_to_one_class_session
+required:
+  booking_id: stable_pseudonymous_string
+  class_session_id: stable_string
+  member_id: stable_pseudonymous_string
+  booking_timestamp: ISO8601_with_timezone
+  class_timestamp: ISO8601_with_timezone
+  capacity: positive_integer_per_session
+  attendance_status: [attended, confirmed_no_show, cancelled, pending]
+useful:
+  cancellation_timestamp: nullable_ISO8601_with_timezone
+  class_category: string
+  instructor_id: pseudonymous_string
+  branch: string
+  waitlist_status: string
+  membership_start_date: date
+policy:
+  body_weight_required: false
+  prediction_cutoff: must_be_explicit_before_session
+  session_capacity_changes: retain_timestamped_history

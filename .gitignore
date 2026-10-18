@@ -1,0 +1,15 @@
+.python-deps/
+__pycache__/
+reports/qa-*.png
+reports/notebook-output/
+dataset.parquet
+fitness-club.csv
+kaggle goalzone-predicting-gym-attendance.ipynb
+autores refieren/
+data/processed/bookings_clean.csv
+data/processed/membership_operational_profiles.csv
+data/processed/analysis.json
+data/processed/membership_analysis.json
+/dashboard.html
+.claude/
+.vercel/

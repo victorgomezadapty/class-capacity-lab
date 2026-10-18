@@ -1,0 +1,10 @@
+id,label,metric,value,ci,n,valid_resamples,method
+months_as_member,Membership tenure & attendance,r,0.48552622327526257,"[0.45231272329657235, 0.5245622152167758]",1500,1000,Point-biserial Pearson correlation
+days_before,Booking lead time & attendance,r,0.02406815573312008,"[-0.02176249243292798, 0.07377657679463542]",1500,1000,Point-biserial Pearson correlation
+category,Class category & attendance,V,0.052888807879354655,"[0.03475809439134543, 0.11421862905019627]",1500,1000,Uncorrected Cramér’s V
+day_of_week,Weekday & attendance,V,0.06807919697510577,"[0.05025301776899353, 0.13174572751015018]",1500,1000,Uncorrected Cramér’s V
+time,AM/PM & attendance,V,0.04984968386251237,"[0.0035612175027031844, 0.0975415687283264]",1500,1000,Uncorrected Cramér’s V
+abonoment_type,Membership tier & group participation,V,0.003916454321235425,"[0.0008967565823244036, 0.07004013475320787]",1000,1000,Uncorrected Cramér’s V
+visit_per_week,Visit frequency & group participation,V,0.05426571733410483,"[0.03086967841356258, 0.13518215004245993]",1000,1000,Uncorrected Cramér’s V
+personal_training,PT use & group participation,V,0.010222810421809834,"[0.0012482341475009557, 0.07701862634207803]",1000,1000,Uncorrected Cramér’s V
+checkin_band,Usual check-in & group participation,V,0.04082231026450898,"[0.011729040644837591, 0.11060122931437502]",1000,1000,Uncorrected Cramér’s V
