@@ -16,9 +16,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/motion.css">
 <script src="assets/lang.js"></script>
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
 <header class="topbar">
   <div class="wrap">
     <a class="brand" href="index.html" data-keep-lang><span class="brand-mark" aria-hidden="true">◫</span>Class Capacity Lab</a>
@@ -75,10 +77,24 @@
 <p data-l="en">The closest quantitative literature comes from healthcare scheduling. A systematic review of 105 studies estimated an average no-show rate of about 23% and identified long lead time and prior no-show history as the most commonly reported determinants.<sup><a href="#r1">1</a></sup> The GoalZone non-attendance rate (69.7%) is far higher, but it also includes cancellations, which the source does not separate from no-shows. The absence of any lead-time association here (r = 0.024; 95% CI −0.022 to 0.074) therefore conflicts with the clinical pattern. Plausible explanations include the coarse day-level lead-time field, the lack of same-day bookings, the mixing of cancellations with no-shows, and the possibility that gym classes, unlike medical appointments, carry no penalty for missing them. This is precisely the kind of discrepancy that real booking and cancellation timestamps could resolve.</p>
 <p data-l="es">La literatura cuantitativa más cercana proviene de la programación de citas en salud. Una revisión sistemática de 105 estudios estimó una tasa media de no-show de alrededor del 23% e identificó la anticipación larga y el historial previo de no-shows como los determinantes reportados con más frecuencia.<sup><a href="#r1">1</a></sup> La tasa de inasistencia de GoalZone (69,7%) es mucho mayor, pero incluye también cancelaciones, que la fuente no separa de los no-shows. Por eso, la ausencia de asociación con la anticipación (r = 0,024; IC 95% −0,022 a 0,074) contradice el patrón clínico. Explicaciones plausibles: el campo de anticipación solo tiene resolución diaria, no hay reservas del mismo día, se mezclan cancelaciones con no-shows y, a diferencia de una cita médica, faltar a una clase de gimnasio no suele tener penalización. Es justo el tipo de discrepancia que resolverían las marcas de tiempo reales de reserva y cancelación.</p>
 
+<figure class="figure reveal">
+  <p class="fig-title" data-l="en">Figure 1 · How large is the gap?</p><p class="fig-title" data-l="es">Figura 1 · ¿Qué tan grande es la brecha?</p>
+  <p class="fig-sub" data-l="en">Average clinical no-show rate across 105 studies vs. GoalZone non-attendance, which also includes cancellations.</p>
+  <p class="fig-sub" data-l="es">Tasa media de no-show clínico en 105 estudios vs. inasistencia de GoalZone, que además incluye cancelaciones.</p>
+  <div class="viz" data-fig="gapBars"></div>
+</figure>
 <h3 data-l="en">2.2 Tenure, habit and attrition</h3>
 <h3 data-l="es">2.2 Antigüedad, hábito y abandono</h3>
 <p data-l="en">The tenure gradient is consistent with three bodies of work. Attrition among new members is severe: in a retrospective cohort of more than 5,000 members of a Brazilian fitness centre, about 63% dropped out before the third month and fewer than 4% remained active beyond twelve months.<sup><a href="#r2">2</a></sup> Members also overestimate their future attendance; in three US clubs, members on flat monthly contracts attended about 4.3 times per month, paying more per visit than a pay-per-visit pass would have cost.<sup><a href="#r3">3</a></sup> And exercise habits take time to form: new gym members needed at least four sessions per week for about six weeks to establish a habit,<sup><a href="#r4">4</a></sup> real-world habit formation took a median of 66 days with wide individual variation,<sup><a href="#r5">5</a></sup> and a machine-learning analysis of more than 12 million gym check-ins found that gym habits typically took months to form.<sup><a href="#r6">6</a></sup></p>
 <p data-l="es">El gradiente de antigüedad es coherente con tres líneas de investigación. El abandono entre socios nuevos es severo: en una cohorte retrospectiva de más de 5.000 socios de un centro de fitness en Brasil, cerca del 63% abandonó antes del tercer mes y menos del 4% seguía activo después de doce meses.<sup><a href="#r2">2</a></sup> Los socios también sobreestiman su asistencia futura; en tres clubes de EE. UU., los socios con contrato mensual asistían unas 4,3 veces al mes y pagaban más por visita de lo que les habría costado un pase por visita.<sup><a href="#r3">3</a></sup> Y los hábitos de ejercicio tardan en formarse: los socios nuevos necesitaron al menos cuatro sesiones semanales durante unas seis semanas para establecer el hábito,<sup><a href="#r4">4</a></sup> la formación de hábitos en la vida real tomó una mediana de 66 días con gran variación individual,<sup><a href="#r5">5</a></sup> y un análisis con machine learning de más de 12 millones de check-ins encontró que los hábitos de gimnasio solían tardar meses en formarse.<sup><a href="#r6">6</a></sup></p>
+<figure class="figure reveal">
+  <p class="fig-title" data-l="en">Figure 2 · The first year decides</p><p class="fig-title" data-l="es">Figura 2 · El primer año lo decide todo</p>
+  <p class="fig-sub" data-l="en">Habit and attrition milestones from the literature on one timeline, next to this lab’s attendance by tenure.</p>
+  <p class="fig-sub" data-l="es">Hitos de hábito y abandono de la literatura en una sola línea de tiempo, junto a la asistencia por antigüedad de este laboratorio.</p>
+  <div class="viz" data-fig="habitTimeline"></div>
+  <figcaption data-l="en">Milestones come from different populations and designs [2, 4, 5, 6]; the timeline places them together for orientation, not as a pooled estimate.</figcaption>
+  <figcaption data-l="es">Los hitos vienen de poblaciones y diseños distintos [2, 4, 5, 6]; la línea de tiempo los reúne como orientación, no como una estimación combinada.</figcaption>
+</figure>
 <p data-l="en">Two cautions follow. Tenure is not a lever: long-tenure members are a survivor population, so the association mixes habit with selection. And the magnitude here (from 3% to 95%) is unusually extreme for behavioural data, which suggests that the educational dataset may have been generated or curated with a strong built-in tenure effect. The direction agrees with the literature; the size should not be transferred to a real club.</p>
 <p data-l="es">De aquí se derivan dos precauciones. La antigüedad no es una palanca: los socios antiguos son una población de supervivientes, así que la asociación mezcla hábito con selección. Y la magnitud observada (del 3% al 95%) es inusualmente extrema para datos de comportamiento, lo que sugiere que el dataset educativo pudo haberse generado o curado con un efecto de antigüedad fuerte incorporado. La dirección coincide con la literatura; el tamaño no debe trasladarse a un club real.</p>
 
@@ -92,11 +108,34 @@
 <p data-l="en">In healthcare, SMS reminders increased the odds of attending appointments (pooled RCT estimate 1.48; 95% CI 1.23–1.72), with no clear difference between reminders sent 24, 48 or 72 hours ahead.<sup><a href="#r8">8</a></sup> For gyms specifically, a megastudy of 54 four-week digital programmes among 61,293 members of a US fitness chain found that roughly 45% of interventions increased weekly visits, by 9% to 27%; the best performer rewarded returning after a missed workout, but few effects persisted after the programme ended, and expert forecasts did not identify the winners.<sup><a href="#r9">9</a></sup> The machine-learning study cited above adds that members whose behaviour is already highly predictable respond less to such nudges,<sup><a href="#r6">6</a></sup> which argues for targeting interventions at newer, less habitual members, exactly the low-attendance segment in this dataset.</p>
 <p data-l="es">En salud, los recordatorios por SMS aumentaron la probabilidad de asistir a las citas (estimación agrupada de ECA 1,48; IC 95% 1,23–1,72), sin diferencias claras entre enviarlos con 24, 48 o 72 horas de anticipación.<sup><a href="#r8">8</a></sup> En gimnasios, un megaestudio de 54 programas digitales de cuatro semanas con 61.293 socios de una cadena de EE. UU. encontró que cerca del 45% de las intervenciones aumentó las visitas semanales entre un 9% y un 27%; la mejor premiaba volver después de faltar a un entrenamiento, pero pocos efectos persistieron al terminar el programa y las predicciones de expertos no identificaron a las ganadoras.<sup><a href="#r9">9</a></sup> El estudio de machine learning citado añade que los socios con un comportamiento ya muy predecible responden menos a estos nudges,<sup><a href="#r6">6</a></sup> lo que sugiere dirigir las intervenciones a socios más nuevos y menos habituales, justo el segmento de baja asistencia en este dataset.</p>
 
+<div class="stat-cards">
+  <div class="stat-card reveal"><b data-count="1.48" data-dec="2" data-suf="×">1.48×</b><span data-l="en">odds of attending with SMS reminders, pooled RCTs <sup><a href="#r8">8</a></sup></span><span data-l="es">probabilidad (odds) de asistir con recordatorios SMS, ECA agrupados <sup><a href="#r8">8</a></sup></span></div>
+  <div class="stat-card reveal d1"><b data-count="61293">61,293</b><span data-l="en">gym members in a megastudy of 54 programmes <sup><a href="#r9">9</a></sup></span><span data-l="es">socios de gimnasio en un megaestudio de 54 programas <sup><a href="#r9">9</a></sup></span></div>
+  <div class="stat-card reveal d2"><b data-count="45" data-pre="≈" data-suf="%">≈45%</b><span data-l="en">of those programmes raised weekly visits, by 9–27% <sup><a href="#r9">9</a></sup></span><span data-l="es">de esos programas aumentó las visitas semanales, entre 9% y 27% <sup><a href="#r9">9</a></sup></span></div>
+</div>
 <h3 data-l="en">2.5 Capacity, overbooking and calibration</h3>
 <h3 data-l="es">2.5 Capacidad, sobreventa y calibración</h3>
 <p data-l="en">Revenue management treats overbooking as setting a booking limit above physical capacity to hedge against cancellations and no-shows.<sup><a href="#r10">10</a></sup> In outpatient clinics, simulation showed that overbooking can improve access and productivity, but at the cost of longer waits and overtime, and that it helps most when no-show rates are high and service times vary little.<sup><a href="#r11">11</a></sup> A group class resembles that favourable case: fixed duration, many interchangeable places. But overbooking is only as safe as the attendance probabilities behind it. Poorly calibrated predictions, where a predicted 30% does not correspond to 30% observed, can mislead decisions even when a model ranks members well, and calibration is assessed far less often than discrimination.<sup><a href="#r12">12</a></sup> This is why the lab stops before prediction: without session capacity and a temporal validation set, any overbooking rule would be uncalibrated.</p>
 <p data-l="es">La gestión de ingresos (revenue management) trata la sobreventa como fijar un límite de reservas por encima de la capacidad física para cubrirse frente a cancelaciones y no-shows.<sup><a href="#r10">10</a></sup> En consultas externas, la simulación mostró que la sobreventa puede mejorar el acceso y la productividad, pero a costa de esperas más largas y horas extra, y que ayuda más cuando las tasas de no-show son altas y la duración del servicio varía poco.<sup><a href="#r11">11</a></sup> Una clase grupal se parece a ese caso favorable: duración fija y muchas plazas intercambiables. Pero la sobreventa solo es tan segura como las probabilidades de asistencia que la sustentan. Las predicciones mal calibradas, en las que un 30% predicho no corresponde a un 30% observado, pueden inducir a error aunque el modelo ordene bien a los socios, y la calibración se evalúa con mucha menos frecuencia que la discriminación.<sup><a href="#r12">12</a></sup> Por eso el laboratorio se detiene antes de predecir: sin capacidad por sesión y sin un conjunto de validación temporal, cualquier regla de sobreventa estaría descalibrada.</p>
 
+<figure class="figure reveal" id="simulator">
+  <p class="fig-title" data-l="en">Interactive · The overbooking trade-off</p><p class="fig-title" data-l="es">Interactivo · El dilema de la sobreventa</p>
+  <p class="fig-sub" data-l="en">Move the sliders. Bars show the probability of each number of attendees; orange bars exceed capacity.</p>
+  <p class="fig-sub" data-l="es">Mueve los controles. Las barras muestran la probabilidad de cada número de asistentes; las naranjas superan la capacidad.</p>
+  <div class="sim-controls">
+    <label><span data-l="en">Class capacity</span><span data-l="es">Capacidad de la clase</span>: <output id="o-cap">20</output><input id="sim-cap" type="range" min="8" max="40" value="20"></label>
+    <label><span data-l="en">Assumed chance each booking attends</span><span data-l="es">Probabilidad supuesta de que cada reserva asista</span>: <output id="o-p">60%</output><input id="sim-p" type="range" min="20" max="95" value="60"></label>
+    <label style="grid-column:1/-1"><span data-l="en">Bookings accepted (booking limit)</span><span data-l="es">Reservas aceptadas (límite de reservas)</span>: <output id="o-lim">28</output><input id="sim-lim" type="range" min="20" max="40" value="28"></label>
+  </div>
+  <div class="viz in"></div>
+  <div class="sim-stats">
+    <div><b id="s-exp">16.8</b><span data-l="en">expected attendees</span><span data-l="es">asistentes esperados</span></div>
+    <div><b id="s-empty">3.6</b><span data-l="en">expected empty places</span><span data-l="es">plazas vacías esperadas</span></div>
+    <div><b id="s-over">2%</b><span data-l="en">chance the class is over capacity</span><span data-l="es">probabilidad de sobrecupo</span></div>
+  </div>
+  <figcaption data-l="en">Illustrative model with assumed values: each booking attends independently with the same probability (binomial). Real members differ, which is why calibrated, per-booking probabilities matter <sup><a href="#r12">12</a></sup>. This is not a recommendation for any club.</figcaption>
+  <figcaption data-l="es">Modelo ilustrativo con valores supuestos: cada reserva asiste de forma independiente con la misma probabilidad (binomial). Los socios reales difieren; por eso importan las probabilidades calibradas por reserva <sup><a href="#r12">12</a></sup>. No es una recomendación para ningún club.</figcaption>
+</figure>
 <span id="limits" style="display:block;scroll-margin-top:80px"></span>
 <h2 data-l="en">3. Strengths and limitations</h2>
 <h2 data-l="es">3. Fortalezas y limitaciones</h2>
@@ -179,5 +218,6 @@
     <div class="small"><a href="index.html" data-keep-lang><span data-l="en">← Back to the case study</span><span data-l="es">← Volver al caso de estudio</span></a></div>
   </div>
 </footer>
+<script src="assets/motion.js" defer></script>
 </body>
 </html>

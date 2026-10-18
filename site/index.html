@@ -16,9 +16,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/motion.css">
 <script src="assets/lang.js"></script>
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
 <header class="topbar">
   <div class="wrap">
     <a class="brand" href="index.html" data-keep-lang><span class="brand-mark" aria-hidden="true">◫</span>Class Capacity Lab</a>
@@ -37,6 +39,9 @@
 
 <main>
 <div class="wrap hero">
+  <div class="blob b1" aria-hidden="true"></div><div class="blob b2" aria-hidden="true"></div>
+  <div class="hero-grid">
+  <div>
   <div class="eyebrow"><span data-l="en">Open Gym Digital Twin · Module 1 · Observe</span><span data-l="es">Gemelo Digital de Gimnasio · Módulo 1 · Observar</span></div>
   <h1 data-l="en">A booked place is <em>not</em> an occupied place.</h1>
   <h1 data-l="es">Una plaza reservada <em>no</em> es una plaza ocupada.</h1>
@@ -46,18 +51,30 @@
     <a class="btn primary" href="dashboard.html" data-keep-lang><span data-l="en">Open the interactive dashboard</span><span data-l="es">Abrir el dashboard interactivo</span> →</a>
     <a class="btn" href="evidence.html" data-keep-lang><span data-l="en">Read the scientific discussion</span><span data-l="es">Leer la discusión científica</span></a>
   </div>
+  </div>
+  <figure class="studio" style="margin:0">
+    <div class="studio-head"><b><span data-l="en">One class, 40 places</span><span data-l="es">Una clase, 40 plazas</span></b><span class="phase" aria-hidden="true"><i></i><i></i><i></i></span></div>
+    <svg id="studio-svg" viewBox="0 0 420 344" role="img" aria-label="Illustration: 40 booked places, of which 12 are attended and 28 stay empty, matching the 30% attendance rate."></svg>
+    <div class="studio-count" aria-live="off">
+      <span><strong id="c-booked">40</strong><span data-l="en">booked</span><span data-l="es">reservadas</span></span>
+      <span class="att"><strong id="c-att">12</strong><span data-l="en">attended</span><span data-l="es">asistieron</span></span>
+      <span class="emp"><strong id="c-empty">28</strong><span data-l="en">empty</span><span data-l="es">vacías</span></span>
+    </div>
+    <figcaption class="small muted" style="margin-top:6px"><span data-l="en">Illustration scaled from 1,500 bookings: 30% attendance.</span><span data-l="es">Ilustración a escala de 1.500 reservas: 30% de asistencia.</span></figcaption>
+  </figure>
+  </div>
   <div class="kpis">
-    <div class="kpi dark"><b>30.3%</b><span data-l="en">of 1,500 bookings ended in attendance</span><span data-l="es">de 1.500 reservas terminó en asistencia</span></div>
-    <div class="kpi"><b>r = 0.49</b><span data-l="en">membership tenure vs. attendance, the strongest signal</span><span data-l="es">antigüedad vs. asistencia, la señal más fuerte</span></div>
-    <div class="kpi"><b>r ≈ 0.02</b><span data-l="en">booking lead time, essentially no linear signal</span><span data-l="es">anticipación de la reserva, sin señal lineal</span></div>
-    <div class="kpi"><b>1,000</b><span data-l="en">synthetic member profiles for preference analysis</span><span data-l="es">perfiles sintéticos para analizar preferencias</span></div>
+    <div class="kpi dark reveal"><b data-count="30.3" data-dec="1" data-suf="%">30.3%</b><span data-l="en">of 1,500 bookings ended in attendance</span><span data-l="es">de 1.500 reservas terminó en asistencia</span></div>
+    <div class="kpi reveal d1"><b data-count="0.49" data-dec="2" data-pre="r = ">r = 0.49</b><span data-l="en">membership tenure vs. attendance, the strongest signal</span><span data-l="es">antigüedad vs. asistencia, la señal más fuerte</span></div>
+    <div class="kpi reveal d2"><b data-count="0.02" data-dec="2" data-pre="r ≈ ">r ≈ 0.02</b><span data-l="en">booking lead time, essentially no linear signal</span><span data-l="es">anticipación de la reserva, sin señal lineal</span></div>
+    <div class="kpi reveal d3"><b data-count="1000">1,000</b><span data-l="en">synthetic member profiles for preference analysis</span><span data-l="es">perfiles sintéticos para analizar preferencias</span></div>
   </div>
 </div>
 
 <section id="problem">
   <div class="wrap grid-2">
     <div>
-      <div class="section-num">01</div>
+      <div class="section-num reveal">01</div>
       <h2 data-l="en">The operational problem</h2>
       <h2 data-l="es">El problema operativo</h2>
       <p data-l="en">When a class shows <strong>full</strong>, members join waitlists or give up. When half of those places stay empty, the club has turned members away from capacity it already paid for. Airlines and clinics manage the same tension with no-show forecasting and controlled overbooking, but those tools only work when attendance is measured per session and the forecasts are calibrated.</p>
@@ -80,7 +97,7 @@
 
 <section id="findings">
   <div class="wrap">
-    <div class="section-num">02</div>
+    <div class="section-num reveal">02</div>
     <h2 data-l="en">What the evidence shows</h2>
     <h2 data-l="es">Lo que muestra la evidencia</h2>
     <p class="lead" data-l="en">Every number below comes with an effect size, a bootstrap interval (1,000 resamples) and a plain-language reading in the dashboard.</p>
@@ -91,7 +108,7 @@
         <span class="tag" data-l="en">Finding 1 · Tenure</span><span class="tag" data-l="es">Hallazgo 1 · Antigüedad</span>
         <h3 style="margin-top:12px" data-l="en">Who attends is mostly about how long they have been a member</h3>
         <h3 style="margin-top:12px" data-l="es">Quién asiste depende sobre todo de cuánto tiempo lleva como socio</h3>
-        <div class="bars" role="img" aria-label="Attendance by tenure band: 1–6 months 3.4%, 7–12 months 15.2%, 13–24 months 40.3%, 25–48 months 69.4%, 49+ months 95.2%">
+        <div class="bars anim-bars" role="img" aria-label="Attendance by tenure band: 1–6 months 3.4%, 7–12 months 15.2%, 13–24 months 40.3%, 25–48 months 69.4%, 49+ months 95.2%">
           <div class="bar-row"><span><span data-l="en">1–6 months</span><span data-l="es">1–6 meses</span><span class="bar-n">n = 266</span></span><div class="bar-track"><div class="bar-fill" style="width:3.4%"></div></div><span class="bar-val">3.4%</span></div>
           <div class="bar-row"><span><span data-l="en">7–12 months</span><span data-l="es">7–12 meses</span><span class="bar-n">n = 513</span></span><div class="bar-track"><div class="bar-fill" style="width:15.2%"></div></div><span class="bar-val">15.2%</span></div>
           <div class="bar-row"><span><span data-l="en">13–24 months</span><span data-l="es">13–24 meses</span><span class="bar-n">n = 496</span></span><div class="bar-track"><div class="bar-fill" style="width:40.3%"></div></div><span class="bar-val">40.3%</span></div>
@@ -107,11 +124,11 @@
         <h3 style="margin-top:12px" data-l="en">Class rankings change once you compare like with like</h3>
         <h3 style="margin-top:12px" data-l="es">El ranking de clases cambia al comparar grupos equivalentes</h3>
         <div class="dumbbell" role="img" aria-label="Raw vs tenure-standardized attendance by category. HIIT 31.9 to 32.2, Aqua 32.9 to 31.2, Yoga 31.1 to 29.3, Cycling 29.3 to 29.0, Strength 26.6 to 27.4 percent">
-          <div class="db-row"><span>HIIT</span><div class="db-track"><div class="db-line" style="left:59.5%;width:1.5%"></div><div class="db-dot raw" style="left:59.5%"></div><div class="db-dot adj" style="left:61%"></div></div></div>
-          <div class="db-row"><span>Aqua</span><div class="db-track"><div class="db-line" style="left:56%;width:8.5%"></div><div class="db-dot raw" style="left:64.5%"></div><div class="db-dot adj" style="left:56%"></div></div></div>
-          <div class="db-row"><span>Yoga</span><div class="db-track"><div class="db-line" style="left:46.5%;width:9%"></div><div class="db-dot raw" style="left:55.5%"></div><div class="db-dot adj" style="left:46.5%"></div></div></div>
-          <div class="db-row"><span data-l="en">Cycling</span><span data-l="es">Ciclismo</span><div class="db-track"><div class="db-line" style="left:45%;width:1.5%"></div><div class="db-dot raw" style="left:46.5%"></div><div class="db-dot adj" style="left:45%"></div></div></div>
-          <div class="db-row"><span data-l="en">Strength</span><span data-l="es">Fuerza</span><div class="db-track"><div class="db-line" style="left:33%;width:4%"></div><div class="db-dot raw" style="left:33%"></div><div class="db-dot adj" style="left:37%"></div></div></div>
+          <div class="db-row"><span>HIIT</span><div class="db-track"><div class="db-line" style="left:59.5%;width:1.5%"></div><div class="db-dot raw" style="left:59.5%"></div><div class="db-dot adj" style="left:61%" data-from="59.5%" data-to="61%"></div></div></div>
+          <div class="db-row"><span>Aqua</span><div class="db-track"><div class="db-line" style="left:56%;width:8.5%"></div><div class="db-dot raw" style="left:64.5%"></div><div class="db-dot adj" style="left:56%" data-from="64.5%" data-to="56%"></div></div></div>
+          <div class="db-row"><span>Yoga</span><div class="db-track"><div class="db-line" style="left:46.5%;width:9%"></div><div class="db-dot raw" style="left:55.5%"></div><div class="db-dot adj" style="left:46.5%" data-from="55.5%" data-to="46.5%"></div></div></div>
+          <div class="db-row"><span data-l="en">Cycling</span><span data-l="es">Ciclismo</span><div class="db-track"><div class="db-line" style="left:45%;width:1.5%"></div><div class="db-dot raw" style="left:46.5%"></div><div class="db-dot adj" style="left:45%" data-from="46.5%" data-to="45%"></div></div></div>
+          <div class="db-row"><span data-l="en">Strength</span><span data-l="es">Fuerza</span><div class="db-track"><div class="db-line" style="left:33%;width:4%"></div><div class="db-dot raw" style="left:33%"></div><div class="db-dot adj" style="left:37%" data-from="33%" data-to="37%"></div></div></div>
         </div>
         <div class="legend"><span><i style="background:var(--soft)"></i><span data-l="en">Raw rate</span><span data-l="es">Tasa bruta</span></span><span><i style="background:var(--green)"></i><span data-l="en">Same tenure mix (direct standardization)</span><span data-l="es">Misma mezcla de antigüedad (estandarización directa)</span></span><span>20% — 40%</span></div>
         <p class="small muted" style="margin-top:12px" data-l="en">Aqua leads the raw rates; HIIT leads after standardization. Category explains little overall (Cramér’s V = 0.05). Part of what looks like a “class effect” is <em>who</em> books the class.</p>
@@ -119,38 +136,77 @@
       </div>
     </div>
 
-    <div class="card" style="margin-top:28px">
-      <div class="finding">
+    <div class="explorer reveal" id="explorer">
+      <div>
+        <span class="tag" style="background:#315345;color:#d6ee98" data-l="en">Interactive</span><span class="tag" style="background:#315345;color:#d6ee98" data-l="es">Interactivo</span>
+        <h3 style="margin-top:12px;font-size:28px" data-l="en">Pick a member’s tenure. Watch who shows up.</h3>
+        <h3 style="margin-top:12px;font-size:28px" data-l="es">Elige la antigüedad del socio. Mira quién llega.</h3>
+        <div class="big" aria-live="polite">3.4%</div>
+        <input type="range" min="0" max="4" step="1" value="0" aria-label="Membership tenure band / Banda de antigüedad">
+        <div class="ticks">
+          <button type="button">1–6</button><button type="button">7–12</button><button type="button">13–24</button><button type="button">25–48</button><button type="button">49+</button>
+        </div>
+        <p class="small soft" style="margin-top:6px" data-l="en">Months of membership</p><p class="small soft" style="margin-top:6px" data-l="es">Meses de membresía</p>
+      </div>
+      <div>
+        <div class="crowd" aria-hidden="true"></div>
+        <p class="crowd-cap"></p>
+      </div>
+    </div>
+
+    <div class="viz-grid">
+      <div class="viz-card reveal">
         <div class="n">3</div>
-        <div><h3 data-l="en">The AM advantage shrinks and becomes uncertain</h3><h3 data-l="es">La ventaja de la mañana se reduce y se vuelve incierta</h3>
-        <p class="muted" data-l="en">AM 31.6% vs. PM 26.2%: a 5.4-point gap. With a common tenure mix it falls to 4.0 points, and the 95% interval (−0.6 to 8.5) includes zero. Not enough to move classes.</p>
-        <p class="muted" data-l="es">AM 31,6% vs. PM 26,2%: una brecha de 5,4 puntos. Con una mezcla común de antigüedad baja a 4,0 puntos, y el intervalo del 95% (−0,6 a 8,5) incluye el cero. No alcanza para mover clases de horario.</p></div>
+        <h3 data-l="en">The AM advantage shrinks and becomes uncertain</h3><h3 data-l="es">La ventaja de la mañana se reduce y se vuelve incierta</h3>
+        <div class="viz" data-chart="ampm"></div>
+        <p class="small muted" data-l="en">AM 31.6% vs. PM 26.2%. With a common tenure mix the gap falls to 4.0 points and the 95% interval crosses zero. Not enough to move classes.</p>
+        <p class="small muted" data-l="es">AM 31,6% vs. PM 26,2%. Con una mezcla común de antigüedad la brecha baja a 4,0 puntos y el intervalo del 95% cruza el cero. No alcanza para mover clases.</p>
       </div>
-      <div class="finding">
+      <div class="viz-card reveal d1">
         <div class="n">4</div>
-        <div><h3 data-l="en">Booking further ahead does not predict attendance here</h3><h3 data-l="es">Reservar con más anticipación no predice asistencia aquí</h3>
-        <p class="muted" data-l="en">r = 0.024 (−0.022 to 0.074), and 0.026 after adjusting for tenure. This contrasts with clinical no-show research, where long lead time is one of the most consistent risk factors, a gap worth testing with real timestamps.</p>
-        <p class="muted" data-l="es">r = 0,024 (−0,022 a 0,074), y 0,026 tras ajustar por antigüedad. Esto contrasta con la investigación clínica de no-shows, donde la anticipación larga es uno de los factores de riesgo más consistentes: una diferencia que vale la pena probar con marcas de tiempo reales.</p></div>
+        <h3 data-l="en">Booking further ahead doesn’t predict attendance</h3><h3 data-l="es">Reservar con más anticipación no predice asistencia</h3>
+        <div class="viz" data-chart="leadTime"></div>
+        <p class="small muted" data-l="en">r = 0.024 (−0.022 to 0.074). Clinical no-show research finds the opposite, so this is a gap worth testing with real timestamps. Hover a point for its count.</p>
+        <p class="small muted" data-l="es">r = 0,024 (−0,022 a 0,074). La investigación clínica de no-shows encuentra lo contrario: una diferencia que vale la pena probar con marcas de tiempo reales. Pasa el cursor por un punto para ver su conteo.</p>
       </div>
-      <div class="finding">
+      <div class="viz-card reveal">
         <div class="n">5</div>
-        <div><h3 data-l="en">Weekday patterns are small and fragile</h3><h3 data-l="es">Los patrones por día son pequeños y frágiles</h3>
-        <p class="muted" data-l="en">Sunday 33.3% (n = 213) vs. Wednesday 20.7% (n = 116); overall V = 0.07. Schedule cohorts are not sessions, so a timetable change needs repeated-session data first.</p>
-        <p class="muted" data-l="es">Domingo 33,3% (n = 213) vs. miércoles 20,7% (n = 116); V global = 0,07. Las cohortes de horario no son sesiones, así que un cambio de horario requiere antes datos de sesiones repetidas.</p></div>
+        <h3 data-l="en">Weekday patterns are small and fragile</h3><h3 data-l="es">Los patrones por día son pequeños y frágiles</h3>
+        <div class="viz" data-chart="weekday"></div>
+        <p class="small muted" data-l="en">Wednesday stands out (20.7%, n = 116), but the overall association is small (V = 0.07) and schedule cohorts are not sessions.</p>
+        <p class="small muted" data-l="es">El miércoles destaca (20,7%, n = 116), pero la asociación global es pequeña (V = 0,07) y las cohortes de horario no son sesiones.</p>
       </div>
-      <div class="finding">
+      <div class="viz-card reveal d1">
         <div class="n">6</div>
-        <div><h3 data-l="en">Member preferences: overlap, not proof of cross-sell</h3><h3 data-l="es">Preferencias de socios: superposición, no prueba de venta cruzada</h3>
-        <p class="muted" data-l="en">In 1,000 synthetic profiles (Dataset B, CC0), 503 report group classes, 518 personal training and 258 both. The strongest class pair, Pilates → Yoga, has lift 1.12 with an interval of 0.71–1.53 that includes 1: no reliable co-preference.</p>
-        <p class="muted" data-l="es">En 1.000 perfiles sintéticos (Dataset B, CC0), 503 reportan clases grupales, 518 entrenamiento personal y 258 ambos. El par más fuerte, Pilates → Yoga, tiene un lift de 1,12 con intervalo 0,71–1,53 que incluye el 1: no hay co-preferencia fiable.</p></div>
+        <h3 data-l="en">Personal training and classes overlap, but not as cross-sell evidence</h3><h3 data-l="es">El PT y las clases se superponen, pero no prueban venta cruzada</h3>
+        <div class="viz" data-chart="venn"></div>
+        <p class="small muted" data-l="en">1,000 synthetic profiles (CC0). The strongest class pair, Pilates → Yoga, has lift 1.12 with an interval of 0.71–1.53 that includes 1.</p>
+        <p class="small muted" data-l="es">1.000 perfiles sintéticos (CC0). El par de clases más fuerte, Pilates → Yoga, tiene lift 1,12 con intervalo 0,71–1,53 que incluye el 1.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="explore">
+  <div class="wrap">
+    <div class="section-num reveal">↗</div>
+    <h2 class="reveal" data-l="en">Explore every number yourself</h2>
+    <h2 class="reveal" data-l="es">Explora cada número por tu cuenta</h2>
+    <p class="lead reveal" data-l="en">Filter cohorts by class, weekday and time. Every coefficient comes with a plain-language meaning, an operational implication and the method behind it.</p>
+    <p class="lead reveal" data-l="es">Filtra cohortes por clase, día y franja. Cada coeficiente viene con su significado en lenguaje simple, su implicación operativa y el método detrás.</p>
+    <div class="mock reveal">
+      <a class="browser" href="dashboard.html" data-keep-lang aria-label="Open the interactive dashboard">
+        <div class="browser-bar"><i></i><i></i><i></i><span>class-capacity-lab.vercel.app/dashboard</span></div>
+        <img data-l="en" src="assets/dashboard.png" width="1440" height="900" alt="Class Capacity Lab dashboard: 30.3% attendance rate, cohort filters and charts" loading="lazy"><img data-l="es" src="assets/dashboard-es.png" width="1440" height="900" alt="Dashboard de Class Capacity Lab: tasa de asistencia del 30,3%, filtros de cohorte y gráficos" loading="lazy">
+      </a>
+      <div class="mock-cta"><a class="btn primary" href="dashboard.html" data-keep-lang><span data-l="en">Open the live dashboard</span><span data-l="es">Abrir el dashboard en vivo</span> →</a></div>
     </div>
   </div>
 </section>
 
 <section id="method">
   <div class="wrap">
-    <div class="section-num">03</div>
+    <div class="section-num reveal">03</div>
     <h2 data-l="en">How it was built</h2>
     <h2 data-l="es">Cómo se construyó</h2>
     <div class="pipeline" aria-label="Pipeline">
@@ -182,12 +238,12 @@
 
 <section id="roadmap">
   <div class="wrap">
-    <div class="section-num">04</div>
+    <div class="section-num reveal">04</div>
     <h2 data-l="en">With more data: the digital-twin roadmap</h2>
     <h2 data-l="es">Con más datos: la hoja de ruta del gemelo digital</h2>
     <p class="lead" data-l="en">Each stage unlocks only when a specific kind of data exists. The literature behind each step is in the <a href="evidence.html#agenda" data-keep-lang>scientific discussion</a>.</p>
     <p class="lead" data-l="es">Cada etapa se desbloquea solo cuando existe un tipo de dato concreto. La literatura detrás de cada paso está en la <a href="evidence.html#agenda" data-keep-lang>discusión científica</a>.</p>
-    <div class="steps">
+    <div class="steps stagger">
       <div class="step done"><span class="k" data-l="en">NOW</span><span class="k" data-l="es">AHORA</span><b data-l="en">Observe</b><b data-l="es">Observar</b>
         <span class="small muted" data-l="en">Public bookings and profiles. Rates, effect sizes, confounding checks.</span><span class="small muted" data-l="es">Reservas y perfiles públicos. Tasas, tamaños del efecto, control de confusión.</span></div>
       <div class="step"><span class="k" data-l="en">NEEDS</span><span class="k" data-l="es">REQUIERE</span><b data-l="en">Connect</b><b data-l="es">Conectar</b>
@@ -205,7 +261,7 @@
 <section id="stack">
   <div class="wrap grid-2">
     <div>
-      <div class="section-num">05</div>
+      <div class="section-num reveal">05</div>
       <h2 data-l="en">Reproducible by design</h2>
       <h2 data-l="es">Reproducible por diseño</h2>
       <p class="muted" data-l="en">Python (pandas, pyarrow) builds every table, document and the dashboard from the source CSVs. The dashboard is a single self-contained HTML file with hand-written SVG charts, keyboard-accessible, printable and usable offline. A Kaggle-ready notebook reproduces the association analysis.</p>
@@ -232,5 +288,6 @@
     <div class="small"><span data-l="en">Data: GoalZone public educational dataset (aggregates only) · Gym Membership Dataset by Tarek Adam, CC0, synthetic.</span><span data-l="es">Datos: dataset educativo público GoalZone (solo agregados) · Gym Membership Dataset de Tarek Adam, CC0, sintético.</span></div>
   </div>
 </footer>
+<script src="assets/motion.js" defer></script>
 </body>
 </html>
