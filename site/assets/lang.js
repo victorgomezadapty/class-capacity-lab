@@ -17,8 +17,10 @@
       var base = a.getAttribute('href').split('?')[0].split('#'), hash = base[1] ? '#' + base[1] : '';
       a.href = base[0] + '?lang=' + lang + hash;
     });
+    document.dispatchEvent(new CustomEvent('ccl:lang', {detail: lang}));
   }
   document.documentElement.lang = initial();
+  document.documentElement.classList.add('js');
   document.addEventListener('DOMContentLoaded', function(){
     apply(document.documentElement.lang);
     document.addEventListener('click', function(e){
