@@ -1,0 +1,1024 @@
+{
+  "analysis_date": "2026-10-13",
+  "seed": 20261013,
+  "resamples": 1000,
+  "attendance": [
+    {
+      "id": "months_as_member",
+      "label": "Membership tenure & attendance",
+      "metric": "r",
+      "value": 0.48552622327526257,
+      "ci": [
+        0.45231272329657235,
+        0.5245622152167758
+      ],
+      "n": 1500,
+      "valid_resamples": 1000,
+      "meaning": "Longer-standing members tend to attend more often in this sample. This is the clearest of the operational variables examined.",
+      "decision": "Include membership tenure when testing attendance estimates. This does not mean longer tenure causes attendance.",
+      "method": "Point-biserial Pearson correlation"
+    },
+    {
+      "id": "days_before",
+      "label": "Booking lead time & attendance",
+      "metric": "r",
+      "value": 0.02406815573312008,
+      "ci": [
+        -0.02176249243292798,
+        0.07377657679463542
+      ],
+      "n": 1500,
+      "valid_resamples": 1000,
+      "meaning": "Bookings made further ahead do not show a clear straight-line increase or decrease in attendance. A value near zero is a weak linear relationship, not a quality score.",
+      "decision": "Lead time alone is a poor basis for a capacity decision here. Nonlinear patterns remain possible.",
+      "method": "Point-biserial Pearson correlation"
+    },
+    {
+      "id": "category",
+      "label": "Class category & attendance",
+      "metric": "V",
+      "value": 0.052888807879354655,
+      "ci": [
+        0.03475809439134543,
+        0.11421862905019627
+      ],
+      "n": 1500,
+      "valid_resamples": 1000,
+      "meaning": "Attendance differs only slightly across class categories overall. A higher category rate does not automatically justify more places.",
+      "decision": "Check member composition and actual session demand before changing the programme.",
+      "method": "Uncorrected Cramér’s V"
+    },
+    {
+      "id": "day_of_week",
+      "label": "Weekday & attendance",
+      "metric": "V",
+      "value": 0.06807919697510577,
+      "ci": [
+        0.05025301776899353,
+        0.13174572751015018
+      ],
+      "n": 1500,
+      "valid_resamples": 1000,
+      "meaning": "The overall association between weekday and attendance is small. Some visible rate differences may reflect which members book those days.",
+      "decision": "Validate repeated class sessions before changing the timetable.",
+      "method": "Uncorrected Cramér’s V"
+    },
+    {
+      "id": "time",
+      "label": "AM/PM & attendance",
+      "metric": "V",
+      "value": 0.04984968386251237,
+      "ci": [
+        0.0035612175027031844,
+        0.0975415687283264
+      ],
+      "n": 1500,
+      "valid_resamples": 1000,
+      "meaning": "AM and PM attendance rates are not identical, but the overall association is small.",
+      "decision": "Compare similar members and sessions before treating time of day as a driver.",
+      "method": "Uncorrected Cramér’s V"
+    }
+  ],
+  "membership": [
+    {
+      "id": "abonoment_type",
+      "label": "Membership tier & group participation",
+      "metric": "V",
+      "value": 0.003916454321235425,
+      "ci": [
+        0.0008967565823244036,
+        0.07004013475320787
+      ],
+      "n": 1000,
+      "valid_resamples": 1000,
+      "meaning": "Premium and Standard profiles participate at almost the same rate. Membership tier barely separates group participation in this synthetic sample.",
+      "decision": "Do not design different class programmes solely from this tier comparison.",
+      "method": "Uncorrected Cramér’s V"
+    },
+    {
+      "id": "visit_per_week",
+      "label": "Visit frequency & group participation",
+      "metric": "V",
+      "value": 0.05426571733410483,
+      "ci": [
+        0.03086967841356258,
+        0.13518215004245993
+      ],
+      "n": 1000,
+      "valid_resamples": 1000,
+      "meaning": "Profiles reporting more gym visits are not consistently much more likely to report group participation.",
+      "decision": "Use actual class booking histories to test frequency-based targeting.",
+      "method": "Uncorrected Cramér’s V"
+    },
+    {
+      "id": "personal_training",
+      "label": "PT use & group participation",
+      "metric": "V",
+      "value": 0.010222810421809834,
+      "ci": [
+        0.0012482341475009557,
+        0.07701862634207803
+      ],
+      "n": 1000,
+      "valid_resamples": 1000,
+      "meaning": "PT and group classes overlap, but PT users are not clearly more likely to join group classes in these profiles.",
+      "decision": "The overlap identifies an audience to investigate; it does not prove a cross-sell effect.",
+      "method": "Uncorrected Cramér’s V"
+    },
+    {
+      "id": "checkin_band",
+      "label": "Usual check-in & group participation",
+      "metric": "V",
+      "value": 0.04082231026450898,
+      "ci": [
+        0.011729040644837591,
+        0.11060122931437502
+      ],
+      "n": 1000,
+      "valid_resamples": 1000,
+      "meaning": "Habitual check-in bands have only a small association with reported group participation.",
+      "decision": "A usual gym check-in time is not a class booking time or a timetable constraint.",
+      "method": "Uncorrected Cramér’s V"
+    }
+  ],
+  "partial_lead_time": {
+    "value": 0.02586463126780961,
+    "ci": [
+      -0.026029807519380742,
+      0.0763925091202961
+    ],
+    "n": 1500,
+    "valid_resamples": 1000
+  },
+  "tenure_weights": [
+    {
+      "label": "1–6",
+      "weight": 0.17733333333333334
+    },
+    {
+      "label": "7–12",
+      "weight": 0.342
+    },
+    {
+      "label": "13–24",
+      "weight": 0.33066666666666666
+    },
+    {
+      "label": "25–48",
+      "weight": 0.122
+    },
+    {
+      "label": "49+",
+      "weight": 0.028
+    }
+  ],
+  "standardized_rates": [
+    {
+      "dimension": "category",
+      "group": "HIIT",
+      "n": 667,
+      "observed": 0.3193403298350825,
+      "standardized": 0.32213973307339744,
+      "ci": [
+        0.29346473015145585,
+        0.35318959186174276
+      ],
+      "minimum_stratum_n": 23,
+      "interval_supported": true,
+      "complete_strata": true
+    },
+    {
+      "dimension": "category",
+      "group": "Strength",
+      "n": 233,
+      "observed": 0.26609442060085836,
+      "standardized": 0.27384537394537395,
+      "ci": [
+        0.22510833342270842,
+        0.3257505912162162
+      ],
+      "minimum_stratum_n": 6,
+      "interval_supported": true,
+      "complete_strata": true
+    },
+    {
+      "dimension": "category",
+      "group": "Cycling",
+      "n": 376,
+      "observed": 0.2925531914893617,
+      "standardized": 0.2898282343942792,
+      "ci": [
+        0.2507367576303159,
+        0.3308486134711437
+      ],
+      "minimum_stratum_n": 8,
+      "interval_supported": true,
+      "complete_strata": true
+    },
+    {
+      "dimension": "category",
+      "group": "Yoga",
+      "n": 135,
+      "observed": 0.3111111111111111,
+      "standardized": 0.2928973084886129,
+      "ci": [
+        null,
+        null
+      ],
+      "minimum_stratum_n": 1,
+      "interval_supported": false,
+      "complete_strata": true
+    },
+    {
+      "dimension": "category",
+      "group": "Aqua",
+      "n": 76,
+      "observed": 0.32894736842105265,
+      "standardized": 0.3123573817486861,
+      "ci": [
+        null,
+        null
+      ],
+      "minimum_stratum_n": 3,
+      "interval_supported": false,
+      "complete_strata": true
+    },
+    {
+      "dimension": "category",
+      "group": "Unknown",
+      "n": 13,
+      "observed": 0.15384615384615385,
+      "standardized": 0.15,
+      "ci": [
+        null,
+        null
+      ],
+      "minimum_stratum_n": 1,
+      "interval_supported": false,
+      "complete_strata": true
+    },
+    {
+      "dimension": "time",
+      "group": "AM",
+      "n": 1141,
+      "observed": 0.31551270815074495,
+      "standardized": 0.31269585460556054,
+      "ci": [
+        0.2895516151342296,
+        0.3364419911665679
+      ],
+      "minimum_stratum_n": 31,
+      "interval_supported": true,
+      "complete_strata": true
+    },
+    {
+      "dimension": "time",
+      "group": "PM",
+      "n": 359,
+      "observed": 0.2618384401114206,
+      "standardized": 0.27248139817801165,
+      "ci": [
+        0.23329326496660488,
+        0.314470511106686
+      ],
+      "minimum_stratum_n": 11,
+      "interval_supported": true,
+      "complete_strata": true
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Mon",
+      "n": 228,
+      "observed": 0.2850877192982456,
+      "standardized": 0.29850908646908647,
+      "ci": [
+        0.246031012987013,
+        0.34843305735930735
+      ],
+      "minimum_stratum_n": 6,
+      "interval_supported": true,
+      "complete_strata": true
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Tue",
+      "n": 195,
+      "observed": 0.30256410256410254,
+      "standardized": 0.30841611234294164,
+      "ci": [
+        0.24853819026501953,
+        0.3673326443881322
+      ],
+      "minimum_stratum_n": 7,
+      "interval_supported": true,
+      "complete_strata": true
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Wed",
+      "n": 116,
+      "observed": 0.20689655172413793,
+      "standardized": 0.21519918699186993,
+      "ci": [
+        null,
+        null
+      ],
+      "minimum_stratum_n": 3,
+      "interval_supported": false,
+      "complete_strata": true
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Thu",
+      "n": 241,
+      "observed": 0.3236514522821577,
+      "standardized": 0.329002068881587,
+      "ci": [
+        0.27870325727151035,
+        0.3792240359417468
+      ],
+      "minimum_stratum_n": 7,
+      "interval_supported": true,
+      "complete_strata": true
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Fri",
+      "n": 305,
+      "observed": 0.3081967213114754,
+      "standardized": 0.2985483742401389,
+      "ci": [
+        0.25300663780337307,
+        0.3451272325974679
+      ],
+      "minimum_stratum_n": 6,
+      "interval_supported": true,
+      "complete_strata": true
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Sat",
+      "n": 202,
+      "observed": 0.3118811881188119,
+      "standardized": 0.2891793916228699,
+      "ci": [
+        0.24133372750437967,
+        0.33790040372670804
+      ],
+      "minimum_stratum_n": 8,
+      "interval_supported": true,
+      "complete_strata": true
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Sun",
+      "n": 213,
+      "observed": 0.3333333333333333,
+      "standardized": 0.3370803772716816,
+      "ci": [
+        0.2846541982976766,
+        0.387304819415689
+      ],
+      "minimum_stratum_n": 5,
+      "interval_supported": true,
+      "complete_strata": true
+    }
+  ],
+  "stratified_rates": [
+    {
+      "dimension": "category",
+      "group": "HIIT",
+      "tenure_band": "1–6",
+      "n": 113,
+      "attended": 4,
+      "rate": 0.035398230088495575
+    },
+    {
+      "dimension": "category",
+      "group": "HIIT",
+      "tenure_band": "7–12",
+      "n": 250,
+      "attended": 43,
+      "rate": 0.172
+    },
+    {
+      "dimension": "category",
+      "group": "HIIT",
+      "tenure_band": "13–24",
+      "n": 202,
+      "attended": 85,
+      "rate": 0.4207920792079208
+    },
+    {
+      "dimension": "category",
+      "group": "HIIT",
+      "tenure_band": "25–48",
+      "n": 79,
+      "attended": 59,
+      "rate": 0.7468354430379747
+    },
+    {
+      "dimension": "category",
+      "group": "HIIT",
+      "tenure_band": "49+",
+      "n": 23,
+      "attended": 22,
+      "rate": 0.9565217391304348
+    },
+    {
+      "dimension": "category",
+      "group": "Strength",
+      "tenure_band": "1–6",
+      "n": 45,
+      "attended": 1,
+      "rate": 0.022222222222222223
+    },
+    {
+      "dimension": "category",
+      "group": "Strength",
+      "tenure_band": "7–12",
+      "n": 80,
+      "attended": 8,
+      "rate": 0.1
+    },
+    {
+      "dimension": "category",
+      "group": "Strength",
+      "tenure_band": "13–24",
+      "n": 74,
+      "attended": 29,
+      "rate": 0.3918918918918919
+    },
+    {
+      "dimension": "category",
+      "group": "Strength",
+      "tenure_band": "25–48",
+      "n": 28,
+      "attended": 19,
+      "rate": 0.6785714285714286
+    },
+    {
+      "dimension": "category",
+      "group": "Strength",
+      "tenure_band": "49+",
+      "n": 6,
+      "attended": 5,
+      "rate": 0.8333333333333334
+    },
+    {
+      "dimension": "category",
+      "group": "Cycling",
+      "tenure_band": "1–6",
+      "n": 65,
+      "attended": 2,
+      "rate": 0.03076923076923077
+    },
+    {
+      "dimension": "category",
+      "group": "Cycling",
+      "tenure_band": "7–12",
+      "n": 119,
+      "attended": 19,
+      "rate": 0.15966386554621848
+    },
+    {
+      "dimension": "category",
+      "group": "Cycling",
+      "tenure_band": "13–24",
+      "n": 141,
+      "attended": 57,
+      "rate": 0.40425531914893614
+    },
+    {
+      "dimension": "category",
+      "group": "Cycling",
+      "tenure_band": "25–48",
+      "n": 43,
+      "attended": 24,
+      "rate": 0.5581395348837209
+    },
+    {
+      "dimension": "category",
+      "group": "Cycling",
+      "tenure_band": "49+",
+      "n": 8,
+      "attended": 8,
+      "rate": 1.0
+    },
+    {
+      "dimension": "category",
+      "group": "Yoga",
+      "tenure_band": "1–6",
+      "n": 28,
+      "attended": 1,
+      "rate": 0.03571428571428571
+    },
+    {
+      "dimension": "category",
+      "group": "Yoga",
+      "tenure_band": "7–12",
+      "n": 35,
+      "attended": 4,
+      "rate": 0.11428571428571428
+    },
+    {
+      "dimension": "category",
+      "group": "Yoga",
+      "tenure_band": "13–24",
+      "n": 48,
+      "attended": 18,
+      "rate": 0.375
+    },
+    {
+      "dimension": "category",
+      "group": "Yoga",
+      "tenure_band": "25–48",
+      "n": 23,
+      "attended": 18,
+      "rate": 0.782608695652174
+    },
+    {
+      "dimension": "category",
+      "group": "Yoga",
+      "tenure_band": "49+",
+      "n": 1,
+      "attended": 1,
+      "rate": 1.0
+    },
+    {
+      "dimension": "category",
+      "group": "Aqua",
+      "tenure_band": "1–6",
+      "n": 13,
+      "attended": 1,
+      "rate": 0.07692307692307693
+    },
+    {
+      "dimension": "category",
+      "group": "Aqua",
+      "tenure_band": "7–12",
+      "n": 23,
+      "attended": 4,
+      "rate": 0.17391304347826086
+    },
+    {
+      "dimension": "category",
+      "group": "Aqua",
+      "tenure_band": "13–24",
+      "n": 28,
+      "attended": 11,
+      "rate": 0.39285714285714285
+    },
+    {
+      "dimension": "category",
+      "group": "Aqua",
+      "tenure_band": "25–48",
+      "n": 9,
+      "attended": 6,
+      "rate": 0.6666666666666666
+    },
+    {
+      "dimension": "category",
+      "group": "Aqua",
+      "tenure_band": "49+",
+      "n": 3,
+      "attended": 3,
+      "rate": 1.0
+    },
+    {
+      "dimension": "category",
+      "group": "Unknown",
+      "tenure_band": "1–6",
+      "n": 2,
+      "attended": 0,
+      "rate": 0.0
+    },
+    {
+      "dimension": "category",
+      "group": "Unknown",
+      "tenure_band": "7–12",
+      "n": 6,
+      "attended": 0,
+      "rate": 0.0
+    },
+    {
+      "dimension": "category",
+      "group": "Unknown",
+      "tenure_band": "13–24",
+      "n": 3,
+      "attended": 0,
+      "rate": 0.0
+    },
+    {
+      "dimension": "category",
+      "group": "Unknown",
+      "tenure_band": "25–48",
+      "n": 1,
+      "attended": 1,
+      "rate": 1.0
+    },
+    {
+      "dimension": "category",
+      "group": "Unknown",
+      "tenure_band": "49+",
+      "n": 1,
+      "attended": 1,
+      "rate": 1.0
+    },
+    {
+      "dimension": "time",
+      "group": "AM",
+      "tenure_band": "1–6",
+      "n": 202,
+      "attended": 5,
+      "rate": 0.024752475247524754
+    },
+    {
+      "dimension": "time",
+      "group": "AM",
+      "tenure_band": "7–12",
+      "n": 376,
+      "attended": 66,
+      "rate": 0.17553191489361702
+    },
+    {
+      "dimension": "time",
+      "group": "AM",
+      "tenure_band": "13–24",
+      "n": 392,
+      "attended": 161,
+      "rate": 0.4107142857142857
+    },
+    {
+      "dimension": "time",
+      "group": "AM",
+      "tenure_band": "25–48",
+      "n": 140,
+      "attended": 99,
+      "rate": 0.7071428571428572
+    },
+    {
+      "dimension": "time",
+      "group": "AM",
+      "tenure_band": "49+",
+      "n": 31,
+      "attended": 29,
+      "rate": 0.9354838709677419
+    },
+    {
+      "dimension": "time",
+      "group": "PM",
+      "tenure_band": "1–6",
+      "n": 64,
+      "attended": 4,
+      "rate": 0.0625
+    },
+    {
+      "dimension": "time",
+      "group": "PM",
+      "tenure_band": "7–12",
+      "n": 137,
+      "attended": 12,
+      "rate": 0.08759124087591241
+    },
+    {
+      "dimension": "time",
+      "group": "PM",
+      "tenure_band": "13–24",
+      "n": 104,
+      "attended": 39,
+      "rate": 0.375
+    },
+    {
+      "dimension": "time",
+      "group": "PM",
+      "tenure_band": "25–48",
+      "n": 43,
+      "attended": 28,
+      "rate": 0.6511627906976745
+    },
+    {
+      "dimension": "time",
+      "group": "PM",
+      "tenure_band": "49+",
+      "n": 11,
+      "attended": 11,
+      "rate": 1.0
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Mon",
+      "tenure_band": "1–6",
+      "n": 39,
+      "attended": 1,
+      "rate": 0.02564102564102564
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Mon",
+      "tenure_band": "7–12",
+      "n": 88,
+      "attended": 12,
+      "rate": 0.13636363636363635
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Mon",
+      "tenure_band": "13–24",
+      "n": 70,
+      "attended": 33,
+      "rate": 0.4714285714285714
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Mon",
+      "tenure_band": "25–48",
+      "n": 25,
+      "attended": 13,
+      "rate": 0.52
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Mon",
+      "tenure_band": "49+",
+      "n": 6,
+      "attended": 6,
+      "rate": 1.0
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Tue",
+      "tenure_band": "1–6",
+      "n": 41,
+      "attended": 1,
+      "rate": 0.024390243902439025
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Tue",
+      "tenure_band": "7–12",
+      "n": 63,
+      "attended": 14,
+      "rate": 0.2222222222222222
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Tue",
+      "tenure_band": "13–24",
+      "n": 62,
+      "attended": 24,
+      "rate": 0.3870967741935484
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Tue",
+      "tenure_band": "25–48",
+      "n": 22,
+      "attended": 13,
+      "rate": 0.5909090909090909
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Tue",
+      "tenure_band": "49+",
+      "n": 7,
+      "attended": 7,
+      "rate": 1.0
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Wed",
+      "tenure_band": "1–6",
+      "n": 20,
+      "attended": 0,
+      "rate": 0.0
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Wed",
+      "tenure_band": "7–12",
+      "n": 41,
+      "attended": 4,
+      "rate": 0.0975609756097561
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Wed",
+      "tenure_band": "13–24",
+      "n": 40,
+      "attended": 10,
+      "rate": 0.25
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Wed",
+      "tenure_band": "25–48",
+      "n": 12,
+      "attended": 7,
+      "rate": 0.5833333333333334
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Wed",
+      "tenure_band": "49+",
+      "n": 3,
+      "attended": 3,
+      "rate": 1.0
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Thu",
+      "tenure_band": "1–6",
+      "n": 44,
+      "attended": 4,
+      "rate": 0.09090909090909091
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Thu",
+      "tenure_band": "7–12",
+      "n": 83,
+      "attended": 11,
+      "rate": 0.13253012048192772
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Thu",
+      "tenure_band": "13–24",
+      "n": 80,
+      "attended": 35,
+      "rate": 0.4375
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Thu",
+      "tenure_band": "25–48",
+      "n": 27,
+      "attended": 21,
+      "rate": 0.7777777777777778
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Thu",
+      "tenure_band": "49+",
+      "n": 7,
+      "attended": 7,
+      "rate": 1.0
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Fri",
+      "tenure_band": "1–6",
+      "n": 51,
+      "attended": 2,
+      "rate": 0.0392156862745098
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Fri",
+      "tenure_band": "7–12",
+      "n": 100,
+      "attended": 16,
+      "rate": 0.16
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Fri",
+      "tenure_band": "13–24",
+      "n": 104,
+      "attended": 41,
+      "rate": 0.3942307692307692
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Fri",
+      "tenure_band": "25–48",
+      "n": 44,
+      "attended": 30,
+      "rate": 0.6818181818181818
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Fri",
+      "tenure_band": "49+",
+      "n": 6,
+      "attended": 5,
+      "rate": 0.8333333333333334
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Sat",
+      "tenure_band": "1–6",
+      "n": 29,
+      "attended": 0,
+      "rate": 0.0
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Sat",
+      "tenure_band": "7–12",
+      "n": 69,
+      "attended": 9,
+      "rate": 0.13043478260869565
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Sat",
+      "tenure_band": "13–24",
+      "n": 70,
+      "attended": 23,
+      "rate": 0.32857142857142857
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Sat",
+      "tenure_band": "25–48",
+      "n": 26,
+      "attended": 23,
+      "rate": 0.8846153846153846
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Sat",
+      "tenure_band": "49+",
+      "n": 8,
+      "attended": 8,
+      "rate": 1.0
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Sun",
+      "tenure_band": "1–6",
+      "n": 42,
+      "attended": 1,
+      "rate": 0.023809523809523808
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Sun",
+      "tenure_band": "7–12",
+      "n": 69,
+      "attended": 12,
+      "rate": 0.17391304347826086
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Sun",
+      "tenure_band": "13–24",
+      "n": 70,
+      "attended": 34,
+      "rate": 0.4857142857142857
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Sun",
+      "tenure_band": "25–48",
+      "n": 27,
+      "attended": 20,
+      "rate": 0.7407407407407407
+    },
+    {
+      "dimension": "day_of_week",
+      "group": "Sun",
+      "tenure_band": "49+",
+      "n": 5,
+      "attended": 4,
+      "rate": 0.8
+    }
+  ],
+  "am_pm_difference": {
+    "observed": 0.05367426803932435,
+    "standardized": 0.040214456427548895,
+    "ci": [
+      -0.006106768764571692,
+      0.08502641053552397
+    ]
+  },
+  "pair_example": {
+    "value": 1.1177777777777778,
+    "ci": [
+      0.7138325030314976,
+      1.5317283913981048
+    ],
+    "n": 503,
+    "valid_resamples": 1000,
+    "classes": [
+      "Pilates",
+      "Yoga"
+    ],
+    "pair_n": 19,
+    "confidence_pilates_yoga": 0.2,
+    "yoga_base_rate": 0.17892644135188868,
+    "support": 0.03777335984095427
+  },
+  "limitations": [
+    "Unadjusted associations do not identify causal effects.",
+    "Confidence intervals are descriptive percentile bootstrap intervals, not proof of generalization.",
+    "Resampling assumes independent rows; GoalZone has no member ID to check repeated-member dependence.",
+    "Cramér’s V is uncorrected, nonnegative and upward-biased in finite samples. Its percentile interval can stay above zero even under independence. Do not interpret that as a significance test.",
+    "Tenure adjustment uses five coarse descriptive bands; residual confounding and nonlinear effects remain possible.",
+    "Standardized intervals hold the observed tenure weights fixed and resample within group × tenure cells. Intervals are withheld if any group × tenure cell has fewer than 5 records; this is a reporting guard, not a universal statistical minimum.",
+    "Membership is synthetic. Statistical uncertainty describes that artificial sample, not real gym members.",
+    "Association exploration has no adjusted multiple-testing significance claims."
+  ]
+}

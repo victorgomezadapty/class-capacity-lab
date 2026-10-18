@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Class Capacity Lab · Evidence &amp; discussion</title>
+<meta name="title-en" content="Class Capacity Lab · Evidence & discussion">
+<meta name="title-es" content="Class Capacity Lab · Evidencia y discusión">
+<meta name="description" content="A scientific-style discussion of the Class Capacity Lab findings against the literature on appointment no-shows, exercise habit formation, gym attrition, group exercise, reminders and overbooking, with a research agenda for richer gym data.">
+<meta property="og:title" content="Class Capacity Lab · Evidence & discussion">
+<meta property="og:description" content="What the literature says about no-shows, habit formation and overbooking, and what a gym could investigate with richer data.">
+<meta property="og:image" content="https://class-capacity-lab.vercel.app/assets/og.png">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/lang.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html" data-keep-lang><span class="brand-mark" aria-hidden="true">◫</span>Class Capacity Lab</a>
+    <nav class="nav" aria-label="Site">
+      <a href="index.html" data-keep-lang><span data-l="en">Case study</span><span data-l="es">Caso de estudio</span></a>
+      <a href="dashboard.html" data-keep-lang>Dashboard</a>
+      <a href="evidence.html" data-keep-lang aria-current="page"><span data-l="en">Evidence</span><span data-l="es">Evidencia</span></a>
+      <a href="https://github.com/victorgomezadapty/class-capacity-lab">GitHub</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language / Idioma">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap narrow article">
+<div class="hero" style="padding-bottom:0">
+  <div class="eyebrow"><span data-l="en">Evidence &amp; discussion</span><span data-l="es">Evidencia y discusión</span></div>
+  <h1 style="font-size:clamp(34px,5vw,56px)" data-l="en">Booked, attended, retained: reading the lab against the literature</h1>
+  <h1 style="font-size:clamp(34px,5vw,56px)" data-l="es">Reservar, asistir, permanecer: el laboratorio frente a la literatura</h1>
+  <p class="lead" data-l="en">Written as the discussion section of a research article: what we found, how it compares with published evidence, where it is weak, and which studies richer gym data would make possible.</p>
+  <p class="lead" data-l="es">Escrito como la sección de discusión de un artículo científico: qué encontramos, cómo se compara con la evidencia publicada, dónde es débil y qué estudios serían posibles con datos más ricos de un gimnasio.</p>
+  <nav class="toc" aria-label="Contents">
+    <a href="#principal"><span data-l="en">1 · Principal findings</span><span data-l="es">1 · Hallazgos principales</span></a>
+    <a href="#prior"><span data-l="en">2 · Comparison with prior work</span><span data-l="es">2 · Comparación con estudios previos</span></a>
+    <a href="#limits"><span data-l="en">3 · Strengths &amp; limitations</span><span data-l="es">3 · Fortalezas y limitaciones</span></a>
+    <a href="#practice"><span data-l="en">4 · Implications</span><span data-l="es">4 · Implicaciones</span></a>
+    <a href="#agenda"><span data-l="en">5 · Research agenda</span><span data-l="es">5 · Agenda de investigación</span></a>
+    <a href="#refs"><span data-l="en">References</span><span data-l="es">Referencias</span></a>
+  </nav>
+</div>
+
+<div class="abstract">
+  <h3 data-l="en">Summary</h3><h3 data-l="es">Resumen</h3>
+  <p data-l="en">In 1,500 public group-class bookings, 30.3% ended in attendance. Membership tenure showed a strong association with attendance (r = 0.49), whereas booking lead time showed none (r ≈ 0.02), and class type, weekday and time of day showed small associations (Cramér’s V ≤ 0.07) that partly reflected member composition. These patterns are consistent with research on exercise habit formation and early attrition, but diverge from clinical no-show studies on lead time. Because the data lack session capacity, timestamps and member identifiers, the results generate hypotheses rather than operational rules.</p>
+  <p data-l="es">En 1.500 reservas públicas de clases grupales, el 30,3% terminó en asistencia. La antigüedad del socio mostró una asociación fuerte con la asistencia (r = 0,49), la anticipación de la reserva no mostró ninguna (r ≈ 0,02), y el tipo de clase, el día y la franja horaria mostraron asociaciones pequeñas (V de Cramér ≤ 0,07) que en parte reflejaban la composición de socios. Estos patrones son coherentes con la investigación sobre formación de hábitos de ejercicio y abandono temprano, pero difieren de los estudios clínicos de no-shows en cuanto a la anticipación. Como los datos carecen de capacidad por sesión, marcas de tiempo e identificadores de socio, los resultados generan hipótesis, no reglas operativas.</p>
+</div>
+
+<span id="principal" style="display:block;scroll-margin-top:80px"></span>
+<h2 data-l="en">1. Principal findings</h2>
+<h2 data-l="es">1. Hallazgos principales</h2>
+<p data-l="en">Three results carry most of the information. First, <strong>bookings substantially overstate realized attendance</strong>: fewer than one in three bookings ended with the member in the room. Second, <strong>tenure dominates the operational variables</strong>: attendance rose monotonically from 3.4% among members in their first six months to 95.2% among those with more than four years. Third, <strong>apparent schedule and class effects shrink once tenure is held constant</strong>: the AM–PM gap fell from 5.4 to 4.0 percentage points with an interval that includes zero, and the category ranking changed (Aqua first in raw rates, HIIT first after standardization).</p>
+<p data-l="es">Tres resultados concentran la mayor parte de la información. Primero, <strong>las reservas sobreestiman de forma importante la asistencia real</strong>: menos de una de cada tres reservas terminó con el socio en la sala. Segundo, <strong>la antigüedad domina las variables operativas</strong>: la asistencia aumentó de forma monótona desde el 3,4% en los primeros seis meses hasta el 95,2% en socios con más de cuatro años. Tercero, <strong>los aparentes efectos de horario y de clase se reducen al fijar la antigüedad</strong>: la brecha AM–PM bajó de 5,4 a 4,0 puntos porcentuales con un intervalo que incluye el cero, y el ranking de categorías cambió (Aqua primero en tasas brutas, HIIT primero tras estandarizar).</p>
+<p data-l="en">In the synthetic preference dataset, personal training and group-class participation overlapped (258 of 1,000 profiles reported both), but no class pair showed reliable co-preference: the largest lift with at least ten members, Pilates → Yoga (1.12), had a bootstrap interval spanning 1.</p>
+<p data-l="es">En el dataset sintético de preferencias, el entrenamiento personal y la participación en clases grupales se superpusieron (258 de 1.000 perfiles reportaron ambos), pero ningún par de clases mostró co-preferencia fiable: el mayor lift con al menos diez socios, Pilates → Yoga (1,12), tuvo un intervalo bootstrap que abarca el 1.</p>
+
+<span id="prior" style="display:block;scroll-margin-top:80px"></span>
+<h2 data-l="en">2. Comparison with prior work</h2>
+<h2 data-l="es">2. Comparación con estudios previos</h2>
+
+<h3 data-l="en">2.1 No-shows and lead time</h3>
+<h3 data-l="es">2.1 No-shows y anticipación</h3>
+<p data-l="en">The closest quantitative literature comes from healthcare scheduling. A systematic review of 105 studies estimated an average no-show rate of about 23% and identified long lead time and prior no-show history as the most commonly reported determinants.<sup><a href="#r1">1</a></sup> The GoalZone non-attendance rate (69.7%) is far higher, but it also includes cancellations, which the source does not separate from no-shows. The absence of any lead-time association here (r = 0.024; 95% CI −0.022 to 0.074) therefore conflicts with the clinical pattern. Plausible explanations include the coarse day-level lead-time field, the lack of same-day bookings, the mixing of cancellations with no-shows, and the possibility that gym classes, unlike medical appointments, carry no penalty for missing them. This is precisely the kind of discrepancy that real booking and cancellation timestamps could resolve.</p>
+<p data-l="es">La literatura cuantitativa más cercana proviene de la programación de citas en salud. Una revisión sistemática de 105 estudios estimó una tasa media de no-show de alrededor del 23% e identificó la anticipación larga y el historial previo de no-shows como los determinantes reportados con más frecuencia.<sup><a href="#r1">1</a></sup> La tasa de inasistencia de GoalZone (69,7%) es mucho mayor, pero incluye también cancelaciones, que la fuente no separa de los no-shows. Por eso, la ausencia de asociación con la anticipación (r = 0,024; IC 95% −0,022 a 0,074) contradice el patrón clínico. Explicaciones plausibles: el campo de anticipación solo tiene resolución diaria, no hay reservas del mismo día, se mezclan cancelaciones con no-shows y, a diferencia de una cita médica, faltar a una clase de gimnasio no suele tener penalización. Es justo el tipo de discrepancia que resolverían las marcas de tiempo reales de reserva y cancelación.</p>
+
+<h3 data-l="en">2.2 Tenure, habit and attrition</h3>
+<h3 data-l="es">2.2 Antigüedad, hábito y abandono</h3>
+<p data-l="en">The tenure gradient is consistent with three bodies of work. Attrition among new members is severe: in a retrospective cohort of more than 5,000 members of a Brazilian fitness centre, about 63% dropped out before the third month and fewer than 4% remained active beyond twelve months.<sup><a href="#r2">2</a></sup> Members also overestimate their future attendance; in three US clubs, members on flat monthly contracts attended about 4.3 times per month, paying more per visit than a pay-per-visit pass would have cost.<sup><a href="#r3">3</a></sup> And exercise habits take time to form: new gym members needed at least four sessions per week for about six weeks to establish a habit,<sup><a href="#r4">4</a></sup> real-world habit formation took a median of 66 days with wide individual variation,<sup><a href="#r5">5</a></sup> and a machine-learning analysis of more than 12 million gym check-ins found that gym habits typically took months to form.<sup><a href="#r6">6</a></sup></p>
+<p data-l="es">El gradiente de antigüedad es coherente con tres líneas de investigación. El abandono entre socios nuevos es severo: en una cohorte retrospectiva de más de 5.000 socios de un centro de fitness en Brasil, cerca del 63% abandonó antes del tercer mes y menos del 4% seguía activo después de doce meses.<sup><a href="#r2">2</a></sup> Los socios también sobreestiman su asistencia futura; en tres clubes de EE. UU., los socios con contrato mensual asistían unas 4,3 veces al mes y pagaban más por visita de lo que les habría costado un pase por visita.<sup><a href="#r3">3</a></sup> Y los hábitos de ejercicio tardan en formarse: los socios nuevos necesitaron al menos cuatro sesiones semanales durante unas seis semanas para establecer el hábito,<sup><a href="#r4">4</a></sup> la formación de hábitos en la vida real tomó una mediana de 66 días con gran variación individual,<sup><a href="#r5">5</a></sup> y un análisis con machine learning de más de 12 millones de check-ins encontró que los hábitos de gimnasio solían tardar meses en formarse.<sup><a href="#r6">6</a></sup></p>
+<p data-l="en">Two cautions follow. Tenure is not a lever: long-tenure members are a survivor population, so the association mixes habit with selection. And the magnitude here (from 3% to 95%) is unusually extreme for behavioural data, which suggests that the educational dataset may have been generated or curated with a strong built-in tenure effect. The direction agrees with the literature; the size should not be transferred to a real club.</p>
+<p data-l="es">De aquí se derivan dos precauciones. La antigüedad no es una palanca: los socios antiguos son una población de supervivientes, así que la asociación mezcla hábito con selección. Y la magnitud observada (del 3% al 95%) es inusualmente extrema para datos de comportamiento, lo que sugiere que el dataset educativo pudo haberse generado o curado con un efecto de antigüedad fuerte incorporado. La dirección coincide con la literatura; el tamaño no debe trasladarse a un club real.</p>
+
+<h3 data-l="en">2.3 Why the class setting may matter</h3>
+<h3 data-l="es">2.3 Por qué puede importar el formato de clase</h3>
+<p data-l="en">Category explained little attendance variation (V = 0.05). That is compatible with meta-analytic evidence that a standard exercise class is not, by itself, more effective than home exercise with professional contact; the advantage appeared for “true groups” that deliberately use group-dynamics strategies such as shared goals and social interaction.<sup><a href="#r7">7</a></sup> A gym that wants classes to improve attendance would therefore study how a class is run (coach, cohort continuity, social cues), not only which category it belongs to.</p>
+<p data-l="es">La categoría explicó poca variación de asistencia (V = 0,05). Esto es compatible con evidencia metaanalítica de que una clase de ejercicio estándar no es, por sí sola, más efectiva que el ejercicio en casa con contacto profesional; la ventaja apareció en los “grupos reales” que usan deliberadamente estrategias de dinámica de grupo, como metas compartidas e interacción social.<sup><a href="#r7">7</a></sup> Un gimnasio que quiera que sus clases mejoren la asistencia debería estudiar cómo se conduce una clase (coach, continuidad del grupo, señales sociales), no solo a qué categoría pertenece.</p>
+
+<h3 data-l="en">2.4 Reminders and behavioural interventions</h3>
+<h3 data-l="es">2.4 Recordatorios e intervenciones conductuales</h3>
+<p data-l="en">In healthcare, SMS reminders increased the odds of attending appointments (pooled RCT estimate 1.48; 95% CI 1.23–1.72), with no clear difference between reminders sent 24, 48 or 72 hours ahead.<sup><a href="#r8">8</a></sup> For gyms specifically, a megastudy of 54 four-week digital programmes among 61,293 members of a US fitness chain found that roughly 45% of interventions increased weekly visits, by 9% to 27%; the best performer rewarded returning after a missed workout, but few effects persisted after the programme ended, and expert forecasts did not identify the winners.<sup><a href="#r9">9</a></sup> The machine-learning study cited above adds that members whose behaviour is already highly predictable respond less to such nudges,<sup><a href="#r6">6</a></sup> which argues for targeting interventions at newer, less habitual members, exactly the low-attendance segment in this dataset.</p>
+<p data-l="es">En salud, los recordatorios por SMS aumentaron la probabilidad de asistir a las citas (estimación agrupada de ECA 1,48; IC 95% 1,23–1,72), sin diferencias claras entre enviarlos con 24, 48 o 72 horas de anticipación.<sup><a href="#r8">8</a></sup> En gimnasios, un megaestudio de 54 programas digitales de cuatro semanas con 61.293 socios de una cadena de EE. UU. encontró que cerca del 45% de las intervenciones aumentó las visitas semanales entre un 9% y un 27%; la mejor premiaba volver después de faltar a un entrenamiento, pero pocos efectos persistieron al terminar el programa y las predicciones de expertos no identificaron a las ganadoras.<sup><a href="#r9">9</a></sup> El estudio de machine learning citado añade que los socios con un comportamiento ya muy predecible responden menos a estos nudges,<sup><a href="#r6">6</a></sup> lo que sugiere dirigir las intervenciones a socios más nuevos y menos habituales, justo el segmento de baja asistencia en este dataset.</p>
+
+<h3 data-l="en">2.5 Capacity, overbooking and calibration</h3>
+<h3 data-l="es">2.5 Capacidad, sobreventa y calibración</h3>
+<p data-l="en">Revenue management treats overbooking as setting a booking limit above physical capacity to hedge against cancellations and no-shows.<sup><a href="#r10">10</a></sup> In outpatient clinics, simulation showed that overbooking can improve access and productivity, but at the cost of longer waits and overtime, and that it helps most when no-show rates are high and service times vary little.<sup><a href="#r11">11</a></sup> A group class resembles that favourable case: fixed duration, many interchangeable places. But overbooking is only as safe as the attendance probabilities behind it. Poorly calibrated predictions, where a predicted 30% does not correspond to 30% observed, can mislead decisions even when a model ranks members well, and calibration is assessed far less often than discrimination.<sup><a href="#r12">12</a></sup> This is why the lab stops before prediction: without session capacity and a temporal validation set, any overbooking rule would be uncalibrated.</p>
+<p data-l="es">La gestión de ingresos (revenue management) trata la sobreventa como fijar un límite de reservas por encima de la capacidad física para cubrirse frente a cancelaciones y no-shows.<sup><a href="#r10">10</a></sup> En consultas externas, la simulación mostró que la sobreventa puede mejorar el acceso y la productividad, pero a costa de esperas más largas y horas extra, y que ayuda más cuando las tasas de no-show son altas y la duración del servicio varía poco.<sup><a href="#r11">11</a></sup> Una clase grupal se parece a ese caso favorable: duración fija y muchas plazas intercambiables. Pero la sobreventa solo es tan segura como las probabilidades de asistencia que la sustentan. Las predicciones mal calibradas, en las que un 30% predicho no corresponde a un 30% observado, pueden inducir a error aunque el modelo ordene bien a los socios, y la calibración se evalúa con mucha menos frecuencia que la discriminación.<sup><a href="#r12">12</a></sup> Por eso el laboratorio se detiene antes de predecir: sin capacidad por sesión y sin un conjunto de validación temporal, cualquier regla de sobreventa estaría descalibrada.</p>
+
+<span id="limits" style="display:block;scroll-margin-top:80px"></span>
+<h2 data-l="en">3. Strengths and limitations</h2>
+<h2 data-l="es">3. Fortalezas y limitaciones</h2>
+<p data-l="en"><strong>Strengths.</strong> Sources were reconciled before analysis; every coefficient reports a bootstrap interval; statistics match variable types; confounding by tenure was examined with direct standardization and partial correlation; and the two datasets were never merged into a fictitious population.</p>
+<p data-l="es"><strong>Fortalezas.</strong> Las fuentes se conciliaron antes del análisis; cada coeficiente reporta un intervalo bootstrap; las estadísticas corresponden al tipo de variable; la confusión por antigüedad se examinó con estandarización directa y correlación parcial; y los dos datasets nunca se combinaron en una población ficticia.</p>
+<p data-l="en"><strong>Limitations.</strong> (i) No session identifiers or capacity, so occupancy cannot be measured. (ii) No member identifiers, so repeated bookings by the same person violate the independence assumed by the intervals. (iii) Cancellations and no-shows are indistinguishable. (iv) Time is reduced to AM/PM and lead time to whole days, with no collection period. (v) The tenure effect is implausibly large, suggesting a constructed dataset. (vi) Dataset B is synthetic and supports technique demonstration only. (vii) Analyses are cross-sectional and descriptive; adjustment was linear or stratified on a single variable, so residual confounding is likely. In the language of causal inference, none of these estimates identifies the effect of an intervention.<sup><a href="#r13">13</a></sup></p>
+<p data-l="es"><strong>Limitaciones.</strong> (i) No hay identificadores de sesión ni capacidad, así que no se puede medir la ocupación. (ii) No hay identificadores de socio, así que las reservas repetidas de una misma persona violan la independencia que asumen los intervalos. (iii) No se distinguen cancelaciones de no-shows. (iv) La hora se reduce a AM/PM y la anticipación a días completos, sin periodo de recolección. (v) El efecto de antigüedad es inverosímilmente grande, lo que sugiere un dataset construido. (vi) El Dataset B es sintético y solo sirve para demostrar técnicas. (vii) Los análisis son transversales y descriptivos; el ajuste fue lineal o estratificado sobre una sola variable, así que es probable que exista confusión residual. En el lenguaje de la inferencia causal, ninguna de estas estimaciones identifica el efecto de una intervención.<sup><a href="#r13">13</a></sup></p>
+
+<span id="practice" style="display:block;scroll-margin-top:80px"></span>
+<h2 data-l="en">4. Implications for practice</h2>
+<h2 data-l="es">4. Implicaciones para la práctica</h2>
+<ul>
+  <li data-l="en"><strong>Measure the funnel per session</strong>: booked → cancelled → attended → empty capacity. Without it, “full” classes cannot be audited.</li>
+  <li data-l="es"><strong>Medir el embudo por sesión</strong>: reservada → cancelada → asistida → capacidad vacía. Sin eso, las clases “llenas” no se pueden auditar.</li>
+  <li data-l="en"><strong>Treat the first months as the risk window.</strong> Attrition and habit literature, and this dataset, point to new members as the group where attendance support matters most.</li>
+  <li data-l="es"><strong>Tratar los primeros meses como la ventana de riesgo.</strong> La literatura de abandono y hábito, y este dataset, señalan a los socios nuevos como el grupo donde más importa apoyar la asistencia.</li>
+  <li data-l="en"><strong>Adjust before ranking.</strong> Compare classes and time slots with a common member mix before reallocating capacity.</li>
+  <li data-l="es"><strong>Ajustar antes de comparar.</strong> Comparar clases y franjas con una mezcla común de socios antes de reasignar capacidad.</li>
+  <li data-l="en"><strong>Test, don’t assume.</strong> Reminders and nudges have evidence in adjacent settings, but effects were heterogeneous and short-lived; they need randomized pilots in the club itself.</li>
+  <li data-l="es"><strong>Probar, no asumir.</strong> Los recordatorios y nudges tienen evidencia en contextos cercanos, pero sus efectos fueron heterogéneos y de corta duración; requieren pilotos aleatorizados en el propio club.</li>
+</ul>
+
+<span id="agenda" style="display:block;scroll-margin-top:80px"></span>
+<h2 data-l="en">5. Research agenda: what more data would make possible</h2>
+<h2 data-l="es">5. Agenda de investigación: qué permitirían más datos</h2>
+<p data-l="en">Each question below is paired with the minimum data required and a suitable design. They map onto the Connect → Predict → Simulate → Decide stages of the digital twin.</p>
+<p data-l="es">Cada pregunta se acompaña de los datos mínimos necesarios y un diseño adecuado. Corresponden a las etapas Conectar → Predecir → Simular → Decidir del gemelo digital.</p>
+<div class="table-wrap" style="max-width:none">
+<table>
+  <thead><tr>
+    <th><span data-l="en">Question</span><span data-l="es">Pregunta</span></th>
+    <th><span data-l="en">Data needed</span><span data-l="es">Datos necesarios</span></th>
+    <th><span data-l="en">Design / method</span><span data-l="es">Diseño / método</span></th>
+    <th><span data-l="en">Basis</span><span data-l="es">Base</span></th>
+  </tr></thead>
+  <tbody>
+    <tr><td><span data-l="en">What share of capacity is actually used, per session?</span><span data-l="es">¿Qué proporción de la capacidad se usa realmente por sesión?</span></td><td><span data-l="en">Session ID, capacity, bookings, check-ins</span><span data-l="es">ID de sesión, capacidad, reservas, check-ins</span></td><td><span data-l="en">Descriptive utilization funnel</span><span data-l="es">Embudo descriptivo de utilización</span></td><td><a href="#r10">10</a></td></tr>
+    <tr><td><span data-l="en">Does lead time predict no-show once cancellations are separated?</span><span data-l="es">¿Predice la anticipación el no-show al separar cancelaciones?</span></td><td><span data-l="en">Booking, cancellation and class timestamps</span><span data-l="es">Marcas de tiempo de reserva, cancelación y clase</span></td><td><span data-l="en">Multinomial / time-to-event models</span><span data-l="es">Modelos multinomiales / de tiempo al evento</span></td><td><a href="#r1">1</a></td></tr>
+    <tr><td><span data-l="en">Can we forecast attendance per booking reliably?</span><span data-l="es">¿Podemos predecir la asistencia por reserva de forma fiable?</span></td><td><span data-l="en">Stable member IDs, visit history</span><span data-l="es">IDs estables de socio, historial de visitas</span></td><td><span data-l="en">Gradient boosting / logistic models, temporal split, calibration curves</span><span data-l="es">Gradient boosting / modelos logísticos, partición temporal, curvas de calibración</span></td><td><a href="#r6">6</a>, <a href="#r12">12</a></td></tr>
+    <tr><td><span data-l="en">How many extra places can be released without over-filling?</span><span data-l="es">¿Cuántas plazas extra se pueden liberar sin sobrecupo?</span></td><td><span data-l="en">Calibrated P(attend), waitlists, cost of empty vs. over-full</span><span data-l="es">P(asistir) calibrada, listas de espera, costo de plaza vacía vs. sobrecupo</span></td><td><span data-l="en">Monte Carlo capacity simulation</span><span data-l="es">Simulación de capacidad Monte Carlo</span></td><td><a href="#r10">10</a>, <a href="#r11">11</a></td></tr>
+    <tr><td><span data-l="en">When does a new member’s attendance become habitual?</span><span data-l="es">¿Cuándo se vuelve habitual la asistencia de un socio nuevo?</span></td><td><span data-l="en">Check-ins from enrolment onward</span><span data-l="es">Check-ins desde la inscripción</span></td><td><span data-l="en">Predictability over time; survival analysis of dropout</span><span data-l="es">Predictibilidad en el tiempo; análisis de supervivencia del abandono</span></td><td><a href="#r2">2</a>, <a href="#r4">4</a>, <a href="#r6">6</a></td></tr>
+    <tr><td><span data-l="en">Do reminders or return-after-miss rewards reduce no-shows?</span><span data-l="es">¿Reducen los no-shows los recordatorios o premios por volver?</span></td><td><span data-l="en">Message logs, randomization, attendance</span><span data-l="es">Registros de mensajes, aleatorización, asistencia</span></td><td><span data-l="en">Randomized pilot (A/B), heterogeneity by tenure</span><span data-l="es">Piloto aleatorizado (A/B), heterogeneidad por antigüedad</span></td><td><a href="#r8">8</a>, <a href="#r9">9</a></td></tr>
+    <tr><td><span data-l="en">Do coach and cohort continuity improve attendance?</span><span data-l="es">¿Mejoran la asistencia el coach y la continuidad del grupo?</span></td><td><span data-l="en">Instructor IDs, repeated co-attendance</span><span data-l="es">IDs de instructor, co-asistencia repetida</span></td><td><span data-l="en">Multilevel models (member × session × coach)</span><span data-l="es">Modelos multinivel (socio × sesión × coach)</span></td><td><a href="#r7">7</a></td></tr>
+    <tr><td><span data-l="en">Does weather or local calendar shift demand?</span><span data-l="es">¿Desplazan la demanda el clima o el calendario local?</span></td><td><span data-l="en">Daily weather, holidays, session dates</span><span data-l="es">Clima diario, feriados, fechas de sesión</span></td><td><span data-l="en">Time-series regression with calendar effects</span><span data-l="es">Regresión de series temporales con efectos de calendario</span></td><td><a href="#r14">14</a></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 data-l="en">6. Conclusion</h2>
+<h2 data-l="es">6. Conclusión</h2>
+<p data-l="en">The gap between booked and realized attendance is large, and the variable most associated with it, membership tenure, is one that published evidence links to habit formation and early attrition. Schedule-based explanations weakened once member composition was considered. A credible capacity tool for a real club therefore depends less on more sophisticated models than on better data: session capacity, timestamps, stable member identifiers and randomized tests.</p>
+<p data-l="es">La brecha entre la asistencia reservada y la real es grande, y la variable más asociada con ella, la antigüedad del socio, es una que la evidencia publicada vincula con la formación de hábitos y el abandono temprano. Las explicaciones basadas en el horario se debilitaron al considerar la composición de socios. Por eso, una herramienta de capacidad creíble para un club real depende menos de modelos más sofisticados que de mejores datos: capacidad por sesión, marcas de tiempo, identificadores estables de socio y pruebas aleatorizadas.</p>
+
+<span id="refs" style="display:block;scroll-margin-top:80px"></span>
+<h2 data-l="en">References</h2>
+<h2 data-l="es">Referencias</h2>
+<ol class="refs">
+  <li id="r1">Dantas LF, Fleck JL, Cyrino Oliveira FL, Hamacher S. No-shows in appointment scheduling – a systematic literature review. <em>Health Policy</em>. 2018;122(4):412–421. <a href="https://doi.org/10.1016/j.healthpol.2018.02.002">doi:10.1016/j.healthpol.2018.02.002</a></li>
+  <li id="r2">Sperandei S, Vieira MC, Reis AC. Adherence to physical activity in an unsupervised setting: explanatory variables for high attrition rates among fitness center members. <em>J Sci Med Sport</em>. 2016;19(11):916–920. <a href="https://doi.org/10.1016/j.jsams.2015.12.522">doi:10.1016/j.jsams.2015.12.522</a></li>
+  <li id="r3">DellaVigna S, Malmendier U. Paying not to go to the gym. <em>Am Econ Rev</em>. 2006;96(3):694–719. <a href="https://doi.org/10.1257/aer.96.3.694">doi:10.1257/aer.96.3.694</a></li>
+  <li id="r4">Kaushal N, Rhodes RE. Exercise habit formation in new gym members: a longitudinal study. <em>J Behav Med</em>. 2015;38(4):652–663. <a href="https://doi.org/10.1007/s10865-015-9640-7">doi:10.1007/s10865-015-9640-7</a></li>
+  <li id="r5">Lally P, van Jaarsveld CHM, Potts HWW, Wardle J. How are habits formed: modelling habit formation in the real world. <em>Eur J Soc Psychol</em>. 2010;40(6):998–1009. <a href="https://doi.org/10.1002/ejsp.674">doi:10.1002/ejsp.674</a></li>
+  <li id="r6">Buyalskaya A, Ho H, Milkman KL, Li X, Duckworth AL, Camerer C. What can machine learning teach us about habit formation? Evidence from exercise and hygiene. <em>PNAS</em>. 2023;120(17):e2216115120. <a href="https://doi.org/10.1073/pnas.2216115120">doi:10.1073/pnas.2216115120</a></li>
+  <li id="r7">Burke SM, Carron AV, Eys MA, Ntoumanis N, Estabrooks PA. Group versus individual approach? A meta-analysis of the effectiveness of interventions to promote physical activity. <em>Sport Exerc Psychol Rev</em>. 2006;2(1):19–35. <a href="https://research.birmingham.ac.uk/en/publications/group-versus-individual-approach-a-meta-analysis-of-the-effective/">University of Birmingham record</a></li>
+  <li id="r8">Guy R, Hocking J, Wand H, Stott S, Ali H, Kaldor J. How effective are short message service reminders at increasing clinic attendance? A meta-analysis and systematic review. <em>Health Serv Res</em>. 2012;47(2):614–632. <a href="https://pubmed.ncbi.nlm.nih.gov/22091980/">PubMed 22091980</a></li>
+  <li id="r9">Milkman KL, Gromet D, Ho H, et al. Megastudies improve the impact of applied behavioural science. <em>Nature</em>. 2021;600:478–483. <a href="https://doi.org/10.1038/s41586-021-04128-4">doi:10.1038/s41586-021-04128-4</a></li>
+  <li id="r10">Talluri KT, van Ryzin GJ. <em>The Theory and Practice of Revenue Management</em>, ch. 4 “Overbooking”. New York: Springer; 2004. <a href="https://doi.org/10.1007/978-0-387-27391-4_4">doi:10.1007/978-0-387-27391-4_4</a></li>
+  <li id="r11">LaGanga LR, Lawrence SR. Clinic overbooking to improve patient access and increase provider productivity. <em>Decis Sci</em>. 2007;38(2):251–276. <a href="https://doi.org/10.1111/j.1540-5915.2007.00158.x">doi:10.1111/j.1540-5915.2007.00158.x</a></li>
+  <li id="r12">Van Calster B, McLernon DJ, van Smeden M, Wynants L, Steyerberg EW. Calibration: the Achilles heel of predictive analytics. <em>BMC Med</em>. 2019;17:230. <a href="https://doi.org/10.1186/s12916-019-1466-7">doi:10.1186/s12916-019-1466-7</a></li>
+  <li id="r13">Hernán MA, Robins JM. <em>Causal Inference: What If</em>. Boca Raton: Chapman &amp; Hall/CRC; 2020. <a href="https://miguelhernan.org/whatifbook">miguelhernan.org/whatifbook</a></li>
+  <li id="r14">Chan CB, Ryan DA. Assessing the effects of weather conditions on physical activity participation using objective measures. <em>Int J Environ Res Public Health</em>. 2009;6(10):2639–2654. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2790098/">PMC2790098</a></li>
+</ol>
+<p class="small muted" data-l="en">Figures quoted from the literature were checked against abstracts and publisher records in October 2026. The lab’s own numbers come from the reproducible pipeline in the GitHub repository.</p>
+<p class="small muted" data-l="es">Las cifras citadas de la literatura se verificaron contra resúmenes y registros editoriales en octubre de 2026. Los números propios del laboratorio provienen del pipeline reproducible del repositorio de GitHub.</p>
+</main>
+
+<footer style="margin-top:60px">
+  <div class="wrap">
+    <div><strong>Víctor Gómez</strong> · <a href="https://victor-gomez-portfolio.vercel.app">victor-gomez-portfolio.vercel.app</a></div>
+    <div class="small"><a href="index.html" data-keep-lang><span data-l="en">← Back to the case study</span><span data-l="es">← Volver al caso de estudio</span></a></div>
+  </div>
+</footer>
+</body>
+</html>
