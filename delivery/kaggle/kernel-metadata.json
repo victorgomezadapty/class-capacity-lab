@@ -1,0 +1,19 @@
+{
+  "id": "vctorandrsgmezlpez/class-capacity-lab-group-class-attendance-eda",
+  "title": "Class Capacity Lab: Group Class Attendance EDA",
+  "code_file": "class-capacity-lab.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "ddosad/datacamps-data-science-associate-certification",
+    "ka66ledata/gym-membership-dataset"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}
