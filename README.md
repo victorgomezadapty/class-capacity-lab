@@ -4,6 +4,8 @@
 
 **Live site:** [class-capacity-lab.vercel.app](https://class-capacity-lab.vercel.app) · [Interactive dashboard](https://class-capacity-lab.vercel.app/dashboard) · [Evidence & discussion](https://class-capacity-lab.vercel.app/evidence) · English / Español
 
+**Kaggle:** [executed notebook](https://www.kaggle.com/code/vctorandrsgmezlpez/class-capacity-lab-group-class-attendance-eda), run on Kaggle against public inputs; results match the local pipeline (see `delivery/kaggle/PUBLICATION.md`).
+
 ![Class Capacity Lab](site/assets/og.png)
 
 ## Key findings
