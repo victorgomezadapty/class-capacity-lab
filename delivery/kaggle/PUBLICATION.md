@@ -1,6 +1,6 @@
 # Kaggle publication record
 
-**Notebook:** [Class Capacity Lab: Group Class Attendance EDA](https://www.kaggle.com/code/vctorandrsgmezlpez/class-capacity-lab-group-class-attendance-eda), public, version 1, pushed 2026-10-18 with `kaggle kernels push -p delivery/kaggle`. Kaggle status: `COMPLETE`.
+**Notebook:** [Class Capacity Lab: Group Class Attendance Study](https://www.kaggle.com/code/vctorandrsgmezlpez/class-capacity-lab-group-class-attendance-study), public, version 1, pushed 2026-10-18 with `kaggle kernels push -p delivery/kaggle`. Kaggle status: `COMPLETE`.
 
 **Source notebook:** `notebooks/03_associations_and_tenure.ipynb`. The published copy (`delivery/kaggle/class-capacity-lab.ipynb`) adds links to the companion site and repository in the first cell and names the attached GoalZone input. Code cells are unchanged. Internet is disabled; no GPU.
 
