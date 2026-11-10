@@ -1,2 +1,2 @@
 pandas>=2.2,<4
-pyarrow>=18,<27
+numpy>=1.26

@@ -1,0 +1,31 @@
+{
+  "raw_rows": 2701624,
+  "directed_rows": 731918,
+  "centre_months_with_zero_bookings": 52,
+  "dropped": {
+    "missing_fields": 0,
+    "fewer_than_5_places": 25179,
+    "booked_above_places": 61,
+    "start_outside_06_22": 4,
+    "centre_months_with_zero_bookings": 10391
+  },
+  "analysed_sessions": 696283,
+  "slot_rows": 202625,
+  "activities": 928,
+  "centres": 73,
+  "date_min": "2022-09-01",
+  "date_max": "2026-08-31",
+  "activity_names_per_family": {
+    "Aquatic fitness": 81,
+    "Cardio and dance": 89,
+    "Cross training and functional": 135,
+    "Indoor cycling": 27,
+    "Mind-body and stretching": 93,
+    "Other": 134,
+    "Outdoor walking and running": 43,
+    "Pilates": 44,
+    "Racket conditioning": 86,
+    "Strength and toning": 133,
+    "Swimming": 63
+  }
+}

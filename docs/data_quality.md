@@ -1,18 +1,15 @@
-# Data quality report
+# Data quality
 
-- Source: original author-referenced CSV, 1,500 rows × 8 fields; 1,500 unique booking IDs.
-- Target: 1 = 454; 0 = 1046; missing = 0.
-- Missing weight: 20. No imputation performed; weight is not used in the dashboard.
-- Unknown category (`-`): 13; retained as Unknown.
-- Fully identical rows including booking ID: 0. One pair of identical feature/outcome profiles has distinct booking IDs; both reservations are retained.
-- Lead-time text normalized: 25 rows. Weekday labels normalized: 71 rows.
-- Lead time: integers 1–29 days; no zero-day bookings. Gaps in observed lead times are not filled with invented records.
-- Tenure: 1–148 months.
-- Valid scheduled weekdays: Mon–Sun. Time labels: AM, PM.
-- CSV preview rows: 15. Exact value reconciliation against first Parquet rows: True.
-- Notebook: third-party analysis with its own cleaning and modeling choices. Not executed and not merged.
-- Parquet reconciliation: all 1,500 records match the original CSV on all seven shared fields after label normalization, retaining multiplicities. Booking IDs were dropped and row order changed in the Parquet.
+Source rows in the four season files: 2,701,624 (all types). Rows with "Tipo de actividad" = "Actividad dirigida": 731,918.
 
-## Source preservation
+| Step | Sessions removed | Reason |
+|---|---|---|
+| Missing date, weekday, time or counts | 0 | |
+| Fewer than 5 places offered | 25,179 | Individual or tiny sessions (often 0 or 1 place) are not group classes |
+| More booked than offered | 61 | Inconsistent counts |
+| Start before 06:00 or after 22:00 | 4 | Implausible times |
+| Centre-month with zero bookings in every session | 10,391 (52 centre-months) | Probable reporting gaps rather than real demand |
 
-All supplied files remain unchanged. SHA-256 hashes and byte sizes are recorded in `data/processed/analysis.json` for reproducibility. No records are excluded from attendance metrics.
+Analysed: **696,283 sessions**, 73 centres, 928 activity names, 2022-09-01 to 2026-08-31. The log is regenerated in `data/processed/data_quality.json` on every build.
+
+Known issues kept in the data: activity names vary in spelling and casing (for example "Pádel acondicionamiento" and "Padel acondicionamiento"); the family rules group them, but the season-to-season check uses the raw name, so renamed activities lose their history. About 2.7% of sessions fall in the "Other" family.

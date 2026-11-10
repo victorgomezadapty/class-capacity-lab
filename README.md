@@ -1,55 +1,47 @@
 # Class Capacity Lab
 
-**A booked place is not an occupied place.** Exploratory analysis of group-class bookings and member preferences: the first module (*Observe*) of an Open Gym Digital Twin.
+**Some classes fill every week. Most never do.** Which group classes fill up, when, and how predictable it is, from four seasons of open session data published by Madrid's municipal sports centres. The first module (*Observe*) of an Open Gym Digital Twin.
 
 **Live site:** [class-capacity-lab.vercel.app](https://class-capacity-lab.vercel.app) · [Interactive dashboard](https://class-capacity-lab.vercel.app/dashboard) · [Evidence & discussion](https://class-capacity-lab.vercel.app/evidence) · English / Español
-
-**Kaggle:** [executed notebook](https://www.kaggle.com/code/vctorandrsgmezlpez/class-capacity-lab-group-class-attendance-study), run on Kaggle against public inputs; results match the local pipeline (see `delivery/kaggle/PUBLICATION.md`).
 
 ![Class Capacity Lab](site/assets/og.png)
 
 ## Key findings
 
-| | Result | Reading |
-|---|---|---|
-| Realized attendance | **454 / 1,500 bookings (30.3%)** | Bookings overstate occupancy by a wide margin. Cancellations and no-shows can't be separated in the source. |
-| Membership tenure | **r = 0.486** (95% bootstrap 0.452–0.525) | Attendance rises from 3.4% (1–6 months) to 95.2% (49+ months). The direction matches the habit and attrition literature, but the size is implausibly large for real data. |
-| Booking lead time | **r = 0.024** (−0.022 to 0.074); 0.026 tenure-adjusted | No linear signal, unlike clinical no-show research. Worth retesting with real timestamps. |
-| AM vs. PM | Gap **5.4 → 4.0 pp** with a common tenure mix (CI −0.6 to 8.5) | The apparent morning advantage is not dependable. |
-| Class category | Cramér's V = 0.05; ranking flips after standardization | Aqua leads raw rates; HIIT leads once tenure mix is held constant. |
-| Member preferences (synthetic) | Pilates → Yoga lift **1.12** (0.71–1.53) | Overlap, not reliable co-preference or cross-sell evidence. |
+All numbers come from `src/analysis.py` run on `data/processed/madrid_class_slots.csv.gz` (696,283 directed class sessions, 73 centres, September 2022 to August 2026).
 
-No causal effects, prediction model or overbooking rule is claimed. See [Evidence & discussion](https://class-capacity-lab.vercel.app/evidence) for how these results compare with 14 peer-reviewed sources, and for a research agenda that richer gym data would enable.
+| | Result | How it was computed |
+|---|---|---|
+| Booked share of places | **55.5%** overall; **61.6%** in 2025-26 (95% CI 57.1% to 65.8%) | Sum of booked places / sum of offered places. Interval: 1,000 bootstrap resamples of centres. |
+| Fully booked sessions | **23.3%** overall; **27.4%** in 2025-26 (24.7% to 30.3%); up from 16.3% in 2022-23 | Sessions with booked = offered / all sessions. |
+| Time of week | Monday evening **42.4%** full, Tuesday evening 38.6%; Saturday afternoon **1.2%** | Full rate by weekday x time slot (morning before 12, midday 12 to 15, afternoon 15 to 18, evening from 18). |
+| Activity | Racket conditioning **46.0%**, Pilates 40.2%; swimming 9.4%, outdoor walking and running 4.1% | 928 activity names grouped into 11 families with keyword rules in `src/build_sessions.py`. |
+| Association with being full | Cramér's V: activity 0.38, family 0.28, centre 0.22, slot 0.18, weekday 0.12, season 0.10, month 0.09 | Uncorrected V from the factor x full / not full table. |
+| Season-to-season predictability | **AUC 0.81** (0.79 to 0.83) for 2025-26 ranked by the same slot's 2024-25 full rate; 0.74 with family x weekday x slot only; 0.81 to 0.82 over three season pairs | Session-weighted AUC; slot = centre, activity, weekday and start time; 54% to 66% of sessions have a matching slot. |
+| Persistence | Slot occupancy correlates **0.83 to 0.85** across consecutive seasons | Session-weighted Pearson r over matching slots. |
+
+No causal effects, fitted production model or overbooking rule is claimed. "Booked" is the source's *ocupadas*: places taken by a booking, not people counted in the room.
 
 ![Dashboard](site/assets/dashboard.png)
 
-## What's in the site
-
-- **Case study** (`site/index.html`): problem, findings, method, limits and the digital-twin roadmap (Observe → Connect → Predict → Simulate → Decide).
-- **Dashboard** (`site/dashboard.html`): two independent datasets, cohort filters, effect sizes with bootstrap intervals, tenure-standardized comparisons, preference matrices and association rules. Everything is in one self-contained HTML file with hand-written SVG charts. It works offline and switches between EN and ES at runtime.
-- **Evidence & discussion** (`site/evidence.html`): written like the discussion section of a paper. It covers no-shows and lead time, tenure, habit and attrition, group dynamics, reminders and megastudies, overbooking and calibration, then strengths and limitations and a research agenda. References are verified against Crossref and PubMed.
-
 ## Data
 
-| Dataset | Rows | Role | Rights |
+| Dataset | Rows used | Role | License |
 |---|---|---|---|
-| GoalZone fitness-class bookings | 1,500 | Attendance & capacity (A) | Public educational dataset. Redistribution terms are unconfirmed, so **raw rows are not in this repository or the public site**. |
-| [Gym Membership Dataset](https://www.kaggle.com/datasets/ka66ledata/gym-membership-dataset), Tarek Adam | 1,000 | Member preferences (B) | CC0. **Synthetic**, so it shows techniques only. |
+| Ayuntamiento de Madrid, [Oferta y ocupación de plazas en actividades deportivas dirigidas](https://datos.madrid.es/dataset/300076-0-deportes-ocupacion) (300076), files "Clases abiertas y uso libre" for seasons 2022-23 to 2025-26 | 696,283 directed class sessions | Places offered and booked per session | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 
-The datasets are never joined. The public dashboard replaces GoalZone booking rows with a contingency table of counts (category × weekday × AM/PM × lead time × tenure band, 402 cells). The analysis output is identical to the local build, which was verified across filter combinations. Row-level export is disabled for Dataset A.
-
-## Methods
-
-Source reconciliation (CSV ↔ Parquet), point-biserial correlation, uncorrected Cramér's V, Wilson intervals, deterministic 1,000-resample percentile bootstrap, direct standardization over five tenure strata, linear partial correlation, and set-based support/confidence/lift. Details are in [`docs/methodology.md`](docs/methodology.md) and [`docs/association_analysis.md`](docs/association_analysis.md). The notebook is [`notebooks/03_associations_and_tenure.ipynb`](notebooks/03_associations_and_tenure.ipynb).
+Attribution: *Fuente: Ayuntamiento de Madrid. Datos filtrados, reclasificados y agregados por Class Capacity Lab.* The Ayuntamiento does not endorse this project. Raw files are downloaded by `src/download_madrid.py` into `data/raw/madrid/` (not committed); the aggregated slot table derived from them is published here under the same license. Exclusions are logged in `data/processed/data_quality.json` and described in [`docs/data_quality.md`](docs/data_quality.md).
 
 ## Reproduce
 
-Requires Python with `pandas` and `pyarrow` (`requirements.txt`). Put the source CSVs at the paths described in [`docs/source_provenance.md`](docs/source_provenance.md), then run:
+Requires Python with `pandas` and `numpy` (`requirements.txt`; the notebook step also needs `nbformat`, `nbclient`, `ipykernel` and `matplotlib`).
 
 ```bash
-python src/build_analysis.py      # tables, docs, local dashboard.html (row-level, not committed)
-python src/package_research.py    # notebook and research documents
-python src/build_public_site.py   # site/dashboard.html: aggregated, bilingual
+python src/download_madrid.py      # four season CSVs into data/raw/madrid/ + data/source_manifest.json
+python src/build_sessions.py       # cleaned, aggregated slot table + data quality log
+python src/build_site.py           # result tables, site/assets/data.js and the three HTML pages
+python src/package_notebook.py     # executed notebook + Kaggle copy
+python -m unittest discover tests  # analysis and site checks
 ```
 
 Preview the site with `python -m http.server -d site 8000`. The site is deployed as static files from `site/` on Vercel.
@@ -57,18 +49,19 @@ Preview the site with `python -m http.server -d site 8000`. The site is deployed
 ## Repository layout
 
 ```
-site/            public website (case study, dashboard, evidence), deployed to Vercel
-src/             analysis pipeline, dashboard templates, public build + ES dictionary
-data/processed/  aggregated result tables (no booking rows)
-docs/            data dictionary, quality, methodology, provenance
-handoff/         findings, metric definitions, limitations, real-gym data contract
-notebooks/       association and tenure notebook
-reports/         verification evidence
+site/             public website (case study, dashboard, evidence), deployed to Vercel
+src/              download, cleaning, analysis, site build and notebook packaging
+src/templates/    page templates; numbers are filled in by src/build_site.py
+data/processed/   slot table (CC BY 4.0, derived), result tables, data quality log
+docs/             data dictionary, data quality, methodology, provenance, next milestone
+notebooks/        executed analysis notebook
+delivery/kaggle/  Kaggle notebook, kernel metadata and the dataset it needs
+tests/            unit tests for the analysis and the built site
 ```
 
 ## Next milestone
 
-The next milestone needs real session data: session IDs and capacity, booking, cancellation and class timestamps, stable member IDs and verified attendance. The proposed contract is in [`handoff/data_contract.yaml`](handoff/data_contract.yaml). Only with that data does it make sense to fit calibrated attendance probabilities and simulate capacity rules.
+Session-level check-ins, waitlists and booking and cancellation times would turn booked demand into attendance and unmet demand. See [`docs/next_milestone.md`](docs/next_milestone.md).
 
 ---
 

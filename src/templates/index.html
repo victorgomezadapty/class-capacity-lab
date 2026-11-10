@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Class Capacity Lab · Case study</title>
+<meta name="title-en" content="Class Capacity Lab · Case study">
+<meta name="title-es" content="Class Capacity Lab · Caso de estudio">
+<meta name="description" content="Which group classes fill up, when, and how predictable is it? {{en:sessions}} directed class sessions from Madrid's municipal sports centres, four seasons of open data (CC BY 4.0).">
+<meta property="og:title" content="Class Capacity Lab · Some classes fill every week. Most never do.">
+<meta property="og:description" content="{{en:l_full}} of Madrid group class sessions were fully booked in 2025-26. Last season's fill rate of the same slot ranks which ones (AUC {{en:auc}}).">
+<meta property="og:image" content="https://class-capacity-lab.vercel.app/assets/og.png">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/motion.css">
+<script src="assets/lang.js"></script>
+<script src="assets/data.js"></script>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html" data-keep-lang><span class="brand-mark" aria-hidden="true">◫</span>Class Capacity Lab</a>
+    <nav class="nav" aria-label="Site">
+      <a href="index.html" data-keep-lang aria-current="page"><span data-l="en">Case study</span><span data-l="es">Caso de estudio</span></a>
+      <a href="dashboard.html" data-keep-lang>Dashboard</a>
+      <a href="evidence.html" data-keep-lang><span data-l="en">Evidence</span><span data-l="es">Evidencia</span></a>
+      <a href="https://github.com/victorgomezadapty/class-capacity-lab">GitHub</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language / Idioma">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="wrap hero">
+  <div class="blob b1" aria-hidden="true"></div><div class="blob b2" aria-hidden="true"></div>
+  <div class="hero-grid">
+  <div>
+  <div class="eyebrow"><span data-l="en">Open Gym Digital Twin · Module 1 · Observe</span><span data-l="es">Gemelo Digital de Gimnasio · Módulo 1 · Observar</span></div>
+  <h1 data-l="en">Some classes fill every week. <em>Most never do.</em></h1>
+  <h1 data-l="es">Algunas clases se llenan cada semana. <em>La mayoría nunca.</em></h1>
+  <p class="lead" data-l="en">Madrid's municipal sports centres publish every directed class session they run: places offered and places booked. This lab reads {{en:sessions}} sessions from {{en:centres}} centres over four seasons (September 2022 to August 2026) to see which group classes fill up, when they do, and how well last season predicts this one.</p>
+  <p class="lead" data-l="es">Los centros deportivos municipales de Madrid publican cada sesión de actividad dirigida: plazas ofertadas y plazas ocupadas. Este laboratorio analiza {{es:sessions}} sesiones de {{es:centres}} centros en cuatro temporadas (septiembre de 2022 a agosto de 2026) para ver qué clases grupales se llenan, cuándo lo hacen y qué tan bien la temporada pasada anticipa la actual.</p>
+  <div class="cta">
+    <a class="btn primary" href="dashboard.html" data-keep-lang><span data-l="en">Open the interactive dashboard</span><span data-l="es">Abrir el dashboard interactivo</span> →</a>
+    <a class="btn" href="evidence.html" data-keep-lang><span data-l="en">Read the discussion</span><span data-l="es">Leer la discusión</span></a>
+  </div>
+  </div>
+  <figure class="studio" style="margin:0">
+    <div class="studio-head"><b><span data-l="en">One class, 40 places</span><span data-l="es">Una clase, 40 plazas</span></b><span class="phase" aria-hidden="true"><i></i><i></i><i></i></span></div>
+    <svg id="studio-svg" viewBox="0 0 420 344" role="img" aria-label="Illustration: 40 places offered, 25 booked and 15 left free, matching the {{en:l_occ}} booked share of 2025-26."></svg>
+    <div class="studio-count" aria-live="off">
+      <span><strong id="c-booked">40</strong><span data-l="en">offered</span><span data-l="es">ofertadas</span></span>
+      <span class="att"><strong id="c-att">25</strong><span data-l="en">booked</span><span data-l="es">ocupadas</span></span>
+      <span class="emp"><strong id="c-empty">15</strong><span data-l="en">free</span><span data-l="es">libres</span></span>
+    </div>
+    <figcaption class="small muted" style="margin-top:6px"><span data-l="en">Illustration scaled from 2025-26: {{en:l_occ}} of offered places were booked.</span><span data-l="es">Ilustración a escala de 2025-26: se ocupó el {{es:l_occ}} de las plazas ofertadas.</span></figcaption>
+  </figure>
+  </div>
+  <div class="kpis">
+    <div class="kpi dark reveal"><b data-l="en">{{en:l_full}}</b><b data-l="es">{{es:l_full}}</b><span data-l="en">of 2025-26 sessions were fully booked</span><span data-l="es">de las sesiones de 2025-26 se llenó por completo</span></div>
+    <div class="kpi reveal d1"><b data-l="en">{{en:l_occ}}</b><b data-l="es">{{es:l_occ}}</b><span data-l="en">of offered places booked in 2025-26 ({{en:occ_first}} in 2022-23)</span><span data-l="es">de las plazas ofertadas se ocupó en 2025-26 ({{es:occ_first}} en 2022-23)</span></div>
+    <div class="kpi reveal d2"><b data-l="en">AUC {{en:auc}}</b><b data-l="es">AUC {{es:auc}}</b><span data-l="en">last season's fill rate of the same slot ranks which sessions fill</span><span data-l="es">la tasa de llenado del mismo horario la temporada pasada ordena qué sesiones se llenan</span></div>
+    <div class="kpi reveal d3"><b data-l="en">{{en:sessions}}</b><b data-l="es">{{es:sessions}}</b><span data-l="en">directed class sessions, open data (CC BY 4.0)</span><span data-l="es">sesiones de actividades dirigidas, datos abiertos (CC BY 4.0)</span></div>
+  </div>
+</div>
+
+<section id="problem">
+  <div class="wrap grid-2">
+    <div>
+      <div class="section-num reveal">01</div>
+      <h2 data-l="en">The operational problem</h2>
+      <h2 data-l="es">El problema operativo</h2>
+      <p data-l="en">A timetable is a bet on demand. When a class is <strong>full</strong>, members join a waitlist or give up. When it runs half empty, the centre pays a coach and a room for places nobody wanted. Knowing which sessions fill, and whether that is stable from one season to the next, is the first input for moving, duplicating or dropping classes.</p>
+      <p data-l="es">Un horario es una apuesta sobre la demanda. Cuando una clase está <strong>llena</strong>, los socios entran en lista de espera o desisten. Cuando va medio vacía, el centro paga coach y sala por plazas que nadie quiso. Saber qué sesiones se llenan, y si eso se mantiene de una temporada a otra, es el primer insumo para mover, duplicar o quitar clases.</p>
+      <p class="muted" data-l="en">This milestone is descriptive: it measures booked demand and how predictable it is. It does not measure attendance and makes no causal claims.</p>
+      <p class="muted" data-l="es">Este hito es descriptivo: mide la demanda reservada y qué tan predecible es. No mide asistencia y no hace afirmaciones causales.</p>
+    </div>
+    <div class="card">
+      <span class="tag">Madrid 300076 · CC BY 4.0</span>
+      <h3 style="margin-top:12px" data-l="en">Places offered vs. booked, 2025-26</h3><h3 style="margin-top:12px" data-l="es">Plazas ofertadas vs. ocupadas, 2025-26</h3>
+      <div class="split-bar" role="img" aria-label="{{en:l_occ}} of offered places booked in 2025-26">
+        <div class="a" style="width:{{en:l_occ}}">{{en:l_occ}}</div>
+        <div class="b"><span data-l="en">free</span><span data-l="es">libres</span></div>
+      </div>
+      <p class="small muted" data-l="en">{{en:l_sessions}} sessions in 2025-26. "Booked" is the source's <em>ocupadas</em>: places taken by a booking, not people counted in the room. A full session is one with every offered place booked.</p>
+      <p class="small muted" data-l="es">{{es:l_sessions}} sesiones en 2025-26. "Ocupadas" son plazas tomadas por una reserva, no personas contadas en la sala. Una sesión llena es aquella con todas sus plazas ocupadas.</p>
+    </div>
+  </div>
+</section>
+
+<section id="findings">
+  <div class="wrap">
+    <div class="section-num reveal">02</div>
+    <h2 data-l="en">What the data shows</h2>
+    <h2 data-l="es">Lo que muestran los datos</h2>
+    <p class="lead" data-l="en">Four seasons, {{en:sessions}} sessions. Headline intervals come from a bootstrap that resamples centres, not sessions, because sessions of one centre move together.</p>
+    <p class="lead" data-l="es">Cuatro temporadas, {{es:sessions}} sesiones. Los intervalos principales vienen de un bootstrap que remuestrea centros, no sesiones, porque las sesiones de un mismo centro se mueven juntas.</p>
+
+    <div class="grid-2" style="margin-top:30px">
+      <div class="card">
+        <span class="tag" data-l="en">Finding 1 · Time of week</span><span class="tag" data-l="es">Hallazgo 1 · Momento de la semana</span>
+        <h3 style="margin-top:12px" data-l="en">Weekday evenings fill; weekend afternoons almost never do</h3>
+        <h3 style="margin-top:12px" data-l="es">Las tardes-noche entre semana se llenan; las tardes de fin de semana casi nunca</h3>
+        <div class="viz" data-chart="heat"></div>
+        <p class="small muted" data-l="en">Share of sessions fully booked, all seasons. Monday evening {{en:mon_eve}} and Tuesday evening {{en:tue_eve}}, against {{en:sat_aft}} on Saturday afternoon. Demand falls through the week: Friday evening is {{en:fri_eve}}. Hover a cell for its count.</p>
+        <p class="small muted" data-l="es">Porcentaje de sesiones llenas, todas las temporadas. Lunes por la tarde-noche {{es:mon_eve}} y martes {{es:tue_eve}}, frente a {{es:sat_aft}} el sábado por la tarde. La demanda baja a lo largo de la semana: el viernes por la tarde-noche es {{es:fri_eve}}. Pasa el cursor por una celda para ver su conteo.</p>
+      </div>
+
+      <div class="card">
+        <span class="tag" data-l="en">Finding 2 · Activity</span><span class="tag" data-l="es">Hallazgo 2 · Actividad</span>
+        <h3 style="margin-top:12px" data-l="en">What a class is matters more than when it runs</h3>
+        <h3 style="margin-top:12px" data-l="es">Qué clase es importa más que cuándo se da</h3>
+        <div class="viz" data-chart="family"></div>
+        <p class="small muted" data-l="en">Racket conditioning ({{en:racket}}) and Pilates ({{en:pilates}}) fill most often; swimming ({{en:swimming}}) and outdoor walking and running ({{en:outdoor}}) rarely. The association with being full is moderate for activity (Cramér's V {{en:v_activity}}) and centre ({{en:v_centre}}), smaller for time slot ({{en:v_slot}}) and weekday ({{en:v_weekday}}).</p>
+        <p class="small muted" data-l="es">El acondicionamiento de raqueta ({{es:racket}}) y Pilates ({{es:pilates}}) son los que más se llenan; natación ({{es:swimming}}) y caminar o correr al aire libre ({{es:outdoor}}) casi nunca. La asociación con llenarse es moderada para la actividad (V de Cramér {{es:v_activity}}) y el centro ({{es:v_centre}}), y menor para la franja ({{es:v_slot}}) y el día ({{es:v_weekday}}).</p>
+      </div>
+    </div>
+
+    <div class="explorer reveal" id="explorer">
+      <div>
+        <span class="tag" style="background:#315345;color:#d6ee98" data-l="en">Interactive</span><span class="tag" style="background:#315345;color:#d6ee98" data-l="es">Interactivo</span>
+        <h3 style="margin-top:12px;font-size:28px" data-l="en">Pick how often a slot filled last season. See how often it fills now.</h3>
+        <h3 style="margin-top:12px;font-size:28px" data-l="es">Elige cuánto se llenó un horario la temporada pasada. Mira cuánto se llena ahora.</h3>
+        <div class="big" aria-live="polite">{{bi:cal0}}</div>
+        <input type="range" min="0" max="4" step="1" value="0" aria-label="Last season fill band / Banda de llenado de la temporada pasada">
+        <div class="ticks">
+          <button type="button">0%</button><button type="button">1-25%</button><button type="button">26-50%</button><button type="button">51-75%</button><button type="button">76-100%</button>
+        </div>
+        <p class="small soft" style="margin-top:6px" data-l="en">Share of the slot's 2024-25 sessions that were full (same centre, activity, weekday and start time)</p><p class="small soft" style="margin-top:6px" data-l="es">Porcentaje de sesiones llenas del horario en 2024-25 (mismo centro, actividad, día y hora de inicio)</p>
+      </div>
+      <div>
+        <div class="crowd" aria-hidden="true"></div>
+        <p class="crowd-cap"></p>
+      </div>
+    </div>
+
+    <div class="viz-grid">
+      <div class="viz-card reveal">
+        <div class="n">3</div>
+        <h3 data-l="en">Last season's same slot is a strong guide</h3><h3 data-l="es">El mismo horario de la temporada pasada es una buena guía</h3>
+        <div class="viz" data-chart="auc"></div>
+        <p class="small muted" data-l="en">Ranking 2025-26 sessions by the 2024-25 fill rate of the same centre, activity, weekday and start time gives AUC {{en:auc}} (95% centre bootstrap {{en:auc_lo}} to {{en:auc_hi}}). Using only activity family, weekday and time slot gives {{en:auc_fam}}. Only {{en:coverage}} of sessions had a matching slot the year before.</p>
+        <p class="small muted" data-l="es">Ordenar las sesiones de 2025-26 por la tasa de llenado en 2024-25 del mismo centro, actividad, día y hora de inicio da un AUC de {{es:auc}} (bootstrap por centros al 95%: {{es:auc_lo}} a {{es:auc_hi}}). Usar solo familia de actividad, día y franja da {{es:auc_fam}}. Solo el {{es:coverage}} de las sesiones tenía un horario equivalente el año anterior.</p>
+      </div>
+      <div class="viz-card reveal d1">
+        <div class="n">4</div>
+        <h3 data-l="en">Demand grew every season</h3><h3 data-l="es">La demanda creció cada temporada</h3>
+        <div class="viz" data-chart="season"></div>
+        <p class="small muted" data-l="en">Fully booked sessions rose from {{en:full_first}} in 2022-23 to {{en:full_last}} in 2025-26, and the booked share of places from {{en:occ_first}} to {{en:occ_last}}. The data cannot say whether demand grew or the offer was trimmed to fit it.</p>
+        <p class="small muted" data-l="es">Las sesiones llenas pasaron de {{es:full_first}} en 2022-23 a {{es:full_last}} en 2025-26, y la ocupación de plazas de {{es:occ_first}} a {{es:occ_last}}. Los datos no permiten saber si creció la demanda o si la oferta se ajustó a ella.</p>
+      </div>
+      <div class="viz-card reveal">
+        <div class="n">5</div>
+        <h3 data-l="en">Autumn and late winter peak; December and summer dip</h3><h3 data-l="es">Picos en otoño y final del invierno; caídas en diciembre y verano</h3>
+        <div class="viz" data-chart="month"></div>
+        <p class="small muted" data-l="en">Share of sessions full by month, all seasons. The month explains little overall (V {{en:v_month}}), but December and June to August stand out.</p>
+        <p class="small muted" data-l="es">Porcentaje de sesiones llenas por mes, todas las temporadas. El mes explica poco en general (V {{es:v_month}}), pero diciembre y junio a agosto se notan.</p>
+      </div>
+      <div class="viz-card reveal d1">
+        <div class="n">6</div>
+        <h3 data-l="en">Centres differ a lot</h3><h3 data-l="es">Los centros difieren mucho</h3>
+        <div class="viz" data-chart="centres"></div>
+        <p class="small muted" data-l="en">Across {{en:cs_n}} centres with at least 500 sessions in 2025-26, the share of full sessions ranges from {{en:cs_min}} to {{en:cs_max}} (median {{en:cs_med}}; middle 80% between {{en:cs_p10}} and {{en:cs_p90}}).</p>
+        <p class="small muted" data-l="es">En {{es:cs_n}} centros con al menos 500 sesiones en 2025-26, el porcentaje de sesiones llenas va de {{es:cs_min}} a {{es:cs_max}} (mediana {{es:cs_med}}; el 80% central entre {{es:cs_p10}} y {{es:cs_p90}}).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="explore">
+  <div class="wrap">
+    <div class="section-num reveal">↗</div>
+    <h2 class="reveal" data-l="en">Explore every number yourself</h2>
+    <h2 class="reveal" data-l="es">Explora cada número por tu cuenta</h2>
+    <p class="lead reveal" data-l="en">Filter by season, activity family and time slot. Every chart recalculates from the published aggregates.</p>
+    <p class="lead reveal" data-l="es">Filtra por temporada, familia de actividad y franja. Cada gráfico se recalcula con los agregados publicados.</p>
+    <div class="mock reveal">
+      <a class="browser" href="dashboard.html" data-keep-lang aria-label="Open the interactive dashboard">
+        <div class="browser-bar"><i></i><i></i><i></i><span>class-capacity-lab.vercel.app/dashboard</span></div>
+        <img data-l="en" src="assets/dashboard.png" width="1440" height="900" alt="Class Capacity Lab dashboard: filters, share of full sessions by weekday and time slot, activity families and centres" loading="lazy"><img data-l="es" src="assets/dashboard-es.png" width="1440" height="900" alt="Dashboard de Class Capacity Lab: filtros, porcentaje de sesiones llenas por día y franja, familias de actividad y centros" loading="lazy">
+      </a>
+      <div class="mock-cta"><a class="btn primary" href="dashboard.html" data-keep-lang><span data-l="en">Open the live dashboard</span><span data-l="es">Abrir el dashboard en vivo</span> →</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="method">
+  <div class="wrap">
+    <div class="section-num reveal">03</div>
+    <h2 data-l="en">How it was built</h2>
+    <h2 data-l="es">Cómo se construyó</h2>
+    <div class="pipeline" aria-label="Pipeline">
+      <span data-l="en">4 season files downloaded</span><span data-l="es">4 archivos de temporada descargados</span><i>→</i>
+      <span data-l="en">Directed classes only + quality filters</span><span data-l="es">Solo actividades dirigidas + filtros de calidad</span><i>→</i>
+      <span data-l="en">928 names into 11 families</span><span data-l="es">928 nombres en 11 familias</span><i>→</i>
+      <span data-l="en">Occupancy and full-session rates</span><span data-l="es">Tasas de ocupación y de sesiones llenas</span><i>→</i>
+      <span data-l="en">Season-to-season check</span><span data-l="es">Prueba de temporada a temporada</span><i>→</i>
+      <span data-l="en">Offline dashboard</span><span data-l="es">Dashboard offline</span>
+    </div>
+    <div class="grid-3" style="margin-top:22px">
+      <div class="card"><h3 data-l="en">Clean before counting</h3><h3 data-l="es">Limpiar antes de contar</h3>
+        <p class="small muted" data-l="en">Only "Actividad dirigida" rows. Sessions with fewer than 5 places, more bookings than places, or in a centre-month that reported zero bookings in every session (52 centre-months, likely reporting gaps) are excluded and logged.</p>
+        <p class="small muted" data-l="es">Solo filas de "Actividad dirigida". Se excluyen y registran las sesiones con menos de 5 plazas, con más ocupadas que plazas o de un centro-mes con cero ocupadas en todas sus sesiones (52 centros-mes, probablemente huecos de registro).</p></div>
+      <div class="card"><h3 data-l="en">Honest uncertainty</h3><h3 data-l="es">Incertidumbre honesta</h3>
+        <p class="small muted" data-l="en">With almost 700,000 sessions, naive intervals would be tiny and misleading. Headline rates and AUCs use a {{en:nboot}}-resample bootstrap over {{en:clusters}} centres, the unit that actually varies.</p>
+        <p class="small muted" data-l="es">Con casi 700.000 sesiones, los intervalos ingenuos serían diminutos y engañosos. Las tasas y AUC principales usan un bootstrap de {{es:nboot}} remuestreos sobre {{es:clusters}} centros, la unidad que de verdad varía.</p></div>
+      <div class="card"><h3 data-l="en">Out-of-season test</h3><h3 data-l="es">Prueba fuera de temporada</h3>
+        <p class="small muted" data-l="en">The predictability check never uses the season it scores: each season is ranked only with the previous one. AUC stays between {{en:auc_min}} and {{en:auc_max}} across three season pairs.</p>
+        <p class="small muted" data-l="es">La prueba de predictibilidad nunca usa la temporada que evalúa: cada temporada se ordena solo con la anterior. El AUC se mantiene entre {{es:auc_min}} y {{es:auc_max}} en tres pares de temporadas.</p></div>
+    </div>
+    <div class="callout warn" style="margin-top:28px">
+      <strong data-l="en">What this lab does not claim.</strong><strong data-l="es">Lo que este laboratorio no afirma.</strong>
+      <span data-l="en">Booked places are not attendance: the source has no show-up or no-show data. No causal effects (a full Pilates class does not mean Pilates causes demand), no fitted production model and no overbooking recommendation. Results describe Madrid's municipal centres and may not transfer to a private club.</span>
+      <span data-l="es">Las plazas ocupadas no son asistencia: la fuente no tiene datos de quién llegó ni de ausencias. Sin efectos causales (que una clase de Pilates se llene no significa que Pilates cause la demanda), sin modelo de producción ajustado y sin recomendación de sobreventa. Los resultados describen los centros municipales de Madrid y pueden no trasladarse a un club privado.</span>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <div class="section-num reveal">04</div>
+    <h2 data-l="en">With more data: the digital-twin roadmap</h2>
+    <h2 data-l="es">Con más datos: la hoja de ruta del gemelo digital</h2>
+    <p class="lead" data-l="en">Each stage unlocks only when a specific kind of data exists. The reasoning behind each step is in the <a href="evidence.html#agenda" data-keep-lang>discussion</a>.</p>
+    <p class="lead" data-l="es">Cada etapa se desbloquea solo cuando existe un tipo de dato concreto. El razonamiento detrás de cada paso está en la <a href="evidence.html#agenda" data-keep-lang>discusión</a>.</p>
+    <div class="steps stagger">
+      <div class="step done"><span class="k" data-l="en">NOW</span><span class="k" data-l="es">AHORA</span><b data-l="en">Observe</b><b data-l="es">Observar</b>
+        <span class="small muted" data-l="en">Open session data. Booked demand, full sessions, season-to-season predictability.</span><span class="small muted" data-l="es">Datos abiertos por sesión. Demanda reservada, sesiones llenas, predictibilidad entre temporadas.</span></div>
+      <div class="step"><span class="k" data-l="en">NEEDS</span><span class="k" data-l="es">REQUIERE</span><b data-l="en">Connect</b><b data-l="es">Conectar</b>
+        <ul><li data-l="en">Check-ins per session</li><li data-l="es">Check-ins por sesión</li><li data-l="en">Waitlist length</li><li data-l="es">Largo de la lista de espera</li><li data-l="en">Booking and cancellation times</li><li data-l="es">Horas de reserva y cancelación</li></ul></div>
+      <div class="step"><span class="k" data-l="en">NEEDS</span><span class="k" data-l="es">REQUIERE</span><b data-l="en">Predict</b><b data-l="es">Predecir</b>
+        <ul><li data-l="en">Show-up per booking</li><li data-l="es">Asistencia por reserva</li><li data-l="en">Calibrated P(full)</li><li data-l="es">P(llena) calibrada</li><li data-l="en">Temporal validation</li><li data-l="es">Validación temporal</li></ul></div>
+      <div class="step"><span class="k" data-l="en">NEEDS</span><span class="k" data-l="es">REQUIERE</span><b data-l="en">Simulate</b><b data-l="es">Simular</b>
+        <ul><li data-l="en">Room and coach costs</li><li data-l="es">Costos de sala y coach</li><li data-l="en">Cost of empty vs. turned-away</li><li data-l="es">Costo de plaza vacía vs. socio rechazado</li><li data-l="en">Timetable scenarios</li><li data-l="es">Escenarios de horario</li></ul></div>
+      <div class="step"><span class="k" data-l="en">NEEDS</span><span class="k" data-l="es">REQUIERE</span><b data-l="en">Decide</b><b data-l="es">Decidir</b>
+        <ul><li data-l="en">Randomized timetable pilots</li><li data-l="es">Pilotos aleatorizados de horario</li><li data-l="en">Release and waitlist rules</li><li data-l="es">Reglas de liberación y lista de espera</li><li data-l="en">Retention outcomes</li><li data-l="es">Resultados de retención</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap grid-2">
+    <div>
+      <div class="section-num reveal">05</div>
+      <h2 data-l="en">Reproducible by design</h2>
+      <h2 data-l="es">Reproducible por diseño</h2>
+      <p class="muted" data-l="en">Python (pandas, numpy) downloads the four season files, builds one aggregated slot table and computes every number, table and page from it. The dashboard is a self-contained page with hand-written SVG charts, keyboard-accessible and usable offline. A Kaggle notebook runs the same analysis code offline from the published slot table.</p>
+      <p class="muted" data-l="es">Python (pandas, numpy) descarga los cuatro archivos de temporada, construye una tabla agregada por horario y calcula a partir de ella cada número, tabla y página. El dashboard es una página autocontenida con gráficos SVG hechos a mano, accesible por teclado y usable sin conexión. Un notebook de Kaggle ejecuta el mismo código sin conexión a partir de la tabla publicada.</p>
+      <div class="cta"><a class="btn" href="https://github.com/victorgomezadapty/class-capacity-lab"><span data-l="en">Source on GitHub</span><span data-l="es">Código en GitHub</span> ↗</a></div>
+    </div>
+    <div class="card">
+      <h3 data-l="en">Deliverables</h3><h3 data-l="es">Entregables</h3>
+      <ul class="small muted" style="padding-left:18px;margin:8px 0 0">
+        <li data-l="en">Interactive bilingual dashboard with filters</li><li data-l="es">Dashboard interactivo bilingüe con filtros</li>
+        <li data-l="en">Aggregated slot table (CC BY 4.0, attributed)</li><li data-l="es">Tabla agregada por horario (CC BY 4.0, con atribución)</li>
+        <li data-l="en">Data quality log and data dictionary</li><li data-l="es">Registro de calidad y diccionario de datos</li>
+        <li data-l="en">Analysis notebook, also prepared for Kaggle</li><li data-l="es">Notebook de análisis, también preparado para Kaggle</li>
+        <li data-l="en">Data a club would need for the next milestone</li><li data-l="es">Datos que un club necesitaría para el siguiente hito</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Víctor Gómez</strong> · <span data-l="en">Physiotherapist, data scientist &amp; AI builder</span><span data-l="es">Fisioterapeuta, científico de datos y AI builder</span><br><a href="https://victor-gomez-portfolio.vercel.app">victor-gomez-portfolio.vercel.app</a></div>
+    <div class="small"><span data-l="en">Data: Ayuntamiento de Madrid, <a href="https://datos.madrid.es/dataset/300076-0-deportes-ocupacion">"Oferta y ocupación de plazas en actividades deportivas dirigidas"</a> (300076), <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Aggregated and reclassified by this project.</span><span data-l="es">Datos: Ayuntamiento de Madrid, <a href="https://datos.madrid.es/dataset/300076-0-deportes-ocupacion">"Oferta y ocupación de plazas en actividades deportivas dirigidas"</a> (300076), <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Agregados y reclasificados por este proyecto.</span></div>
+  </div>
+</footer>
+<script src="assets/motion.js" defer></script>
+</body>
+</html>

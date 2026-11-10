@@ -1,0 +1,13 @@
+{
+  "title": "Madrid Group Class Sessions 2022-2026",
+  "subtitle": "Places offered and booked in municipal directed classes, aggregated by slot",
+  "id": "vctorandrsgmezlpez/madrid-group-class-sessions-2022-2026",
+  "licenses": [{"name": "CC-BY-4.0"}],
+  "keywords": ["sports", "health and fitness", "tabular", "europe"],
+  "resources": [
+    {
+      "path": "madrid_class_slots.csv.gz",
+      "description": "One row per season, month, centre, activity, weekday and start time. Columns: season, month, centre, activity, family, weekday, start, slot, sessions, places, booked, full, empty."
+    }
+  ]
+}

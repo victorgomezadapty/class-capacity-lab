@@ -1,6 +1,6 @@
 {
   "id": "vctorandrsgmezlpez/class-capacity-lab-group-class-attendance-study",
-  "title": "Class Capacity Lab: Group Class Attendance Study",
+  "title": "Class Capacity Lab: Madrid Group Class Occupancy",
   "code_file": "class-capacity-lab.ipynb",
   "language": "python",
   "kernel_type": "notebook",
@@ -10,8 +10,7 @@
   "enable_internet": false,
   "keywords": [],
   "dataset_sources": [
-    "ddosad/datacamps-data-science-associate-certification",
-    "ka66ledata/gym-membership-dataset"
+    "vctorandrsgmezlpez/madrid-group-class-sessions-2022-2026"
   ],
   "competition_sources": [],
   "kernel_sources": [],
