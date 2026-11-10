@@ -6,9 +6,9 @@
 <title>Class Capacity Lab · Case study</title>
 <meta name="title-en" content="Class Capacity Lab · Case study">
 <meta name="title-es" content="Class Capacity Lab · Caso de estudio">
-<meta name="description" content="A booked place is not an occupied place. Exploratory analysis of 1,500 group-class bookings and 1,000 member profiles, with tenure-adjusted comparisons, bootstrap uncertainty and a research agenda for gym capacity.">
-<meta property="og:title" content="Class Capacity Lab · A booked place is not an occupied place">
-<meta property="og:description" content="Only 30.3% of 1,500 group-class bookings ended in attendance. What explains it, what doesn't, and what data a gym needs next.">
+<meta name="description" content="Which group classes fill up, when, and how predictable is it? 696,283 directed class sessions from Madrid's municipal sports centres, four seasons of open data (CC BY 4.0).">
+<meta property="og:title" content="Class Capacity Lab · Some classes fill every week. Most never do.">
+<meta property="og:description" content="27.4% of Madrid group class sessions were fully booked in 2025-26. Last season's fill rate of the same slot ranks which ones (AUC 0.81).">
 <meta property="og:image" content="https://class-capacity-lab.vercel.app/assets/og.png">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/motion.css">
 <script src="assets/lang.js"></script>
+<script src="assets/data.js"></script>
 </head>
 <body>
 <div class="progress" aria-hidden="true"></div>
@@ -43,31 +44,31 @@
   <div class="hero-grid">
   <div>
   <div class="eyebrow"><span data-l="en">Open Gym Digital Twin · Module 1 · Observe</span><span data-l="es">Gemelo Digital de Gimnasio · Módulo 1 · Observar</span></div>
-  <h1 data-l="en">A booked place is <em>not</em> an occupied place.</h1>
-  <h1 data-l="es">Una plaza reservada <em>no</em> es una plaza ocupada.</h1>
-  <p class="lead" data-l="en">Group classes are planned around bookings, but revenue, coaching time and member experience depend on who actually shows up. This lab measures the gap between booked demand and realized attendance, tests which operational variables travel with it, and defines the data a real gym would need to forecast and manage capacity.</p>
-  <p class="lead" data-l="es">Las clases grupales se planifican con base en reservas, pero los ingresos, el tiempo del coach y la experiencia del socio dependen de quién llega de verdad. Este laboratorio mide la brecha entre la demanda reservada y la asistencia real, prueba qué variables operativas la acompañan y define los datos que un gimnasio real necesitaría para predecir y gestionar su capacidad.</p>
+  <h1 data-l="en">Some classes fill every week. <em>Most never do.</em></h1>
+  <h1 data-l="es">Algunas clases se llenan cada semana. <em>La mayoría nunca.</em></h1>
+  <p class="lead" data-l="en">Madrid's municipal sports centres publish every directed class session they run: places offered and places booked. This lab reads 696,283 sessions from 73 centres over four seasons (September 2022 to August 2026) to see which group classes fill up, when they do, and how well last season predicts this one.</p>
+  <p class="lead" data-l="es">Los centros deportivos municipales de Madrid publican cada sesión de actividad dirigida: plazas ofertadas y plazas ocupadas. Este laboratorio analiza 696.283 sesiones de 73 centros en cuatro temporadas (septiembre de 2022 a agosto de 2026) para ver qué clases grupales se llenan, cuándo lo hacen y qué tan bien la temporada pasada anticipa la actual.</p>
   <div class="cta">
     <a class="btn primary" href="dashboard.html" data-keep-lang><span data-l="en">Open the interactive dashboard</span><span data-l="es">Abrir el dashboard interactivo</span> →</a>
-    <a class="btn" href="evidence.html" data-keep-lang><span data-l="en">Read the scientific discussion</span><span data-l="es">Leer la discusión científica</span></a>
+    <a class="btn" href="evidence.html" data-keep-lang><span data-l="en">Read the discussion</span><span data-l="es">Leer la discusión</span></a>
   </div>
   </div>
   <figure class="studio" style="margin:0">
     <div class="studio-head"><b><span data-l="en">One class, 40 places</span><span data-l="es">Una clase, 40 plazas</span></b><span class="phase" aria-hidden="true"><i></i><i></i><i></i></span></div>
-    <svg id="studio-svg" viewBox="0 0 420 344" role="img" aria-label="Illustration: 40 booked places, of which 12 are attended and 28 stay empty, matching the 30% attendance rate."></svg>
+    <svg id="studio-svg" viewBox="0 0 420 344" role="img" aria-label="Illustration: 40 places offered, 25 booked and 15 left free, matching the 61.6% booked share of 2025-26."></svg>
     <div class="studio-count" aria-live="off">
-      <span><strong id="c-booked">40</strong><span data-l="en">booked</span><span data-l="es">reservadas</span></span>
-      <span class="att"><strong id="c-att">12</strong><span data-l="en">attended</span><span data-l="es">asistieron</span></span>
-      <span class="emp"><strong id="c-empty">28</strong><span data-l="en">empty</span><span data-l="es">vacías</span></span>
+      <span><strong id="c-booked">40</strong><span data-l="en">offered</span><span data-l="es">ofertadas</span></span>
+      <span class="att"><strong id="c-att">25</strong><span data-l="en">booked</span><span data-l="es">ocupadas</span></span>
+      <span class="emp"><strong id="c-empty">15</strong><span data-l="en">free</span><span data-l="es">libres</span></span>
     </div>
-    <figcaption class="small muted" style="margin-top:6px"><span data-l="en">Illustration scaled from 1,500 bookings: 30% attendance.</span><span data-l="es">Ilustración a escala de 1.500 reservas: 30% de asistencia.</span></figcaption>
+    <figcaption class="small muted" style="margin-top:6px"><span data-l="en">Illustration scaled from 2025-26: 61.6% of offered places were booked.</span><span data-l="es">Ilustración a escala de 2025-26: se ocupó el 61,6% de las plazas ofertadas.</span></figcaption>
   </figure>
   </div>
   <div class="kpis">
-    <div class="kpi dark reveal"><b data-count="30.3" data-dec="1" data-suf="%">30.3%</b><span data-l="en">of 1,500 bookings ended in attendance</span><span data-l="es">de 1.500 reservas terminó en asistencia</span></div>
-    <div class="kpi reveal d1"><b data-count="0.49" data-dec="2" data-pre="r = ">r = 0.49</b><span data-l="en">membership tenure vs. attendance, the strongest signal</span><span data-l="es">antigüedad vs. asistencia, la señal más fuerte</span></div>
-    <div class="kpi reveal d2"><b data-count="0.02" data-dec="2" data-pre="r ≈ ">r ≈ 0.02</b><span data-l="en">booking lead time, essentially no linear signal</span><span data-l="es">anticipación de la reserva, sin señal lineal</span></div>
-    <div class="kpi reveal d3"><b data-count="1000">1,000</b><span data-l="en">synthetic member profiles for preference analysis</span><span data-l="es">perfiles sintéticos para analizar preferencias</span></div>
+    <div class="kpi dark reveal"><b data-l="en">27.4%</b><b data-l="es">27,4%</b><span data-l="en">of 2025-26 sessions were fully booked</span><span data-l="es">de las sesiones de 2025-26 se llenó por completo</span></div>
+    <div class="kpi reveal d1"><b data-l="en">61.6%</b><b data-l="es">61,6%</b><span data-l="en">of offered places booked in 2025-26 (47.7% in 2022-23)</span><span data-l="es">de las plazas ofertadas se ocupó en 2025-26 (47,7% en 2022-23)</span></div>
+    <div class="kpi reveal d2"><b data-l="en">AUC 0.81</b><b data-l="es">AUC 0,81</b><span data-l="en">last season's fill rate of the same slot ranks which sessions fill</span><span data-l="es">la tasa de llenado del mismo horario la temporada pasada ordena qué sesiones se llenan</span></div>
+    <div class="kpi reveal d3"><b data-l="en">696,283</b><b data-l="es">696.283</b><span data-l="en">directed class sessions, open data (CC BY 4.0)</span><span data-l="es">sesiones de actividades dirigidas, datos abiertos (CC BY 4.0)</span></div>
   </div>
 </div>
 
@@ -77,20 +78,20 @@
       <div class="section-num reveal">01</div>
       <h2 data-l="en">The operational problem</h2>
       <h2 data-l="es">El problema operativo</h2>
-      <p data-l="en">When a class shows <strong>full</strong>, members join waitlists or give up. When half of those places stay empty, the club has turned members away from capacity it already paid for. Airlines and clinics manage the same tension with no-show forecasting and controlled overbooking, but those tools only work when attendance is measured per session and the forecasts are calibrated.</p>
-      <p data-l="es">Cuando una clase aparece <strong>llena</strong>, los socios entran a lista de espera o desisten. Cuando la mitad de esas plazas queda vacía, el club ha rechazado socios con una capacidad que ya estaba pagando. Aerolíneas y clínicas gestionan esta misma tensión con predicción de no-shows y sobreventa controlada, pero esas herramientas solo funcionan si la asistencia se mide por sesión y las predicciones están calibradas.</p>
-      <p class="muted" data-l="en">This milestone is deliberately descriptive: before predicting anything, establish what the data can and cannot say.</p>
-      <p class="muted" data-l="es">Este hito es deliberadamente descriptivo: antes de predecir nada, hay que establecer qué pueden decir los datos y qué no.</p>
+      <p data-l="en">A timetable is a bet on demand. When a class is <strong>full</strong>, members join a waitlist or give up. When it runs half empty, the centre pays a coach and a room for places nobody wanted. Knowing which sessions fill, and whether that is stable from one season to the next, is the first input for moving, duplicating or dropping classes.</p>
+      <p data-l="es">Un horario es una apuesta sobre la demanda. Cuando una clase está <strong>llena</strong>, los socios entran en lista de espera o desisten. Cuando va medio vacía, el centro paga coach y sala por plazas que nadie quiso. Saber qué sesiones se llenan, y si eso se mantiene de una temporada a otra, es el primer insumo para mover, duplicar o quitar clases.</p>
+      <p class="muted" data-l="en">This milestone is descriptive: it measures booked demand and how predictable it is. It does not measure attendance and makes no causal claims.</p>
+      <p class="muted" data-l="es">Este hito es descriptivo: mide la demanda reservada y qué tan predecible es. No mide asistencia y no hace afirmaciones causales.</p>
     </div>
     <div class="card">
-      <span class="tag" data-l="en">Dataset A · GoalZone</span><span class="tag" data-l="es">Dataset A · GoalZone</span>
-      <h3 style="margin-top:12px" data-l="en">Booked vs. attended</h3><h3 style="margin-top:12px" data-l="es">Reservadas vs. asistidas</h3>
-      <div class="split-bar" role="img" aria-label="454 attended, 1,046 not attended out of 1,500 bookings">
-        <div class="a" style="width:30.3%">454</div>
-        <div class="b"><span data-l="en">1,046 not attended</span><span data-l="es">1.046 sin asistencia</span></div>
+      <span class="tag">Madrid 300076 · CC BY 4.0</span>
+      <h3 style="margin-top:12px" data-l="en">Places offered vs. booked, 2025-26</h3><h3 style="margin-top:12px" data-l="es">Plazas ofertadas vs. ocupadas, 2025-26</h3>
+      <div class="split-bar" role="img" aria-label="61.6% of offered places booked in 2025-26">
+        <div class="a" style="width:61.6%">61.6%</div>
+        <div class="b"><span data-l="en">free</span><span data-l="es">libres</span></div>
       </div>
-      <p class="small muted" data-l="en">1,500 public booking records across HIIT, Cycling, Strength, Yoga and Aqua. Non-attendance mixes cancellations and no-shows; the source cannot separate them.</p>
-      <p class="small muted" data-l="es">1.500 registros públicos de reserva en HIIT, Ciclismo, Fuerza, Yoga y Aqua. La inasistencia mezcla cancelaciones y no-shows; la fuente no permite separarlos.</p>
+      <p class="small muted" data-l="en">192,235 sessions in 2025-26. "Booked" is the source's <em>ocupadas</em>: places taken by a booking, not people counted in the room. A full session is one with every offered place booked.</p>
+      <p class="small muted" data-l="es">192.235 sesiones en 2025-26. "Ocupadas" son plazas tomadas por una reserva, no personas contadas en la sala. Una sesión llena es aquella con todas sus plazas ocupadas.</p>
     </div>
   </div>
 </section>
@@ -98,55 +99,42 @@
 <section id="findings">
   <div class="wrap">
     <div class="section-num reveal">02</div>
-    <h2 data-l="en">What the evidence shows</h2>
-    <h2 data-l="es">Lo que muestra la evidencia</h2>
-    <p class="lead" data-l="en">Every number below comes with an effect size, a bootstrap interval (1,000 resamples) and a plain-language reading in the dashboard.</p>
-    <p class="lead" data-l="es">Cada número viene con un tamaño del efecto, un intervalo bootstrap (1.000 remuestreos) y una lectura en lenguaje simple dentro del dashboard.</p>
+    <h2 data-l="en">What the data shows</h2>
+    <h2 data-l="es">Lo que muestran los datos</h2>
+    <p class="lead" data-l="en">Four seasons, 696,283 sessions. Headline intervals come from a bootstrap that resamples centres, not sessions, because sessions of one centre move together.</p>
+    <p class="lead" data-l="es">Cuatro temporadas, 696.283 sesiones. Los intervalos principales vienen de un bootstrap que remuestrea centros, no sesiones, porque las sesiones de un mismo centro se mueven juntas.</p>
 
     <div class="grid-2" style="margin-top:30px">
       <div class="card">
-        <span class="tag" data-l="en">Finding 1 · Tenure</span><span class="tag" data-l="es">Hallazgo 1 · Antigüedad</span>
-        <h3 style="margin-top:12px" data-l="en">Who attends is mostly about how long they have been a member</h3>
-        <h3 style="margin-top:12px" data-l="es">Quién asiste depende sobre todo de cuánto tiempo lleva como socio</h3>
-        <div class="bars anim-bars" role="img" aria-label="Attendance by tenure band: 1–6 months 3.4%, 7–12 months 15.2%, 13–24 months 40.3%, 25–48 months 69.4%, 49+ months 95.2%">
-          <div class="bar-row"><span><span data-l="en">1–6 months</span><span data-l="es">1–6 meses</span><span class="bar-n">n = 266</span></span><div class="bar-track"><div class="bar-fill" style="width:3.4%"></div></div><span class="bar-val">3.4%</span></div>
-          <div class="bar-row"><span><span data-l="en">7–12 months</span><span data-l="es">7–12 meses</span><span class="bar-n">n = 513</span></span><div class="bar-track"><div class="bar-fill" style="width:15.2%"></div></div><span class="bar-val">15.2%</span></div>
-          <div class="bar-row"><span><span data-l="en">13–24 months</span><span data-l="es">13–24 meses</span><span class="bar-n">n = 496</span></span><div class="bar-track"><div class="bar-fill" style="width:40.3%"></div></div><span class="bar-val">40.3%</span></div>
-          <div class="bar-row"><span><span data-l="en">25–48 months</span><span data-l="es">25–48 meses</span><span class="bar-n">n = 183</span></span><div class="bar-track"><div class="bar-fill" style="width:69.4%"></div></div><span class="bar-val">69.4%</span></div>
-          <div class="bar-row"><span><span data-l="en">49+ months</span><span data-l="es">49+ meses</span><span class="bar-n">n = 42</span></span><div class="bar-track"><div class="bar-fill" style="width:95.2%"></div></div><span class="bar-val">95.2%</span></div>
-        </div>
-        <p class="small muted" data-l="en">Point-biserial r = 0.486 (95% bootstrap 0.452–0.525). A gradient this steep is far stronger than most real-world adherence studies report, so it may partly reflect how this educational dataset was built, and survivorship: long-tenure members are, by definition, the ones who stayed.</p>
-        <p class="small muted" data-l="es">r punto-biserial = 0,486 (bootstrap 95%: 0,452–0,525). Un gradiente tan marcado es mucho más fuerte que lo reportado por la mayoría de estudios reales de adherencia; puede reflejar en parte cómo se construyó este dataset educativo, y el sesgo de supervivencia: los socios antiguos son, por definición, los que se quedaron.</p>
+        <span class="tag" data-l="en">Finding 1 · Time of week</span><span class="tag" data-l="es">Hallazgo 1 · Momento de la semana</span>
+        <h3 style="margin-top:12px" data-l="en">Weekday evenings fill; weekend afternoons almost never do</h3>
+        <h3 style="margin-top:12px" data-l="es">Las tardes-noche entre semana se llenan; las tardes de fin de semana casi nunca</h3>
+        <div class="viz" data-chart="heat"></div>
+        <p class="small muted" data-l="en">Share of sessions fully booked, all seasons. Monday evening 42.4% and Tuesday evening 38.6%, against 1.2% on Saturday afternoon. Demand falls through the week: Friday evening is 18.7%. Hover a cell for its count.</p>
+        <p class="small muted" data-l="es">Porcentaje de sesiones llenas, todas las temporadas. Lunes por la tarde-noche 42,4% y martes 38,6%, frente a 1,2% el sábado por la tarde. La demanda baja a lo largo de la semana: el viernes por la tarde-noche es 18,7%. Pasa el cursor por una celda para ver su conteo.</p>
       </div>
 
       <div class="card">
-        <span class="tag" data-l="en">Finding 2 · Composition</span><span class="tag" data-l="es">Hallazgo 2 · Composición</span>
-        <h3 style="margin-top:12px" data-l="en">Class rankings change once you compare like with like</h3>
-        <h3 style="margin-top:12px" data-l="es">El ranking de clases cambia al comparar grupos equivalentes</h3>
-        <div class="dumbbell" role="img" aria-label="Raw vs tenure-standardized attendance by category. HIIT 31.9 to 32.2, Aqua 32.9 to 31.2, Yoga 31.1 to 29.3, Cycling 29.3 to 29.0, Strength 26.6 to 27.4 percent">
-          <div class="db-row"><span>HIIT</span><div class="db-track"><div class="db-line" style="left:59.5%;width:1.5%"></div><div class="db-dot raw" style="left:59.5%"></div><div class="db-dot adj" style="left:61%" data-from="59.5%" data-to="61%"></div></div></div>
-          <div class="db-row"><span>Aqua</span><div class="db-track"><div class="db-line" style="left:56%;width:8.5%"></div><div class="db-dot raw" style="left:64.5%"></div><div class="db-dot adj" style="left:56%" data-from="64.5%" data-to="56%"></div></div></div>
-          <div class="db-row"><span>Yoga</span><div class="db-track"><div class="db-line" style="left:46.5%;width:9%"></div><div class="db-dot raw" style="left:55.5%"></div><div class="db-dot adj" style="left:46.5%" data-from="55.5%" data-to="46.5%"></div></div></div>
-          <div class="db-row"><span data-l="en">Cycling</span><span data-l="es">Ciclismo</span><div class="db-track"><div class="db-line" style="left:45%;width:1.5%"></div><div class="db-dot raw" style="left:46.5%"></div><div class="db-dot adj" style="left:45%" data-from="46.5%" data-to="45%"></div></div></div>
-          <div class="db-row"><span data-l="en">Strength</span><span data-l="es">Fuerza</span><div class="db-track"><div class="db-line" style="left:33%;width:4%"></div><div class="db-dot raw" style="left:33%"></div><div class="db-dot adj" style="left:37%" data-from="33%" data-to="37%"></div></div></div>
-        </div>
-        <div class="legend"><span><i style="background:var(--soft)"></i><span data-l="en">Raw rate</span><span data-l="es">Tasa bruta</span></span><span><i style="background:var(--green)"></i><span data-l="en">Same tenure mix (direct standardization)</span><span data-l="es">Misma mezcla de antigüedad (estandarización directa)</span></span><span>20% — 40%</span></div>
-        <p class="small muted" style="margin-top:12px" data-l="en">Aqua leads the raw rates; HIIT leads after standardization. Category explains little overall (Cramér’s V = 0.05). Part of what looks like a “class effect” is <em>who</em> books the class.</p>
-        <p class="small muted" style="margin-top:12px" data-l="es">Aqua lidera las tasas brutas; HIIT lidera tras estandarizar. La categoría explica poco en general (V de Cramér = 0,05). Parte de lo que parece un “efecto de la clase” es <em>quién</em> la reserva.</p>
+        <span class="tag" data-l="en">Finding 2 · Activity</span><span class="tag" data-l="es">Hallazgo 2 · Actividad</span>
+        <h3 style="margin-top:12px" data-l="en">What a class is matters more than when it runs</h3>
+        <h3 style="margin-top:12px" data-l="es">Qué clase es importa más que cuándo se da</h3>
+        <div class="viz" data-chart="family"></div>
+        <p class="small muted" data-l="en">Racket conditioning (46.0%) and Pilates (40.2%) fill most often; swimming (9.4%) and outdoor walking and running (4.1%) rarely. The association with being full is moderate for activity (Cramér's V 0.38) and centre (0.22), smaller for time slot (0.18) and weekday (0.12).</p>
+        <p class="small muted" data-l="es">El acondicionamiento de raqueta (46,0%) y Pilates (40,2%) son los que más se llenan; natación (9,4%) y caminar o correr al aire libre (4,1%) casi nunca. La asociación con llenarse es moderada para la actividad (V de Cramér 0,38) y el centro (0,22), y menor para la franja (0,18) y el día (0,12).</p>
       </div>
     </div>
 
     <div class="explorer reveal" id="explorer">
       <div>
         <span class="tag" style="background:#315345;color:#d6ee98" data-l="en">Interactive</span><span class="tag" style="background:#315345;color:#d6ee98" data-l="es">Interactivo</span>
-        <h3 style="margin-top:12px;font-size:28px" data-l="en">Pick a member’s tenure. Watch who shows up.</h3>
-        <h3 style="margin-top:12px;font-size:28px" data-l="es">Elige la antigüedad del socio. Mira quién llega.</h3>
-        <div class="big" aria-live="polite">3.4%</div>
-        <input type="range" min="0" max="4" step="1" value="0" aria-label="Membership tenure band / Banda de antigüedad">
+        <h3 style="margin-top:12px;font-size:28px" data-l="en">Pick how often a slot filled last season. See how often it fills now.</h3>
+        <h3 style="margin-top:12px;font-size:28px" data-l="es">Elige cuánto se llenó un horario la temporada pasada. Mira cuánto se llena ahora.</h3>
+        <div class="big" aria-live="polite"><span data-l="en">5.8%</span><span data-l="es">5,8%</span></div>
+        <input type="range" min="0" max="4" step="1" value="0" aria-label="Last season fill band / Banda de llenado de la temporada pasada">
         <div class="ticks">
-          <button type="button">1–6</button><button type="button">7–12</button><button type="button">13–24</button><button type="button">25–48</button><button type="button">49+</button>
+          <button type="button">0%</button><button type="button">1-25%</button><button type="button">26-50%</button><button type="button">51-75%</button><button type="button">76-100%</button>
         </div>
-        <p class="small soft" style="margin-top:6px" data-l="en">Months of membership</p><p class="small soft" style="margin-top:6px" data-l="es">Meses de membresía</p>
+        <p class="small soft" style="margin-top:6px" data-l="en">Share of the slot's 2024-25 sessions that were full (same centre, activity, weekday and start time)</p><p class="small soft" style="margin-top:6px" data-l="es">Porcentaje de sesiones llenas del horario en 2024-25 (mismo centro, actividad, día y hora de inicio)</p>
       </div>
       <div>
         <div class="crowd" aria-hidden="true"></div>
@@ -157,31 +145,31 @@
     <div class="viz-grid">
       <div class="viz-card reveal">
         <div class="n">3</div>
-        <h3 data-l="en">The AM advantage shrinks and becomes uncertain</h3><h3 data-l="es">La ventaja de la mañana se reduce y se vuelve incierta</h3>
-        <div class="viz" data-chart="ampm"></div>
-        <p class="small muted" data-l="en">AM 31.6% vs. PM 26.2%. With a common tenure mix the gap falls to 4.0 points and the 95% interval crosses zero. Not enough to move classes.</p>
-        <p class="small muted" data-l="es">AM 31,6% vs. PM 26,2%. Con una mezcla común de antigüedad la brecha baja a 4,0 puntos y el intervalo del 95% cruza el cero. No alcanza para mover clases.</p>
+        <h3 data-l="en">Last season's same slot is a strong guide</h3><h3 data-l="es">El mismo horario de la temporada pasada es una buena guía</h3>
+        <div class="viz" data-chart="auc"></div>
+        <p class="small muted" data-l="en">Ranking 2025-26 sessions by the 2024-25 fill rate of the same centre, activity, weekday and start time gives AUC 0.81 (95% centre bootstrap 0.79 to 0.83). Using only activity family, weekday and time slot gives 0.74. Only 54% of sessions had a matching slot the year before.</p>
+        <p class="small muted" data-l="es">Ordenar las sesiones de 2025-26 por la tasa de llenado en 2024-25 del mismo centro, actividad, día y hora de inicio da un AUC de 0,81 (bootstrap por centros al 95%: 0,79 a 0,83). Usar solo familia de actividad, día y franja da 0,74. Solo el 54% de las sesiones tenía un horario equivalente el año anterior.</p>
       </div>
       <div class="viz-card reveal d1">
         <div class="n">4</div>
-        <h3 data-l="en">Booking further ahead doesn’t predict attendance</h3><h3 data-l="es">Reservar con más anticipación no predice asistencia</h3>
-        <div class="viz" data-chart="leadTime"></div>
-        <p class="small muted" data-l="en">r = 0.024 (−0.022 to 0.074). Clinical no-show research finds the opposite, so this is a gap worth testing with real timestamps. Hover a point for its count.</p>
-        <p class="small muted" data-l="es">r = 0,024 (−0,022 a 0,074). La investigación clínica de no-shows encuentra lo contrario: una diferencia que vale la pena probar con marcas de tiempo reales. Pasa el cursor por un punto para ver su conteo.</p>
+        <h3 data-l="en">Demand grew every season</h3><h3 data-l="es">La demanda creció cada temporada</h3>
+        <div class="viz" data-chart="season"></div>
+        <p class="small muted" data-l="en">Fully booked sessions rose from 16.3% in 2022-23 to 27.4% in 2025-26, and the booked share of places from 47.7% to 61.6%. The data cannot say whether demand grew or the offer was trimmed to fit it.</p>
+        <p class="small muted" data-l="es">Las sesiones llenas pasaron de 16,3% en 2022-23 a 27,4% en 2025-26, y la ocupación de plazas de 47,7% a 61,6%. Los datos no permiten saber si creció la demanda o si la oferta se ajustó a ella.</p>
       </div>
       <div class="viz-card reveal">
         <div class="n">5</div>
-        <h3 data-l="en">Weekday patterns are small and fragile</h3><h3 data-l="es">Los patrones por día son pequeños y frágiles</h3>
-        <div class="viz" data-chart="weekday"></div>
-        <p class="small muted" data-l="en">Wednesday stands out (20.7%, n = 116), but the overall association is small (V = 0.07) and schedule cohorts are not sessions.</p>
-        <p class="small muted" data-l="es">El miércoles destaca (20,7%, n = 116), pero la asociación global es pequeña (V = 0,07) y las cohortes de horario no son sesiones.</p>
+        <h3 data-l="en">Autumn and late winter peak; December and summer dip</h3><h3 data-l="es">Picos en otoño y final del invierno; caídas en diciembre y verano</h3>
+        <div class="viz" data-chart="month"></div>
+        <p class="small muted" data-l="en">Share of sessions full by month, all seasons. The month explains little overall (V 0.09), but December and June to August stand out.</p>
+        <p class="small muted" data-l="es">Porcentaje de sesiones llenas por mes, todas las temporadas. El mes explica poco en general (V 0,09), pero diciembre y junio a agosto se notan.</p>
       </div>
       <div class="viz-card reveal d1">
         <div class="n">6</div>
-        <h3 data-l="en">Personal training and classes overlap, but not as cross-sell evidence</h3><h3 data-l="es">El PT y las clases se superponen, pero no prueban venta cruzada</h3>
-        <div class="viz" data-chart="venn"></div>
-        <p class="small muted" data-l="en">1,000 synthetic profiles (CC0). The strongest class pair, Pilates → Yoga, has lift 1.12 with an interval of 0.71–1.53 that includes 1.</p>
-        <p class="small muted" data-l="es">1.000 perfiles sintéticos (CC0). El par de clases más fuerte, Pilates → Yoga, tiene lift 1,12 con intervalo 0,71–1,53 que incluye el 1.</p>
+        <h3 data-l="en">Centres differ a lot</h3><h3 data-l="es">Los centros difieren mucho</h3>
+        <div class="viz" data-chart="centres"></div>
+        <p class="small muted" data-l="en">Across 56 centres with at least 500 sessions in 2025-26, the share of full sessions ranges from 2.1% to 51.8% (median 23.6%; middle 80% between 13.0% and 38.0%).</p>
+        <p class="small muted" data-l="es">En 56 centros con al menos 500 sesiones en 2025-26, el porcentaje de sesiones llenas va de 2,1% a 51,8% (mediana 23,6%; el 80% central entre 13,0% y 38,0%).</p>
       </div>
     </div>
   </div>
@@ -192,12 +180,12 @@
     <div class="section-num reveal">↗</div>
     <h2 class="reveal" data-l="en">Explore every number yourself</h2>
     <h2 class="reveal" data-l="es">Explora cada número por tu cuenta</h2>
-    <p class="lead reveal" data-l="en">Filter cohorts by class, weekday and time. Every coefficient comes with a plain-language meaning, an operational implication and the method behind it.</p>
-    <p class="lead reveal" data-l="es">Filtra cohortes por clase, día y franja. Cada coeficiente viene con su significado en lenguaje simple, su implicación operativa y el método detrás.</p>
+    <p class="lead reveal" data-l="en">Filter by season, activity family and time slot. Every chart recalculates from the published aggregates.</p>
+    <p class="lead reveal" data-l="es">Filtra por temporada, familia de actividad y franja. Cada gráfico se recalcula con los agregados publicados.</p>
     <div class="mock reveal">
       <a class="browser" href="dashboard.html" data-keep-lang aria-label="Open the interactive dashboard">
         <div class="browser-bar"><i></i><i></i><i></i><span>class-capacity-lab.vercel.app/dashboard</span></div>
-        <img data-l="en" src="assets/dashboard.png" width="1440" height="900" alt="Class Capacity Lab dashboard: 30.3% attendance rate, cohort filters and charts" loading="lazy"><img data-l="es" src="assets/dashboard-es.png" width="1440" height="900" alt="Dashboard de Class Capacity Lab: tasa de asistencia del 30,3%, filtros de cohorte y gráficos" loading="lazy">
+        <img data-l="en" src="assets/dashboard.png" width="1440" height="900" alt="Class Capacity Lab dashboard: filters, share of full sessions by weekday and time slot, activity families and centres" loading="lazy"><img data-l="es" src="assets/dashboard-es.png" width="1440" height="900" alt="Dashboard de Class Capacity Lab: filtros, porcentaje de sesiones llenas por día y franja, familias de actividad y centros" loading="lazy">
       </a>
       <div class="mock-cta"><a class="btn primary" href="dashboard.html" data-keep-lang><span data-l="en">Open the live dashboard</span><span data-l="es">Abrir el dashboard en vivo</span> →</a></div>
     </div>
@@ -210,28 +198,28 @@
     <h2 data-l="en">How it was built</h2>
     <h2 data-l="es">Cómo se construyó</h2>
     <div class="pipeline" aria-label="Pipeline">
-      <span data-l="en">3 source files reconciled</span><span data-l="es">3 fuentes conciliadas</span><i>→</i>
-      <span data-l="en">Cleaning &amp; quality log</span><span data-l="es">Limpieza y registro de calidad</span><i>→</i>
-      <span data-l="en">Descriptive rates + Wilson CIs</span><span data-l="es">Tasas descriptivas + IC de Wilson</span><i>→</i>
-      <span data-l="en">Effect sizes + bootstrap</span><span data-l="es">Tamaños del efecto + bootstrap</span><i>→</i>
-      <span data-l="en">Tenure standardization</span><span data-l="es">Estandarización por antigüedad</span><i>→</i>
+      <span data-l="en">4 season files downloaded</span><span data-l="es">4 archivos de temporada descargados</span><i>→</i>
+      <span data-l="en">Directed classes only + quality filters</span><span data-l="es">Solo actividades dirigidas + filtros de calidad</span><i>→</i>
+      <span data-l="en">928 names into 11 families</span><span data-l="es">928 nombres en 11 familias</span><i>→</i>
+      <span data-l="en">Occupancy and full-session rates</span><span data-l="es">Tasas de ocupación y de sesiones llenas</span><i>→</i>
+      <span data-l="en">Season-to-season check</span><span data-l="es">Prueba de temporada a temporada</span><i>→</i>
       <span data-l="en">Offline dashboard</span><span data-l="es">Dashboard offline</span>
     </div>
     <div class="grid-3" style="margin-top:22px">
-      <div class="card"><h3 data-l="en">Right statistic for the data</h3><h3 data-l="es">La estadística adecuada a cada dato</h3>
-        <p class="small muted" data-l="en">Point-biserial correlation for numeric vs. binary; Cramér’s V for categorical, never arbitrary numeric codes for categories. Set-based support, confidence and lift for multi-select preferences.</p>
-        <p class="small muted" data-l="es">Correlación punto-biserial para numérica vs. binaria; V de Cramér para categóricas, nunca códigos numéricos arbitrarios. Soporte, confianza y lift sobre conjuntos para preferencias de selección múltiple.</p></div>
-      <div class="card"><h3 data-l="en">Uncertainty everywhere</h3><h3 data-l="es">Incertidumbre en todo</h3>
-        <p class="small muted" data-l="en">Deterministic 1,000-resample percentile bootstrap for every coefficient, Wilson intervals for rates, small-cell warnings, and intervals withheld when strata are too sparse.</p>
-        <p class="small muted" data-l="es">Bootstrap percentil determinista de 1.000 remuestreos para cada coeficiente, intervalos de Wilson para tasas, alertas de celdas pequeñas e intervalos omitidos cuando los estratos son escasos.</p></div>
-      <div class="card"><h3 data-l="en">Confounding before conclusions</h3><h3 data-l="es">Confusión antes que conclusiones</h3>
-        <p class="small muted" data-l="en">Direct standardization over five tenure strata and a linear partial correlation test whether schedule and lead-time patterns survive once member composition is held constant.</p>
-        <p class="small muted" data-l="es">Estandarización directa en cinco estratos de antigüedad y una correlación parcial lineal comprueban si los patrones de horario y anticipación sobreviven al fijar la composición de socios.</p></div>
+      <div class="card"><h3 data-l="en">Clean before counting</h3><h3 data-l="es">Limpiar antes de contar</h3>
+        <p class="small muted" data-l="en">Only "Actividad dirigida" rows. Sessions with fewer than 5 places, more bookings than places, or in a centre-month that reported zero bookings in every session (52 centre-months, likely reporting gaps) are excluded and logged.</p>
+        <p class="small muted" data-l="es">Solo filas de "Actividad dirigida". Se excluyen y registran las sesiones con menos de 5 plazas, con más ocupadas que plazas o de un centro-mes con cero ocupadas en todas sus sesiones (52 centros-mes, probablemente huecos de registro).</p></div>
+      <div class="card"><h3 data-l="en">Honest uncertainty</h3><h3 data-l="es">Incertidumbre honesta</h3>
+        <p class="small muted" data-l="en">With almost 700,000 sessions, naive intervals would be tiny and misleading. Headline rates and AUCs use a 1,000-resample bootstrap over 60 centres, the unit that actually varies.</p>
+        <p class="small muted" data-l="es">Con casi 700.000 sesiones, los intervalos ingenuos serían diminutos y engañosos. Las tasas y AUC principales usan un bootstrap de 1.000 remuestreos sobre 60 centros, la unidad que de verdad varía.</p></div>
+      <div class="card"><h3 data-l="en">Out-of-season test</h3><h3 data-l="es">Prueba fuera de temporada</h3>
+        <p class="small muted" data-l="en">The predictability check never uses the season it scores: each season is ranked only with the previous one. AUC stays between 0.81 and 0.82 across three season pairs.</p>
+        <p class="small muted" data-l="es">La prueba de predictibilidad nunca usa la temporada que evalúa: cada temporada se ordena solo con la anterior. El AUC se mantiene entre 0,81 y 0,82 en tres pares de temporadas.</p></div>
     </div>
     <div class="callout warn" style="margin-top:28px">
       <strong data-l="en">What this lab does not claim.</strong><strong data-l="es">Lo que este laboratorio no afirma.</strong>
-      <span data-l="en">No causal effects, no fitted prediction model, no utilization figures for a real club and no overbooking recommendation. Dataset B is synthetic and is never merged with Dataset A. The public site ships aggregated counts only; raw GoalZone rows are not redistributed.</span>
-      <span data-l="es">Sin efectos causales, sin modelo predictivo ajustado, sin cifras de utilización de un club real y sin recomendación de sobreventa. El Dataset B es sintético y nunca se combina con el Dataset A. El sitio público solo publica conteos agregados; no se redistribuyen las filas crudas de GoalZone.</span>
+      <span data-l="en">Booked places are not attendance: the source has no show-up or no-show data. No causal effects (a full Pilates class does not mean Pilates causes demand), no fitted production model and no overbooking recommendation. Results describe Madrid's municipal centres and may not transfer to a private club.</span>
+      <span data-l="es">Las plazas ocupadas no son asistencia: la fuente no tiene datos de quién llegó ni de ausencias. Sin efectos causales (que una clase de Pilates se llene no significa que Pilates cause la demanda), sin modelo de producción ajustado y sin recomendación de sobreventa. Los resultados describen los centros municipales de Madrid y pueden no trasladarse a un club privado.</span>
     </div>
   </div>
 </section>
@@ -241,19 +229,19 @@
     <div class="section-num reveal">04</div>
     <h2 data-l="en">With more data: the digital-twin roadmap</h2>
     <h2 data-l="es">Con más datos: la hoja de ruta del gemelo digital</h2>
-    <p class="lead" data-l="en">Each stage unlocks only when a specific kind of data exists. The literature behind each step is in the <a href="evidence.html#agenda" data-keep-lang>scientific discussion</a>.</p>
-    <p class="lead" data-l="es">Cada etapa se desbloquea solo cuando existe un tipo de dato concreto. La literatura detrás de cada paso está en la <a href="evidence.html#agenda" data-keep-lang>discusión científica</a>.</p>
+    <p class="lead" data-l="en">Each stage unlocks only when a specific kind of data exists. The reasoning behind each step is in the <a href="evidence.html#agenda" data-keep-lang>discussion</a>.</p>
+    <p class="lead" data-l="es">Cada etapa se desbloquea solo cuando existe un tipo de dato concreto. El razonamiento detrás de cada paso está en la <a href="evidence.html#agenda" data-keep-lang>discusión</a>.</p>
     <div class="steps stagger">
       <div class="step done"><span class="k" data-l="en">NOW</span><span class="k" data-l="es">AHORA</span><b data-l="en">Observe</b><b data-l="es">Observar</b>
-        <span class="small muted" data-l="en">Public bookings and profiles. Rates, effect sizes, confounding checks.</span><span class="small muted" data-l="es">Reservas y perfiles públicos. Tasas, tamaños del efecto, control de confusión.</span></div>
+        <span class="small muted" data-l="en">Open session data. Booked demand, full sessions, season-to-season predictability.</span><span class="small muted" data-l="es">Datos abiertos por sesión. Demanda reservada, sesiones llenas, predictibilidad entre temporadas.</span></div>
       <div class="step"><span class="k" data-l="en">NEEDS</span><span class="k" data-l="es">REQUIERE</span><b data-l="en">Connect</b><b data-l="es">Conectar</b>
-        <ul><li data-l="en">Session IDs + capacity</li><li data-l="es">IDs de sesión + capacidad</li><li data-l="en">Stable member IDs</li><li data-l="es">IDs estables de socio</li><li data-l="en">Cancellation timestamps</li><li data-l="es">Marcas de tiempo de cancelación</li></ul></div>
+        <ul><li data-l="en">Check-ins per session</li><li data-l="es">Check-ins por sesión</li><li data-l="en">Waitlist length</li><li data-l="es">Largo de la lista de espera</li><li data-l="en">Booking and cancellation times</li><li data-l="es">Horas de reserva y cancelación</li></ul></div>
       <div class="step"><span class="k" data-l="en">NEEDS</span><span class="k" data-l="es">REQUIERE</span><b data-l="en">Predict</b><b data-l="es">Predecir</b>
-        <ul><li data-l="en">Visit history per member</li><li data-l="es">Historial de visitas por socio</li><li data-l="en">Calibrated P(attend)</li><li data-l="es">P(asistir) calibrada</li><li data-l="en">Temporal validation</li><li data-l="es">Validación temporal</li></ul></div>
+        <ul><li data-l="en">Show-up per booking</li><li data-l="es">Asistencia por reserva</li><li data-l="en">Calibrated P(full)</li><li data-l="es">P(llena) calibrada</li><li data-l="en">Temporal validation</li><li data-l="es">Validación temporal</li></ul></div>
       <div class="step"><span class="k" data-l="en">NEEDS</span><span class="k" data-l="es">REQUIERE</span><b data-l="en">Simulate</b><b data-l="es">Simular</b>
-        <ul><li data-l="en">Waitlist events</li><li data-l="es">Eventos de lista de espera</li><li data-l="en">Cost of empty vs. over-full</li><li data-l="es">Costo de plaza vacía vs. sobrecupo</li><li data-l="en">Overbooking scenarios</li><li data-l="es">Escenarios de sobreventa</li></ul></div>
+        <ul><li data-l="en">Room and coach costs</li><li data-l="es">Costos de sala y coach</li><li data-l="en">Cost of empty vs. turned-away</li><li data-l="es">Costo de plaza vacía vs. socio rechazado</li><li data-l="en">Timetable scenarios</li><li data-l="es">Escenarios de horario</li></ul></div>
       <div class="step"><span class="k" data-l="en">NEEDS</span><span class="k" data-l="es">REQUIERE</span><b data-l="en">Decide</b><b data-l="es">Decidir</b>
-        <ul><li data-l="en">Randomized pilots</li><li data-l="es">Pilotos aleatorizados</li><li data-l="en">Reminders, nudges, release rules</li><li data-l="es">Recordatorios, nudges, reglas de liberación</li><li data-l="en">Retention outcomes</li><li data-l="es">Resultados de retención</li></ul></div>
+        <ul><li data-l="en">Randomized timetable pilots</li><li data-l="es">Pilotos aleatorizados de horario</li><li data-l="en">Release and waitlist rules</li><li data-l="es">Reglas de liberación y lista de espera</li><li data-l="en">Retention outcomes</li><li data-l="es">Resultados de retención</li></ul></div>
     </div>
   </div>
 </section>
@@ -264,18 +252,18 @@
       <div class="section-num reveal">05</div>
       <h2 data-l="en">Reproducible by design</h2>
       <h2 data-l="es">Reproducible por diseño</h2>
-      <p class="muted" data-l="en">Python (pandas, pyarrow) builds every table, document and the dashboard from the source CSVs. The dashboard is a single self-contained HTML file with hand-written SVG charts, keyboard-accessible, printable and usable offline. An executed public Kaggle notebook reproduces the association analysis with identical results.</p>
-      <p class="muted" data-l="es">Python (pandas, pyarrow) genera cada tabla, documento y el dashboard a partir de los CSV de origen. El dashboard es un único HTML autocontenido con gráficos SVG hechos a mano, accesible por teclado, imprimible y usable sin conexión. Un notebook público ejecutado en Kaggle reproduce el análisis de asociaciones con resultados idénticos.</p>
-      <div class="cta"><a class="btn" href="https://github.com/victorgomezadapty/class-capacity-lab"><span data-l="en">Source on GitHub</span><span data-l="es">Código en GitHub</span> ↗</a><a class="btn" href="https://www.kaggle.com/code/vctorandrsgmezlpez/class-capacity-lab-group-class-attendance-study"><span data-l="en">Executed notebook on Kaggle</span><span data-l="es">Notebook ejecutado en Kaggle</span> ↗</a></div>
+      <p class="muted" data-l="en">Python (pandas, numpy) downloads the four season files, builds one aggregated slot table and computes every number, table and page from it. The dashboard is a self-contained page with hand-written SVG charts, keyboard-accessible and usable offline. A Kaggle notebook runs the same analysis code offline from the published slot table.</p>
+      <p class="muted" data-l="es">Python (pandas, numpy) descarga los cuatro archivos de temporada, construye una tabla agregada por horario y calcula a partir de ella cada número, tabla y página. El dashboard es una página autocontenida con gráficos SVG hechos a mano, accesible por teclado y usable sin conexión. Un notebook de Kaggle ejecuta el mismo código sin conexión a partir de la tabla publicada.</p>
+      <div class="cta"><a class="btn" href="https://github.com/victorgomezadapty/class-capacity-lab"><span data-l="en">Source on GitHub</span><span data-l="es">Código en GitHub</span> ↗</a></div>
     </div>
     <div class="card">
       <h3 data-l="en">Deliverables</h3><h3 data-l="es">Entregables</h3>
       <ul class="small muted" style="padding-left:18px;margin:8px 0 0">
-        <li data-l="en">Interactive bilingual dashboard with cohort filters</li><li data-l="es">Dashboard interactivo bilingüe con filtros de cohorte</li>
-        <li data-l="en">Data dictionary, quality report and source provenance</li><li data-l="es">Diccionario de datos, informe de calidad y procedencia de fuentes</li>
-        <li data-l="en">Association &amp; tenure notebook</li><li data-l="es">Notebook de asociaciones y antigüedad</li>
-        <li data-l="en">Metric definitions and limitations handoff</li><li data-l="es">Definiciones de métricas y documento de limitaciones</li>
-        <li data-l="en">Real-gym data contract (YAML) for the next milestone</li><li data-l="es">Contrato de datos para un gimnasio real (YAML) para el siguiente hito</li>
+        <li data-l="en">Interactive bilingual dashboard with filters</li><li data-l="es">Dashboard interactivo bilingüe con filtros</li>
+        <li data-l="en">Aggregated slot table (CC BY 4.0, attributed)</li><li data-l="es">Tabla agregada por horario (CC BY 4.0, con atribución)</li>
+        <li data-l="en">Data quality log and data dictionary</li><li data-l="es">Registro de calidad y diccionario de datos</li>
+        <li data-l="en">Analysis notebook, also prepared for Kaggle</li><li data-l="es">Notebook de análisis, también preparado para Kaggle</li>
+        <li data-l="en">Data a club would need for the next milestone</li><li data-l="es">Datos que un club necesitaría para el siguiente hito</li>
       </ul>
     </div>
   </div>
@@ -285,7 +273,7 @@
 <footer>
   <div class="wrap">
     <div><strong>Víctor Gómez</strong> · <span data-l="en">Physiotherapist, data scientist &amp; AI builder</span><span data-l="es">Fisioterapeuta, científico de datos y AI builder</span><br><a href="https://victor-gomez-portfolio.vercel.app">victor-gomez-portfolio.vercel.app</a></div>
-    <div class="small"><span data-l="en">Data: GoalZone public educational dataset (aggregates only) · Gym Membership Dataset by Tarek Adam, CC0, synthetic.</span><span data-l="es">Datos: dataset educativo público GoalZone (solo agregados) · Gym Membership Dataset de Tarek Adam, CC0, sintético.</span></div>
+    <div class="small"><span data-l="en">Data: Ayuntamiento de Madrid, <a href="https://datos.madrid.es/dataset/300076-0-deportes-ocupacion">"Oferta y ocupación de plazas en actividades deportivas dirigidas"</a> (300076), <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Aggregated and reclassified by this project.</span><span data-l="es">Datos: Ayuntamiento de Madrid, <a href="https://datos.madrid.es/dataset/300076-0-deportes-ocupacion">"Oferta y ocupación de plazas en actividades deportivas dirigidas"</a> (300076), <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Agregados y reclasificados por este proyecto.</span></div>
   </div>
 </footer>
 <script src="assets/motion.js" defer></script>

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Class Capacity Lab · Evidence &amp; discussion</title>
+<meta name="title-en" content="Class Capacity Lab · Evidence & discussion">
+<meta name="title-es" content="Class Capacity Lab · Evidencia y discusión">
+<meta name="description" content="A discussion of the Class Capacity Lab findings on Madrid group class sessions: which classes fill, how predictable it is, what booked places cannot tell us, and what richer data would allow.">
+<meta property="og:title" content="Class Capacity Lab · Evidence & discussion">
+<meta property="og:description" content="Booked demand, season-to-season predictability and the limits of open session data, read against the literature on capacity, overbooking and calibration.">
+<meta property="og:image" content="https://class-capacity-lab.vercel.app/assets/og.png">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/motion.css">
+<script src="assets/lang.js"></script>
+<script src="assets/data.js"></script>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html" data-keep-lang><span class="brand-mark" aria-hidden="true">◫</span>Class Capacity Lab</a>
+    <nav class="nav" aria-label="Site">
+      <a href="index.html" data-keep-lang><span data-l="en">Case study</span><span data-l="es">Caso de estudio</span></a>
+      <a href="dashboard.html" data-keep-lang>Dashboard</a>
+      <a href="evidence.html" data-keep-lang aria-current="page"><span data-l="en">Evidence</span><span data-l="es">Evidencia</span></a>
+      <a href="https://github.com/victorgomezadapty/class-capacity-lab">GitHub</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language / Idioma">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap narrow article">
+<div class="hero" style="padding-bottom:0">
+  <div class="eyebrow"><span data-l="en">Evidence &amp; discussion</span><span data-l="es">Evidencia y discusión</span></div>
+  <h1 style="font-size:clamp(34px,5vw,56px)" data-l="en">Offered, booked, full: reading four seasons of Madrid classes</h1>
+  <h1 style="font-size:clamp(34px,5vw,56px)" data-l="es">Ofertadas, ocupadas, llenas: cuatro temporadas de clases en Madrid</h1>
+  <p class="lead" data-l="en">Written as the discussion section of a research article: what we found, how it relates to published work on capacity and prediction, where it is weak, and which studies richer data would make possible.</p>
+  <p class="lead" data-l="es">Escrito como la sección de discusión de un artículo científico: qué encontramos, cómo se relaciona con la literatura sobre capacidad y predicción, dónde es débil y qué estudios serían posibles con datos más ricos.</p>
+  <nav class="toc" aria-label="Contents">
+    <a href="#principal"><span data-l="en">1 · Principal findings</span><span data-l="es">1 · Hallazgos principales</span></a>
+    <a href="#prior"><span data-l="en">2 · Comparison with prior work</span><span data-l="es">2 · Comparación con estudios previos</span></a>
+    <a href="#limits"><span data-l="en">3 · Strengths &amp; limitations</span><span data-l="es">3 · Fortalezas y limitaciones</span></a>
+    <a href="#practice"><span data-l="en">4 · Implications</span><span data-l="es">4 · Implicaciones</span></a>
+    <a href="#agenda"><span data-l="en">5 · Research agenda</span><span data-l="es">5 · Agenda de investigación</span></a>
+    <a href="#refs"><span data-l="en">References</span><span data-l="es">Referencias</span></a>
+  </nav>
+</div>
+
+<div class="abstract">
+  <h3 data-l="en">Summary</h3><h3 data-l="es">Resumen</h3>
+  <p data-l="en">Across {{en:sessions}} directed class sessions in {{en:centres}} Madrid municipal sports centres (September 2022 to August 2026), {{en:occ}} of offered places were booked and {{en:full}} of sessions were fully booked. Both rose every season, reaching {{en:l_occ}} and {{en:l_full}} in 2025-26 (95% centre bootstrap {{en:l_full_lo}} to {{en:l_full_hi}} for full sessions). Being full was most associated with the activity (Cramér's V {{en:v_activity}}) and the centre ({{en:v_centre}}), less with the time slot ({{en:v_slot}}) and weekday ({{en:v_weekday}}). A recurring slot's fill rate in one season ranked the next season's sessions well (AUC {{en:auc_min}} to {{en:auc_max}} across three season pairs). Because the source counts booked places and not people in the room, these results describe demand for places, not attendance.</p>
+  <p data-l="es">En {{es:sessions}} sesiones de actividades dirigidas de {{es:centres}} centros deportivos municipales de Madrid (septiembre de 2022 a agosto de 2026), se ocupó el {{es:occ}} de las plazas ofertadas y el {{es:full}} de las sesiones se llenó por completo. Ambas cifras subieron cada temporada hasta {{es:l_occ}} y {{es:l_full}} en 2025-26 (bootstrap por centros al 95%: {{es:l_full_lo}} a {{es:l_full_hi}} para sesiones llenas). Llenarse se asoció sobre todo con la actividad (V de Cramér {{es:v_activity}}) y el centro ({{es:v_centre}}), y menos con la franja ({{es:v_slot}}) y el día ({{es:v_weekday}}). La tasa de llenado de un horario recurrente en una temporada ordenó bien las sesiones de la siguiente (AUC {{es:auc_min}} a {{es:auc_max}} en tres pares de temporadas). Como la fuente cuenta plazas ocupadas y no personas en la sala, estos resultados describen demanda de plazas, no asistencia.</p>
+</div>
+
+<span id="principal" style="display:block;scroll-margin-top:80px"></span>
+<h2 data-l="en">1. Principal findings</h2>
+<h2 data-l="es">1. Hallazgos principales</h2>
+<p data-l="en">Three results carry most of the information. First, <strong>full sessions are concentrated</strong>: weekday evenings early in the week (Monday {{en:mon_eve}}, Tuesday {{en:tue_eve}}) and a few activities (racket conditioning {{en:racket}}, Pilates {{en:pilates}}) fill far more often than weekend afternoons ({{en:sat_aft}} on Saturday) or swimming ({{en:swimming}}). Second, <strong>where and what matter more than when</strong>: activity and centre are more strongly associated with being full than weekday or month. Third, <strong>fullness is persistent</strong>: the occupancy of a recurring slot correlates {{en:pers_min}} to {{en:pers_max}} from one season to the next, and last season's fill rate ranks this season's sessions with AUC {{en:auc}}.</p>
+<p data-l="es">Tres resultados concentran la mayor parte de la información. Primero, <strong>las sesiones llenas están concentradas</strong>: las tardes-noche de inicio de semana (lunes {{es:mon_eve}}, martes {{es:tue_eve}}) y unas pocas actividades (acondicionamiento de raqueta {{es:racket}}, Pilates {{es:pilates}}) se llenan mucho más que las tardes de fin de semana ({{es:sat_aft}} el sábado) o la natación ({{es:swimming}}). Segundo, <strong>dónde y qué importan más que cuándo</strong>: la actividad y el centro se asocian más con llenarse que el día o el mes. Tercero, <strong>llenarse es persistente</strong>: la ocupación de un horario recurrente se correlaciona entre {{es:pers_min}} y {{es:pers_max}} de una temporada a la siguiente, y la tasa de llenado de la temporada pasada ordena las sesiones de la actual con un AUC de {{es:auc}}.</p>
+<p data-l="en">A fourth pattern is less obvious: some families combine many full sessions with many empty ones. Cross training and functional sessions had zero bookings {{en:cross_empty}} of the time, against {{en:pilates_empty}} for Pilates, which suggests open-access or low-demand sessions grouped under the same label. The activity name alone does not describe how a session is run.</p>
+<p data-l="es">Un cuarto patrón es menos evidente: algunas familias combinan muchas sesiones llenas con muchas vacías. Las sesiones de cross training y funcional tuvieron cero ocupadas el {{es:cross_empty}} de las veces, frente al {{es:pilates_empty}} en Pilates, lo que sugiere sesiones de acceso libre o de baja demanda agrupadas bajo la misma etiqueta. El nombre de la actividad no describe por sí solo cómo se organiza una sesión.</p>
+
+<span id="prior" style="display:block;scroll-margin-top:80px"></span>
+<h2 data-l="en">2. Comparison with prior work</h2>
+<h2 data-l="es">2. Comparación con estudios previos</h2>
+
+<h3 data-l="en">2.1 Booked is not attended</h3>
+<h3 data-l="es">2.1 Reservado no es asistido</h3>
+<p data-l="en">The closest quantitative literature on the gap between booking and showing up comes from healthcare scheduling. A systematic review of 105 studies estimated an average no-show rate of about 23% and identified long lead time and prior no-show history as the most commonly reported determinants.<sup><a href="#r1">1</a></sup> The Madrid files record places taken by a booking, so a "full" session here can still have empty mats if members cancel late or do not come. Every occupancy figure in this lab is therefore an upper bound on use of the room.</p>
+<p data-l="es">La literatura cuantitativa más cercana sobre la brecha entre reservar y llegar proviene de la programación de citas en salud. Una revisión sistemática de 105 estudios estimó una tasa media de no-show de alrededor del 23% e identificó la anticipación larga y el historial previo de no-shows como los determinantes reportados con más frecuencia.<sup><a href="#r1">1</a></sup> Los archivos de Madrid registran plazas tomadas por una reserva, así que una sesión "llena" aquí puede tener colchonetas vacías si los socios cancelan tarde o no llegan. Por eso cada cifra de ocupación de este laboratorio es un límite superior del uso real de la sala.</p>
+
+<h3 data-l="en">2.2 Why the class matters more than the hour</h3>
+<h3 data-l="es">2.2 Por qué la clase importa más que la hora</h3>
+<p data-l="en">Activity was the factor most associated with being full. That is compatible with meta-analytic evidence that group format alone is not what drives participation; the advantage appeared for "true groups" that deliberately use group-dynamics strategies such as shared goals and social interaction.<sup><a href="#r2">2</a></sup> In this data the activity label also bundles room size, equipment and how many places are offered, so a high fill rate can mean popular content or a small room. Separating those requires capacity and room data that the source does not describe.</p>
+<p data-l="es">La actividad fue el factor más asociado con llenarse. Esto es compatible con evidencia metaanalítica de que el formato grupal por sí solo no es lo que impulsa la participación; la ventaja apareció en los "grupos reales" que usan deliberadamente estrategias de dinámica de grupo, como metas compartidas e interacción social.<sup><a href="#r2">2</a></sup> En estos datos, la etiqueta de actividad también agrupa tamaño de sala, equipamiento y número de plazas ofertadas, así que una tasa de llenado alta puede significar contenido popular o una sala pequeña. Separar eso requiere datos de capacidad y de sala que la fuente no describe.</p>
+
+<h3 data-l="en">2.3 Predictable demand, and what it does not prove</h3>
+<h3 data-l="es">2.3 Demanda predecible, y lo que no demuestra</h3>
+<p data-l="en">A recurring slot's history ranked next season's full sessions with AUC {{en:auc}} (95% centre bootstrap {{en:auc_lo}} to {{en:auc_hi}}), clearly above a coarser rule that only knows the activity family, weekday and time slot ({{en:auc_fam}}). Discrimination is only half of a forecast. The figure below shows calibration: slots that were never full in 2024-25 were full {{en:cal0}} of the time in 2025-26, and slots full more than three quarters of the time were full {{en:cal4}} of the time. Observed rates sit close to the bands, with some pull towards the middle at both ends. That is reasonable calibration for a rule with no fitted parameters, but overall demand rose every season, so a real forecast would have to be rechecked each season; miscalibration is the failure that calibration reviews warn about most.<sup><a href="#r4">4</a></sup> Persistence is not causation either: a slot can stay full because the same regulars rebook it, not because its hour or activity creates demand.<sup><a href="#r5">5</a></sup></p>
+<p data-l="es">La historia de un horario recurrente ordenó las sesiones llenas de la temporada siguiente con un AUC de {{es:auc}} (bootstrap por centros al 95%: {{es:auc_lo}} a {{es:auc_hi}}), claramente por encima de una regla más gruesa que solo conoce la familia de actividad, el día y la franja ({{es:auc_fam}}). La discriminación es solo la mitad de una predicción. La figura muestra la calibración: los horarios que nunca se llenaron en 2024-25 se llenaron el {{es:cal0}} de las veces en 2025-26, y los que se llenaron más de tres cuartas partes de las veces se llenaron el {{es:cal4}}. Las tasas observadas quedan cerca de las bandas, con algo de atracción hacia el centro en ambos extremos. Es una calibración razonable para una regla sin parámetros ajustados, pero la demanda global subió cada temporada, así que una predicción real tendría que revisarse cada temporada; la mala calibración es el fallo sobre el que más advierten las revisiones de calibración.<sup><a href="#r4">4</a></sup> La persistencia tampoco es causalidad: un horario puede seguir lleno porque los mismos habituales vuelven a reservarlo, no porque su hora o actividad cree la demanda.<sup><a href="#r5">5</a></sup></p>
+<figure class="figure reveal">
+  <p class="fig-title" data-l="en">Figure 1 · Last season as a forecast</p><p class="fig-title" data-l="es">Figura 1 · La temporada pasada como predicción</p>
+  <p class="fig-sub" data-l="en">2025-26 sessions grouped by how often the same slot (centre, activity, weekday, start time) was full in 2024-25. Only sessions with a matching slot ({{en:covered}}, {{en:coverage}}).</p>
+  <p class="fig-sub" data-l="es">Sesiones de 2025-26 agrupadas según cuánto se llenó el mismo horario (centro, actividad, día, hora de inicio) en 2024-25. Solo sesiones con horario equivalente ({{es:covered}}, {{es:coverage}}).</p>
+  <div class="viz" data-fig="calib"></div>
+  <figcaption data-l="en">Slots without a match in the previous season (new classes, renamed activities, moved times) are not scored. A real forecast would need a rule for them.</figcaption>
+  <figcaption data-l="es">Los horarios sin equivalente en la temporada anterior (clases nuevas, actividades renombradas, horas cambiadas) no se evalúan. Una predicción real necesitaría una regla para ellos.</figcaption>
+</figure>
+
+<h3 data-l="en">2.4 Capacity, overbooking and calibration</h3>
+<h3 data-l="es">2.4 Capacidad, sobreventa y calibración</h3>
+<p data-l="en">Revenue management treats overbooking as setting a booking limit above physical capacity to hedge against cancellations and no-shows.<sup><a href="#r3">3</a></sup> In outpatient clinics, simulation showed that overbooking can improve access and productivity, but at the cost of longer waits and overtime, and that it helps most when no-show rates are high and service times vary little.<sup><a href="#r6">6</a></sup> A group class resembles that favourable case: fixed duration, many interchangeable places. But overbooking is only as safe as the show-up probabilities behind it, and this source has none. The simulator below makes the trade-off visible with a probability you choose.</p>
+<p data-l="es">La gestión de ingresos (revenue management) trata la sobreventa como fijar un límite de reservas por encima de la capacidad física para cubrirse frente a cancelaciones y no-shows.<sup><a href="#r3">3</a></sup> En consultas externas, la simulación mostró que la sobreventa puede mejorar el acceso y la productividad, pero a costa de esperas más largas y horas extra, y que ayuda más cuando las tasas de no-show son altas y la duración del servicio varía poco.<sup><a href="#r6">6</a></sup> Una clase grupal se parece a ese caso favorable: duración fija y muchas plazas intercambiables. Pero la sobreventa solo es tan segura como las probabilidades de asistencia que la respaldan, y esta fuente no tiene ninguna. El simulador hace visible el dilema con una probabilidad que eliges tú.</p>
+
+<figure class="figure reveal" id="simulator">
+  <p class="fig-title" data-l="en">Interactive · The overbooking trade-off</p><p class="fig-title" data-l="es">Interactivo · El dilema de la sobreventa</p>
+  <p class="fig-sub" data-l="en">Move the sliders. Bars show the probability of each number of attendees; orange bars exceed capacity.</p>
+  <p class="fig-sub" data-l="es">Mueve los controles. Las barras muestran la probabilidad de cada número de asistentes; las naranjas superan la capacidad.</p>
+  <div class="sim-controls">
+    <label><span data-l="en">Class capacity</span><span data-l="es">Capacidad de la clase</span>: <output id="o-cap">20</output><input id="sim-cap" type="range" min="8" max="40" value="20"></label>
+    <label><span data-l="en">Assumed chance each booking attends</span><span data-l="es">Probabilidad supuesta de que cada reserva asista</span>: <output id="o-p">60%</output><input id="sim-p" type="range" min="20" max="95" value="60"></label>
+    <label style="grid-column:1/-1"><span data-l="en">Bookings accepted (booking limit)</span><span data-l="es">Reservas aceptadas (límite de reservas)</span>: <output id="o-lim">28</output><input id="sim-lim" type="range" min="20" max="40" value="28"></label>
+  </div>
+  <div class="viz in"></div>
+  <div class="sim-stats">
+    <div><b id="s-exp">16.8</b><span data-l="en">expected attendees</span><span data-l="es">asistentes esperados</span></div>
+    <div><b id="s-empty">3.6</b><span data-l="en">expected empty places</span><span data-l="es">plazas vacías esperadas</span></div>
+    <div><b id="s-over">2%</b><span data-l="en">chance the class is over capacity</span><span data-l="es">probabilidad de sobrecupo</span></div>
+  </div>
+  <figcaption data-l="en">Illustrative model with assumed values: each booking attends independently with the same probability (binomial). The Madrid data has no show-up information, so the probability is yours to choose, not an estimate. Real members differ, which is why calibrated, per-booking probabilities matter <sup><a href="#r4">4</a></sup>. This is not a recommendation for any centre.</figcaption>
+  <figcaption data-l="es">Modelo ilustrativo con valores supuestos: cada reserva asiste de forma independiente con la misma probabilidad (binomial). Los datos de Madrid no tienen información de asistencia, así que la probabilidad la eliges tú, no es una estimación. Los socios reales difieren; por eso importan las probabilidades calibradas por reserva <sup><a href="#r4">4</a></sup>. No es una recomendación para ningún centro.</figcaption>
+</figure>
+<span id="limits" style="display:block;scroll-margin-top:80px"></span>
+<h2 data-l="en">3. Strengths and limitations</h2>
+<h2 data-l="es">3. Fortalezas y limitaciones</h2>
+<p data-l="en"><strong>Strengths.</strong> Open, session-level public data (CC BY 4.0) with four complete seasons; every exclusion is logged; intervals resample centres rather than treating {{en:sessions}} sessions as independent; predictability is tested only on seasons the rule has not seen; and the same code produces the site, the tables and the notebook.</p>
+<p data-l="es"><strong>Fortalezas.</strong> Datos públicos abiertos por sesión (CC BY 4.0) con cuatro temporadas completas; cada exclusión queda registrada; los intervalos remuestrean centros en vez de tratar {{es:sessions}} sesiones como independientes; la predictibilidad se prueba solo en temporadas que la regla no ha visto; y el mismo código genera el sitio, las tablas y el notebook.</p>
+<p data-l="en"><strong>Limitations.</strong> (i) Booked places, not attendance: no check-ins, no cancellations, no no-shows. (ii) No waitlist data, so a full session hides how much demand was turned away; the full-session rate understates unmet demand. (iii) 928 activity names were grouped into 11 families with keyword rules written for this project; about 3% fall in "Other" and some labels are ambiguous. (iv) 52 centre-months with zero bookings in every session were excluded as probable reporting gaps; if some were real closures with offered places, occupancy is slightly overstated. (v) Municipal centres with public pricing may not resemble private clubs.</p>
+<p data-l="es"><strong>Limitaciones.</strong> (i) Plazas ocupadas, no asistencia: no hay check-ins, cancelaciones ni no-shows. (ii) No hay datos de lista de espera, así que una sesión llena oculta cuánta demanda quedó fuera; la tasa de sesiones llenas subestima la demanda no atendida. (iii) 928 nombres de actividad se agruparon en 11 familias con reglas de palabras clave escritas para este proyecto; cerca del 3% queda en "Otras" y algunas etiquetas son ambiguas. (iv) Se excluyeron 52 centros-mes con cero ocupadas en todas sus sesiones como probables huecos de registro; si alguno fue un cierre real con plazas ofertadas, la ocupación queda algo sobreestimada. (v) Los centros municipales con precios públicos pueden no parecerse a clubes privados.</p>
+
+<span id="practice" style="display:block;scroll-margin-top:80px"></span>
+<h2 data-l="en">4. Implications for practice</h2>
+<h2 data-l="es">4. Implicaciones para la práctica</h2>
+<ul>
+  <li data-l="en"><strong>Start from the slot's own history.</strong> Last season's fill rate of the same slot is a cheap, transparent first ranking for timetable reviews.</li>
+  <li data-l="es"><strong>Partir de la historia del propio horario.</strong> La tasa de llenado del mismo horario la temporada pasada es un primer orden barato y transparente para revisar horarios.</li>
+  <li data-l="en"><strong>Recheck every season.</strong> Demand rose each year, so last season's rates should be compared with what actually happened before they are trusted again.</li>
+  <li data-l="es"><strong>Revisar cada temporada.</strong> La demanda subió cada año, así que las tasas de la temporada pasada deben compararse con lo que realmente pasó antes de volver a confiar en ellas.</li>
+  <li data-l="en"><strong>Measure the funnel per session</strong>: offered, booked, cancelled, attended, waitlisted. Without check-ins and waitlists, "full" classes cannot be audited.</li>
+  <li data-l="es"><strong>Medir el embudo por sesión</strong>: ofertadas, reservadas, canceladas, asistidas, en lista de espera. Sin check-ins ni listas de espera, las clases "llenas" no se pueden auditar.</li>
+  <li data-l="en"><strong>Test, don't assume.</strong> Moving or duplicating a popular class changes who books it. Timetable changes should be piloted, ideally with randomization across centres.</li>
+  <li data-l="es"><strong>Probar, no asumir.</strong> Mover o duplicar una clase popular cambia quién la reserva. Los cambios de horario deben pilotarse, idealmente con aleatorización entre centros.</li>
+</ul>
+
+<span id="agenda" style="display:block;scroll-margin-top:80px"></span>
+<h2 data-l="en">5. Research agenda: what more data would make possible</h2>
+<h2 data-l="es">5. Agenda de investigación: qué permitirían más datos</h2>
+<p data-l="en">Each question below is paired with the minimum data required and a suitable design. They map onto the Connect, Predict, Simulate and Decide stages of the digital twin.</p>
+<p data-l="es">Cada pregunta se acompaña de los datos mínimos necesarios y un diseño adecuado. Corresponden a las etapas Conectar, Predecir, Simular y Decidir del gemelo digital.</p>
+<div class="table-wrap" style="max-width:none">
+<table>
+  <thead><tr>
+    <th><span data-l="en">Question</span><span data-l="es">Pregunta</span></th>
+    <th><span data-l="en">Data needed</span><span data-l="es">Datos necesarios</span></th>
+    <th><span data-l="en">Design or method</span><span data-l="es">Diseño o método</span></th>
+  </tr></thead>
+  <tbody>
+    <tr><td><span data-l="en">How many booked places are actually used?</span><span data-l="es">¿Cuántas plazas reservadas se usan de verdad?</span></td><td><span data-l="en">Check-ins per session</span><span data-l="es">Check-ins por sesión</span></td><td><span data-l="en">Descriptive funnel, per session</span><span data-l="es">Embudo descriptivo por sesión</span></td></tr>
+    <tr><td><span data-l="en">How much demand does a full class turn away?</span><span data-l="es">¿Cuánta demanda deja fuera una clase llena?</span></td><td><span data-l="en">Waitlist events and outcomes</span><span data-l="es">Eventos y resultados de lista de espera</span></td><td><span data-l="en">Censored-demand estimation</span><span data-l="es">Estimación de demanda censurada</span></td></tr>
+    <tr><td><span data-l="en">Can P(full) be forecast and calibrated?</span><span data-l="es">¿Se puede predecir y calibrar P(llena)?</span></td><td><span data-l="en">This data plus timetable changes</span><span data-l="es">Estos datos más cambios de horario</span></td><td><span data-l="en">Temporal validation, calibration curves <sup><a href="#r4">4</a></sup></span><span data-l="es">Validación temporal, curvas de calibración <sup><a href="#r4">4</a></sup></span></td></tr>
+    <tr><td><span data-l="en">How many extra places can be released safely?</span><span data-l="es">¿Cuántas plazas extra se pueden liberar con seguridad?</span></td><td><span data-l="en">Show-up per booking, cost of empty vs. over-full</span><span data-l="es">Asistencia por reserva, costo de plaza vacía vs. sobrecupo</span></td><td><span data-l="en">Overbooking models <sup><a href="#r3">3</a>,<a href="#r6">6</a></sup></span><span data-l="es">Modelos de sobreventa <sup><a href="#r3">3</a>,<a href="#r6">6</a></sup></span></td></tr>
+    <tr><td><span data-l="en">Does moving a class change total demand or just shift it?</span><span data-l="es">¿Mover una clase cambia la demanda total o solo la desplaza?</span></td><td><span data-l="en">Planned timetable changes across centres</span><span data-l="es">Cambios de horario planificados entre centros</span></td><td><span data-l="en">Randomized or staggered rollout <sup><a href="#r5">5</a></sup></span><span data-l="es">Despliegue aleatorizado o escalonado <sup><a href="#r5">5</a></sup></span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<span id="conclusion" style="display:block;scroll-margin-top:80px"></span>
+<h2 data-l="en">6. Conclusion</h2>
+<h2 data-l="es">6. Conclusión</h2>
+<p data-l="en">In open data from Madrid's municipal centres, a minority of group class sessions fill, they are concentrated in a few activities and early-week evenings, and they are predictable from the slot's own history. That is enough to prioritise a timetable review. It is not enough to set booking limits: that needs show-up data, waitlists and calibrated probabilities.</p>
+<p data-l="es">En los datos abiertos de los centros municipales de Madrid, una minoría de las sesiones de clases grupales se llena, se concentra en pocas actividades y en las tardes-noche de inicio de semana, y es predecible a partir de la historia del propio horario. Eso basta para priorizar una revisión de horarios. No basta para fijar límites de reserva: para eso hacen falta datos de asistencia, listas de espera y probabilidades calibradas.</p>
+
+<span id="refs" style="display:block;scroll-margin-top:80px"></span>
+<h2 data-l="en">References</h2>
+<h2 data-l="es">Referencias</h2>
+<ol class="refs">
+  <li id="r1">Dantas LF, Fleck JL, Cyrino Oliveira FL, Hamacher S. No-shows in appointment scheduling: a systematic literature review. <em>Health Policy</em>. 2018;122(4):412-421. <a href="https://doi.org/10.1016/j.healthpol.2018.02.002">doi:10.1016/j.healthpol.2018.02.002</a></li>
+  <li id="r2">Burke SM, Carron AV, Eys MA, Ntoumanis N, Estabrooks PA. Group versus individual approach? A meta-analysis of the effectiveness of interventions to promote physical activity. <em>Sport Exerc Psychol Rev</em>. 2006;2(1):19-35. <a href="https://research.birmingham.ac.uk/en/publications/group-versus-individual-approach-a-meta-analysis-of-the-effective/">University of Birmingham record</a></li>
+  <li id="r3">Talluri KT, van Ryzin GJ. <em>The Theory and Practice of Revenue Management</em>, ch. 4 "Overbooking". New York: Springer; 2004. <a href="https://doi.org/10.1007/978-0-387-27391-4_4">doi:10.1007/978-0-387-27391-4_4</a></li>
+  <li id="r4">Van Calster B, McLernon DJ, van Smeden M, Wynants L, Steyerberg EW. Calibration: the Achilles heel of predictive analytics. <em>BMC Med</em>. 2019;17:230. <a href="https://doi.org/10.1186/s12916-019-1466-7">doi:10.1186/s12916-019-1466-7</a></li>
+  <li id="r5">Hernán MA, Robins JM. <em>Causal Inference: What If</em>. Boca Raton: Chapman &amp; Hall/CRC; 2020. <a href="https://miguelhernan.org/whatifbook">miguelhernan.org/whatifbook</a></li>
+  <li id="r6">LaGanga LR, Lawrence SR. Clinic overbooking to improve patient access and increase provider productivity. <em>Decis Sci</em>. 2007;38(2):251-276. <a href="https://doi.org/10.1111/j.1540-5915.2007.00158.x">doi:10.1111/j.1540-5915.2007.00158.x</a></li>
+</ol>
+<p class="small muted" data-l="en">Data: Ayuntamiento de Madrid, <a href="https://datos.madrid.es/dataset/300076-0-deportes-ocupacion">"Oferta y ocupación de plazas en actividades deportivas dirigidas"</a>, dataset 300076, licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. This project filtered, reclassified and aggregated the source; the Ayuntamiento does not endorse it. Literature figures were checked against abstracts and publisher records in October 2026; the lab's own numbers come from the reproducible pipeline in the GitHub repository.</p>
+<p class="small muted" data-l="es">Datos: Ayuntamiento de Madrid, <a href="https://datos.madrid.es/dataset/300076-0-deportes-ocupacion">"Oferta y ocupación de plazas en actividades deportivas dirigidas"</a>, dataset 300076, licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Este proyecto filtró, reclasificó y agregó la fuente; el Ayuntamiento no lo respalda. Las cifras de la literatura se verificaron contra resúmenes y registros editoriales en octubre de 2026; los números propios del laboratorio provienen del pipeline reproducible del repositorio de GitHub.</p>
+</main>
+
+<footer style="margin-top:60px">
+  <div class="wrap">
+    <div><strong>Víctor Gómez</strong> · <a href="https://victor-gomez-portfolio.vercel.app">victor-gomez-portfolio.vercel.app</a></div>
+    <div class="small"><a href="index.html" data-keep-lang><span data-l="en">← Back to the case study</span><span data-l="es">← Volver al caso de estudio</span></a></div>
+  </div>
+</footer>
+<script src="assets/motion.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Class Capacity Lab · Dashboard</title>
+<meta name="title-en" content="Class Capacity Lab · Dashboard">
+<meta name="title-es" content="Class Capacity Lab · Dashboard">
+<meta name="description" content="Interactive dashboard: occupancy and full sessions of {{en:sessions}} Madrid group class sessions by season, activity family, weekday, time slot, month and centre.">
+<meta property="og:title" content="Class Capacity Lab · Dashboard">
+<meta property="og:image" content="https://class-capacity-lab.vercel.app/assets/og.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/motion.css">
+<script src="assets/lang.js"></script>
+<script src="assets/data.js"></script>
+<style>
+.dash{padding:28px 0 60px}
+.dash h1{font-size:clamp(28px,4vw,42px);margin:6px 0 8px}
+.filters{display:flex;flex-wrap:wrap;gap:14px;margin:18px 0 22px;align-items:end}
+.filters label{font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.filters select{font:14px var(--sans);padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);min-width:180px}
+.dkpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.dkpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.dkpi b{display:block;font-size:30px;font-variant-numeric:tabular-nums;color:var(--green)}
+.dkpi span{font-size:13px;color:var(--muted)}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;position:relative}
+.panel h3{margin:0 0 4px;font-size:17px}
+.panel p{margin:0 0 10px}
+.panel svg{width:100%;height:auto;display:block}
+table.ct{width:100%;border-collapse:collapse;font-size:13px}
+table.ct th,table.ct td{padding:5px 6px;border-bottom:1px solid var(--line);text-align:right}
+table.ct th:first-child,table.ct td:first-child{text-align:left}
+@media(max-width:860px){.dkpis{grid-template-columns:1fr 1fr}.dgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html" data-keep-lang><span class="brand-mark" aria-hidden="true">◫</span>Class Capacity Lab</a>
+    <nav class="nav" aria-label="Site">
+      <a href="index.html" data-keep-lang><span data-l="en">Case study</span><span data-l="es">Caso de estudio</span></a>
+      <a href="dashboard.html" data-keep-lang aria-current="page">Dashboard</a>
+      <a href="evidence.html" data-keep-lang><span data-l="en">Evidence</span><span data-l="es">Evidencia</span></a>
+      <a href="https://github.com/victorgomezadapty/class-capacity-lab">GitHub</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language / Idioma">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+</header>
+<main class="wrap dash">
+  <div class="eyebrow"><span data-l="en">Dashboard · Madrid directed classes, 2022-23 to 2025-26</span><span data-l="es">Dashboard · Actividades dirigidas de Madrid, 2022-23 a 2025-26</span></div>
+  <h1 data-l="en">Which group classes fill up?</h1><h1 data-l="es">¿Qué clases grupales se llenan?</h1>
+  <p class="muted" data-l="en">Booked places, not attendance. A session is full when every offered place was booked. Aggregates of {{en:sessions}} sessions; source: Ayuntamiento de Madrid, dataset 300076, CC BY 4.0.</p>
+  <p class="muted" data-l="es">Plazas ocupadas, no asistencia. Una sesión está llena cuando se ocuparon todas sus plazas ofertadas. Agregados de {{es:sessions}} sesiones; fuente: Ayuntamiento de Madrid, dataset 300076, CC BY 4.0.</p>
+  <div class="filters">
+    <label><span data-l="en">Season</span><span data-l="es">Temporada</span><select id="f-season"></select></label>
+    <label><span data-l="en">Activity family</span><span data-l="es">Familia de actividad</span><select id="f-family"></select></label>
+    <label><span data-l="en">Time slot</span><span data-l="es">Franja</span><select id="f-slot"></select></label>
+  </div>
+  <div class="dkpis">
+    <div class="dkpi"><b id="k-s">0</b><span data-l="en">sessions</span><span data-l="es">sesiones</span></div>
+    <div class="dkpi"><b id="k-o">0</b><span data-l="en">of offered places booked</span><span data-l="es">de plazas ofertadas ocupadas</span></div>
+    <div class="dkpi"><b id="k-f">0</b><span data-l="en">of sessions full</span><span data-l="es">de sesiones llenas</span></div>
+    <div class="dkpi"><b id="k-e">0</b><span data-l="en">of sessions with zero bookings</span><span data-l="es">de sesiones sin ninguna reserva</span></div>
+  </div>
+  <div class="dgrid">
+    <div class="panel"><h3 data-l="en">Full sessions by weekday and time slot</h3><h3 data-l="es">Sesiones llenas por día y franja</h3><p class="small muted" data-l="en">Time slot filter not applied here.</p><p class="small muted" data-l="es">Aquí no se aplica el filtro de franja.</p><div id="c-heat"></div></div>
+    <div class="panel"><h3 data-l="en">Full sessions by activity family</h3><h3 data-l="es">Sesiones llenas por familia de actividad</h3><p class="small muted" data-l="en">Family filter not applied here. Light bar: places booked.</p><p class="small muted" data-l="es">Aquí no se aplica el filtro de familia. Barra clara: plazas ocupadas.</p><div id="c-fam"></div></div>
+    <div class="panel"><h3 data-l="en">Full sessions by month</h3><h3 data-l="es">Sesiones llenas por mes</h3><p class="small muted" data-l="en">Time slot filter not applied here.</p><p class="small muted" data-l="es">Aquí no se aplica el filtro de franja.</p><div id="c-month"></div></div>
+    <div class="panel"><h3 data-l="en">Full sessions by season</h3><h3 data-l="es">Sesiones llenas por temporada</h3><p class="small muted" data-l="en">Season filter not applied here.</p><p class="small muted" data-l="es">Aquí no se aplica el filtro de temporada.</p><div id="c-season"></div></div>
+    <div class="panel"><h3 data-l="en">Does last season predict this one?</h3><h3 data-l="es">¿La temporada pasada predice la actual?</h3><p class="small muted" data-l="en">AUC for ranking each season's sessions by the previous season's fill rate. Fixed, not filtered.</p><p class="small muted" data-l="es">AUC al ordenar las sesiones de cada temporada por la tasa de llenado de la anterior. Fijo, sin filtros.</p><table class="ct" id="t-auc"></table></div>
+    <div class="panel"><h3 data-l="en">Centres in 2025-26</h3><h3 data-l="es">Centros en 2025-26</h3><p class="small muted" data-l="en">Five highest and five lowest shares of full sessions, centres with at least 500 sessions. Fixed, not filtered.</p><p class="small muted" data-l="es">Los cinco porcentajes más altos y más bajos de sesiones llenas, centros con al menos 500 sesiones. Fijo, sin filtros.</p><table class="ct" id="t-cen"></table></div>
+  </div>
+  <div class="callout warn" style="margin-top:22px"><strong data-l="en">Read with care.</strong><strong data-l="es">Leer con cuidado.</strong> <span data-l="en">Booked places are an upper bound on use of the room: the source has no check-ins, cancellations or waitlists. Associations are descriptive, not causal.</span><span data-l="es">Las plazas ocupadas son un límite superior del uso de la sala: la fuente no tiene check-ins, cancelaciones ni listas de espera. Las asociaciones son descriptivas, no causales.</span></div>
+</main>
+<footer>
+  <div class="wrap">
+    <div><strong>Víctor Gómez</strong> · <a href="https://victor-gomez-portfolio.vercel.app">victor-gomez-portfolio.vercel.app</a></div>
+    <div class="small"><span data-l="en">Data: Ayuntamiento de Madrid, <a href="https://datos.madrid.es/dataset/300076-0-deportes-ocupacion">dataset 300076</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Aggregated and reclassified by this project.</span><span data-l="es">Datos: Ayuntamiento de Madrid, <a href="https://datos.madrid.es/dataset/300076-0-deportes-ocupacion">dataset 300076</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Agregados y reclasificados por este proyecto.</span></div>
+  </div>
+</footer>
+<script>
+(function(){
+  'use strict';
+  const D = window.CCL, NS = 'http://www.w3.org/2000/svg';
+  const L = () => document.documentElement.lang === 'es' ? 'es' : 'en';
+  const T = (en, es) => L() === 'es' ? es : en;
+  const P = (x, d = 1) => { const s = (x * 100).toFixed(d); return (L() === 'es' ? s.replace('.', ',') : s) + '%'; };
+  const N = (x, d = 2) => { const s = x.toFixed(d); return L() === 'es' ? s.replace('.', ',') : s; };
+  const K = n => Math.round(n).toLocaleString(L() === 'es' ? 'es-ES' : 'en-US');
+  const FAM = f => L() === 'es' ? (D.family_es[f] || f) : f;
+  const WD = {Mon:['Mon','Lun'],Tue:['Tue','Mar'],Wed:['Wed','Mié'],Thu:['Thu','Jue'],Fri:['Fri','Vie'],Sat:['Sat','Sáb'],Sun:['Sun','Dom']};
+  const SL = {Morning:['Morning (before 12)','Mañana (antes de 12)'],Midday:['Midday (12 to 15)','Mediodía (12 a 15)'],Afternoon:['Afternoon (15 to 18)','Tarde (15 a 18)'],Evening:['Evening (18 on)','Tarde-noche (desde 18)']};
+  const MO = ['', 'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], MOes = ['', 'Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  const el = (tag, a = {}, p) => { const n = document.createElementNS(NS, tag); for(const [k, v] of Object.entries(a)) n.setAttribute(k, v); if(p) p.appendChild(n); return n; };
+  const tx = (p, x, y, s, cls, anchor = 'start') => { const t = el('text', {x, y, class: cls, 'text-anchor': anchor}, p); t.textContent = s; return t; };
+  const fs = document.getElementById('f-season'), ff = document.getElementById('f-family'), fl = document.getElementById('f-slot');
+  function options(){
+    const keep = [fs.value, ff.value, fl.value];
+    fs.innerHTML = `<option value="">${T('All seasons', 'Todas las temporadas')}</option>` + D.seasons.map(s => `<option>${s}</option>`).join('');
+    ff.innerHTML = `<option value="">${T('All families', 'Todas las familias')}</option>` + D.families.map(f => `<option value="${f}">${FAM(f)}</option>`).join('');
+    fl.innerHTML = `<option value="">${T('All time slots', 'Todas las franjas')}</option>` + D.slots.map(s => `<option value="${s}">${T(...SL[s])}</option>`).join('');
+    [fs.value, ff.value, fl.value] = keep;
+  }
+  const sum = rows => rows.reduce((a, r) => (a.s += r[4], a.p += r[5], a.b += r[6], a.f += r[7], a.e += r[8], a), {s:0,p:0,b:0,f:0,e:0});
+  const filt = (skip) => D.cube.filter(r => (skip === 'season' || !fs.value || r[0] === fs.value) && (skip === 'family' || !ff.value || r[1] === ff.value) && (skip === 'slot' || !fl.value || r[3] === fl.value));
+  const svg = (id, w, h, label) => { const host = document.getElementById(id); host.innerHTML = ''; return el('svg', {viewBox: `0 0 ${w} ${h}`, role: 'img', 'aria-label': label}, host); };
+  function draw(){
+    const a = sum(filt());
+    document.getElementById('k-s').textContent = K(a.s);
+    document.getElementById('k-o').textContent = a.s ? P(a.b / a.p) : '-';
+    document.getElementById('k-f').textContent = a.s ? P(a.f / a.s) : '-';
+    document.getElementById('k-e').textContent = a.s ? P(a.e / a.s) : '-';
+    // heat
+    let s = svg('c-heat', 360, 170, T('Full sessions by weekday and time slot', 'Sesiones llenas por día y franja'));
+    const rows = filt('slot');
+    D.weekdays.forEach((w, i) => tx(s, 80 + i * 40 + 20, 12, T(...WD[w]), 'ax-text', 'middle'));
+    D.slots.forEach((sl, j) => {
+      tx(s, 74, 20 + j * 36 + 22, T(...SL[sl]).split(' (')[0], 'ax-text', 'end');
+      D.weekdays.forEach((w, i) => {
+        const c = sum(rows.filter(r => r[2] === w && r[3] === sl));
+        if(!c.s) return;
+        const r = c.f / c.s;
+        const g = el('g', {}, s);
+        el('title', {}, g).textContent = `${T(...WD[w])} · ${T(...SL[sl])}: ${P(r)} · ${K(c.s)} ${T('sessions', 'sesiones')}`;
+        el('rect', {x: 80 + i * 40 + 1, y: 20 + j * 36 + 1, width: 38, height: 34, rx: 5, fill: 'var(--green)', 'fill-opacity': Math.min(1, 0.06 + r / 0.5 * 0.94).toFixed(3)}, g);
+        tx(g, 80 + i * 40 + 20, 20 + j * 36 + 22, Math.round(r * 100) + '%', r > 0.3 ? 'lbl-inv' : 'lbl-m', 'middle');
+      });
+    });
+    // family
+    const fr = filt('family');
+    const fams = D.families.map(f => [f, sum(fr.filter(r => r[1] === f))]).filter(x => x[1].s).sort((x, y) => y[1].f / y[1].s - x[1].f / x[1].s);
+    s = svg('c-fam', 360, fams.length * 22 + 8, T('Full sessions by activity family', 'Sesiones llenas por familia de actividad'));
+    const X = v => 170 + v * 160;
+    fams.forEach(([f, c], i) => {
+      const y = 4 + i * 22, r = c.f / c.s, o = c.b / c.p;
+      const g = el('g', {}, s); el('title', {}, g).textContent = `${FAM(f)}: ${P(r)} ${T('full', 'llenas')}, ${P(o)} ${T('booked', 'ocupadas')}, ${K(c.s)} ${T('sessions', 'sesiones')}`;
+      tx(g, 164, y + 13, FAM(f), 'ax-text', 'end');
+      el('rect', {x: X(0), y: y + 2, width: X(o) - X(0), height: 15, rx: 3, class: 'mark-soft', opacity: 0.45}, g);
+      el('rect', {x: X(0), y: y + 5, width: Math.max(1, X(r) - X(0)), height: 9, rx: 2, class: 'mark'}, g);
+      tx(g, Math.max(X(r), X(o)) + 4, y + 14, P(r), 'lbl-m');
+      if(f === ff.value) el('rect', {x: 0, y: y, width: 360, height: 19, fill: 'none', stroke: 'var(--orange)', rx: 4}, g);
+    });
+    // month
+    const mr = D.month.filter(r => (!fs.value || r[0] === fs.value) && (!ff.value || r[1] === ff.value));
+    s = svg('c-month', 360, 180, T('Full sessions by month', 'Sesiones llenas por mes'));
+    const ms = D.months.map(m => { const c = mr.filter(r => r[2] === m).reduce((a, r) => (a.s += r[3], a.f += r[6], a), {s:0,f:0}); return [m, c]; });
+    const mx = Math.max(0.1, ...ms.map(([, c]) => c.s ? c.f / c.s : 0)) * 1.15;
+    ms.forEach(([m, c], i) => {
+      if(!c.s) return;
+      const r = c.f / c.s, h = r / mx * 130, x = 30 + i * 27;
+      const g = el('g', {}, s); el('title', {}, g).textContent = `${T(MO[m], MOes[m])}: ${P(r)} · ${K(c.s)} ${T('sessions', 'sesiones')}`;
+      el('rect', {x, y: 150 - h, width: 19, height: h, rx: 3, class: 'mark'}, g);
+      tx(s, x + 9.5, 166, T(MO[m], MOes[m]), 'ax-text', 'middle');
+      tx(s, x + 9.5, 146 - h, Math.round(r * 100), 'ax-text', 'middle');
+    });
+    // season
+    const sr = filt('season');
+    s = svg('c-season', 360, 180, T('Full sessions by season', 'Sesiones llenas por temporada'));
+    D.seasons.forEach((se, i) => {
+      const c = sum(sr.filter(r => r[0] === se)); if(!c.s) return;
+      const r = c.f / c.s, o = c.b / c.p, x = 40 + i * 80;
+      const g = el('g', {}, s); el('title', {}, g).textContent = `${se}: ${P(r)} ${T('full', 'llenas')}, ${P(o)} ${T('booked', 'ocupadas')}`;
+      el('rect', {x, y: 150 - o * 130, width: 26, height: o * 130, rx: 3, class: 'mark-soft'}, g);
+      el('rect', {x: x + 30, y: 150 - r * 130, width: 26, height: r * 130, rx: 3, class: se === fs.value ? 'mark-alt' : 'mark'}, g);
+      tx(s, x + 13, 145 - o * 130, Math.round(o * 100) + '%', 'ax-text', 'middle');
+      tx(s, x + 43, 145 - r * 130, Math.round(r * 100) + '%', 'ax-text', 'middle');
+      tx(s, x + 28, 168, se, 'ax-text', 'middle');
+    });
+    // tables
+    document.getElementById('t-auc').innerHTML = `<tr><th>${T('Seasons', 'Temporadas')}</th><th>${T('Same slot', 'Mismo horario')}</th><th>${T('Family x weekday x slot', 'Familia x día x franja')}</th><th>${T('Coverage', 'Cobertura')}</th></tr>` +
+      D.predictability.map(p => `<tr><td>${p.train} → ${p.test}</td><td>${N(p.auc_same_slot)}</td><td>${N(p.auc_family_weekday_slot)}</td><td>${P(p.coverage, 0)}</td></tr>`).join('');
+    const c = D.centres_latest, rowsC = c.slice(0, 5).concat([null], c.slice(-5));
+    document.getElementById('t-cen').innerHTML = `<tr><th>${T('Centre', 'Centro')}</th><th>${T('Sessions', 'Sesiones')}</th><th>${T('Booked', 'Ocupadas')}</th><th>${T('Full', 'Llenas')}</th></tr>` +
+      rowsC.map(r => r ? `<tr><td>${r[0]}</td><td>${K(r[1])}</td><td>${P(r[2])}</td><td>${P(r[3])}</td></tr>` : `<tr><td colspan="4" style="text-align:center">…</td></tr>`).join('');
+  }
+  [fs, ff, fl].forEach(x => x.addEventListener('change', draw));
+  document.addEventListener('ccl:lang', () => { options(); draw(); });
+  document.addEventListener('DOMContentLoaded', () => { options(); draw(); });
+})();
+</script>
+</body>
+</html>

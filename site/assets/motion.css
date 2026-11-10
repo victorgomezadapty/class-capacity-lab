@@ -151,3 +151,4 @@ main{position:relative;isolation:isolate}
 }
 
 @media print{.js .reveal,.js .anim-bars .bar-fill,.js .grow,.js .growx,.js .pop,.js .fade,.js .steps.stagger .step{opacity:1!important;transform:none!important}.blob,.progress{display:none}}
+.lbl-inv{fill:#fff;font:600 12px var(--sans)}

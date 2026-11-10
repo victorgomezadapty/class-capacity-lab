@@ -1,29 +1,17 @@
-# Source provenance and publication scope
+# Source provenance
 
-Checked 13 October 2026.
+- **Publisher:** Ayuntamiento de Madrid, Portal de datos abiertos.
+- **Dataset:** "Oferta y ocupación de plazas en actividades deportivas dirigidas", id 300076. https://datos.madrid.es/dataset/300076-0-deportes-ocupacion
+- **License:** Creative Commons Attribution 4.0 (CC BY 4.0). https://creativecommons.org/licenses/by/4.0/
+- **Files used** ("Clases abiertas y uso libre", CSV, one row per session):
 
-## Dataset A — GoalZone
+| Season | Resource |
+|---|---|
+| 2022-23 | 300076-2-deportes-ocupacion-csv |
+| 2023-24 | 300076-31-deportes-ocupacion-csv |
+| 2024-25 | 300076-1-deportes-ocupacion-csv |
+| 2025-26 | 300076-0-deportes-ocupacion-csv |
 
-Local canonical file: `autores refieren/fitness_class_2212.csv`. All 1,500 records reconcile with the supplied Parquet on the seven shared columns after normalization. The local source hashes are recorded in `data/processed/analysis.json`.
+Downloaded on 2026-11-10 by `src/download_madrid.py`, which also writes sizes and SHA-256 hashes to `data/source_manifest.json`. Raw files are not committed. The derived slot table in `data/processed/` and `delivery/kaggle/dataset/` is shared under CC BY 4.0 with attribution to the Ayuntamiento de Madrid and a note that it was filtered, reclassified and aggregated.
 
-The supplied [Kaggle notebook](https://www.kaggle.com/code/adeforte/goalzone-predicting-gym-attendance) is a reference analysis; [Carla HQ](https://carlahq.eu/datasets/fitness-club) describes DataCamp / Kaggle as origin. Those references do not independently establish the redistribution terms for this precise local CSV. Raw GoalZone data is excluded from the proposed GitHub source package until its exact redistribution rights are confirmed. The notebook accepts user-attached source data.
-
-## Dataset B — Gym Membership
-
-Primary source: [Gym Membership Dataset, Tarek Adam / ka66ledata](https://www.kaggle.com/datasets/ka66ledata/gym-membership-dataset).
-
-The primary data card was inspected in a rendered browser on 13 October 2026. It identifies the dataset as simulated/mock gym membership data intended for EDA practice and lists **CC0: Public Domain**. The 17-field schema, 1,000 IDs, group participation counts (503 true, 497 false), subscription counts, weekly-frequency distribution and displayed record sample correspond to the local CSV. A full remote download and byte-hash identity comparison were not performed.
-
-This source is **synthetic**. It has no verified real-gym collection period and cannot validate real member behavior, timetable competition or incremental cross-sell effects. Weak associations may reflect the artificial generation process; the precise generation code and mechanism were not established.
-
-The source discovery trail includes a [2025 research paper](https://ejournal.unama.ac.id/index.php/mediasisfo/article/download/2090/1565), which cites the original Kaggle URL and the same 17 fields. The publication is a discovery aid, not authority for declaring the data real. Source status is based on the original author's card.
-
-Local file SHA-256: `0d114e1f197226e60b8e59b5b50c3bb2160438cc6d312f51ba53c941f3707d34`.
-
-## Artifact audiences
-
-- Kaggle: self-contained technical notebook, code, reproducible seeds, measures and explicit limitations.
-- GitHub: reproducible source, technical README and an explanation of the business question, data grain and method choices.
-- Portfolio: the same numerical evidence with visible plain-language interpretation and expandable technical details. Simplifying presentation must not strengthen the claim.
-
-The dashboard is a public-data laboratory artifact, not an operator implementation. No real operational data or live capacity recommendation is claimed.
+Not used: seasons 2016-17 to 2019-20 and the "Clases cerradas" files are monthly class totals, not sessions. Season 2020-21 has session rows but no "Tipo de actividad" column, so directed classes cannot be separated from free use. Season 2021-22 has the column but was still affected by pandemic capacity limits; it is left out so the four analysed seasons are comparable. Adding it is a one-line change in `src/download_madrid.py` and `src/build_sessions.py`.

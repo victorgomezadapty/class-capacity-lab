@@ -1,0 +1,22 @@
+{
+  "2022-23": {
+    "url": "https://datos.madrid.es/dataset/300076-0-deportes-ocupacion/resource/300076-2-deportes-ocupacion-csv/download/300076-2-deportes-ocupacion-csv.csv",
+    "bytes": 61601109,
+    "sha256": "8c58db55177b31f42fca77ba2a09345c4f3e3a6540019dba7d7da3bc2b768ea9"
+  },
+  "2023-24": {
+    "url": "https://datos.madrid.es/dataset/300076-0-deportes-ocupacion/resource/300076-31-deportes-ocupacion-csv/download/300076-31-deportes-ocupacion-csv.csv",
+    "bytes": 63904165,
+    "sha256": "de7721e315bd07af0ba9715c7c2775bf18524c42d7e0d3999e1a12b8f79bada5"
+  },
+  "2024-25": {
+    "url": "https://datos.madrid.es/dataset/300076-0-deportes-ocupacion/resource/300076-1-deportes-ocupacion-csv/download/300076-1-deportes-ocupacion-csv.csv",
+    "bytes": 62465260,
+    "sha256": "44c9090c117590e8cd9ecb1d05250db8521599dea328294f397d45aa0834a828"
+  },
+  "2025-26": {
+    "url": "https://datos.madrid.es/dataset/300076-0-deportes-ocupacion/resource/300076-0-deportes-ocupacion-csv/download/300076-0-deportes-ocupacion-csv.csv",
+    "bytes": 72397711,
+    "sha256": "df4fe880f6f12e722d5320f3b5e78c6c8b36cbd9e4d9f40917a57a35c34e9c4b"
+  }
+}
