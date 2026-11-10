@@ -19,8 +19,9 @@ Suggested description: source, license and attribution as in `docs/source_proven
 | Field | Value |
 |---|---|
 | Folder | `delivery/kaggle/` (`kernel-metadata.json` + `class-capacity-lab.ipynb`) |
-| Kernel id | `vctorandrsgmezlpez/class-capacity-lab-group-class-attendance-study` (existing; a new title may change the visible slug) |
-| Title | Class Capacity Lab: Madrid Group Class Occupancy (48 characters) |
+| Kernel id | `vctorandrsgmezlpez/class-capacity-lab-madrid-occupancy-study` |
+| URL | https://www.kaggle.com/code/vctorandrsgmezlpez/class-capacity-lab-madrid-occupancy-study |
+| Title | Class Capacity Lab: Madrid Occupancy Study (42 characters) |
 | Inputs | Exactly one dataset: `vctorandrsgmezlpez/madrid-group-class-sessions-2022-2026`. No other inputs. |
 | Internet | Off. GPU off. |
 
